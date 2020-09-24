@@ -3,6 +3,10 @@ package main.character;
 /* since the only persistent thing in game is the player character,
  * do we want to just put all the world state save game info in here?
  */
+import main.items.EquipableItem;
+import main.items.GearTable;
+import main.items.Item;
+
 import java.io.Serializable;
 
 public class PlayerCharacter extends AbstractCharacter implements Serializable {
@@ -16,11 +20,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     //TODO EXTERNAL classes for items need to be implemented
     Item inventory[];
-    GearOffA equipOffA;
-    GearOffB equipOffB;
-    GearDefA equipDefA;
-    GearDefB equipDefB;
-    GearUtil equipUtil;
+    EquipableItem equipOffA;
+    EquipableItem equipOffB;
+    EquipableItem equipDefA;
+    EquipableItem equipDefB;
+    EquipableItem equipUtil;
 
     public PlayerCharacter() {
         //TODO adjust starting player info
@@ -40,10 +44,8 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         level = 1;
         inventory = new Item[16];
         //TODO some way to look up gear needs to be implemented
-        equipOffA = GearTable.lookupGearOffA("Stick");
-        equipOffB = GearTable.lookupGearOffB("Magic Stick");
-        equipDefA = GearTable.lookupGearDefA("Jacket");
-        equipDefB = GearTable.lookupGearDefB("Magic Jacket");
+        equip(GearTable.lookupEquipmentByName("Stick"));
+        equip(GearTable.lookupEquipmentByName("Jacket"));
         //no value for equipUtil in constructor, have to equip one later
         actions = buildActions();
     }
@@ -121,7 +123,35 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     }
 
     //TODO needs to be filled in
-    public void equip(){
+    public void equip(EquipableItem equipableItem){
+        EquipableItem removedItem = null;
+        switch (equipableItem.getSlot()) {
+            case OFFENSE_A:
+                removedItem = equipOffA;
+                equipOffA = equipableItem;
+                break;
+            case OFFENSE_B:
+                removedItem = equipOffB;
+                equipOffB = equipableItem;
+                break;
+            case DEFENSE_A:
+                removedItem = equipDefA;
+                equipDefA = equipableItem;
+                break;
+            case DEFENSE_B:
+                removedItem = equipDefB;
+                equipDefB = equipableItem;
+                break;
+            case UTIL:
+                removedItem = equipUtil;
+                equipUtil = equipableItem;
+                break;
+                default:
+                    throw new IllegalArgumentException("Equipped item slot not recognized: " + equipableItem.getSlot());
+        }
+        if (removedItem != null) {
+            //todo - put it back in inventory
+        }
     }
 
     //TODO add some other actions
