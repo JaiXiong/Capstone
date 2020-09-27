@@ -12,14 +12,14 @@ public class Floor{
     private Terrain[][] terrain;
 
     //Floor constructor
-    public Floor(int rows, int columns, Terrain[][] terrain) {
+    public Floor(int rows, int columns) {
         this.ROWS = rows;
         this.COLUMNS = columns;
         this.terrain = new Terrain[ROWS][COLUMNS];
     }
 
     //create the basic floor depending on type
-    public Terrain MakeFloor(String type,Color color, int row, int col) {
+    public Terrain makeFloor(String type, Color color, int row, int col) {
         if (type == "terrain") {
             return new Terrain("terrain", color, row, col);
         } else if (type == "wall") {
@@ -31,10 +31,10 @@ public class Floor{
         }
     }
 
-    public void FillAll(String type, Color color) {
+    public void fillAll(String type, Color color) {
         for(int x = 0; x < ROWS; x++) {
             for(int y = 0; y < COLUMNS; y++) {
-                terrain[ROWS][COLUMNS] = MakeFloor(type, color, x, y);
+                terrain[ROWS][COLUMNS] = makeFloor(type, color, x, y);
             }
         }
     }
