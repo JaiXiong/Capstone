@@ -1,5 +1,3 @@
-package main.tests;
-
 import main.character.PlayerCharacter;
 import main.items.EquipableItem;
 import main.items.Item;
