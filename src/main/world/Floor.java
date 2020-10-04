@@ -39,4 +39,28 @@ public class Floor{
         }
     }
 
+    //returns a terrain
+    public Terrain getTerrainAt(int x, int y) {
+        return terrain[x][y];
+    }
+
+    public String getTerrainType(int x, int y) {
+        return terrain[x][y].getType();
+    }
+
+    public Boolean Passable(int x, int y) {
+        String item = terrain[x][y].getType();
+        if (item == "wall") {
+            return false;
+        }
+        else if (item == "terrain") {
+            return true;
+        }
+        else if (item == "door") {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 }
