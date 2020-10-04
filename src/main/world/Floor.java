@@ -44,10 +44,12 @@ public class Floor{
         return terrain[x][y];
     }
 
+    //returns the string type of the terrain
     public String getTerrainType(int x, int y) {
         return terrain[x][y].getType();
     }
 
+    //checks to see if tile is a passable terrain
     public Boolean Passable(int x, int y) {
         String item = terrain[x][y].getType();
         if (item == "wall") {

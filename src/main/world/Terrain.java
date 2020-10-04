@@ -11,7 +11,8 @@ public class Terrain extends TileObjects{
 
     public Color getBackgroundColor() {return this.backgroundColor;}
 
-    public void fillFloor(Terrain [][] floor) {
-
+    @Override
+    public String getType() {
+        return this.type;
     }
 }
