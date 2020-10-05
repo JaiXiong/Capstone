@@ -1,4 +1,4 @@
-package main;
+package main.character;
 
 public abstract class AbstractCharacter {
 

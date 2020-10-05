@@ -1,5 +1,6 @@
 package main;
 
+import main.character.PlayerCharacter;
 import main.items.Item;
 import org.junit.*;
 import static org.junit.Assert.*;

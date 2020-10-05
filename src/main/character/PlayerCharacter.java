@@ -1,4 +1,4 @@
-package main;
+package main.character;
 
 /* since the only persistent thing in game is the player character,
  * do we want to just put all the world state save game info in here?

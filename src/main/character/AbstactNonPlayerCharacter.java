@@ -1,5 +1,4 @@
-package main;
-import main.items.Item;
+package main.character;
 
 public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
 
