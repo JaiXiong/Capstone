@@ -1,4 +1,4 @@
-package main.character;
+package main;
 
 public abstract class AbstractCharacter {
 
@@ -27,7 +27,9 @@ public abstract class AbstractCharacter {
 
     // basic character stats
     int health;
+    int maxHealth;
     int energy;
+    int maxEnergy;
     int moveRate;
 
     // percentage stats
@@ -61,9 +63,13 @@ public abstract class AbstractCharacter {
         return health;
     }
 
+    public int getMaxHealth() { return maxHealth; }
+
     public int getEnergy(){
         return energy;
     }
+
+    public int getMaxEnergy() { return maxEnergy; }
 
     /* the remaining stats can be modified by persistant
      * effects, and have to calculate a total value based
@@ -105,7 +111,7 @@ public abstract class AbstractCharacter {
      */
     public void basicOffense(AbstractCharacter target){
         int amount = 0;
-        target.takeDamage(amount, "offenseA", accuracy);
+        target.takeDamage(amount, "typeA", accuracy);
     }
 
     //TODO needs to be filled in
