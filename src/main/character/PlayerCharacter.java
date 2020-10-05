@@ -27,23 +27,23 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     EquipableItem equipUtil;
 
     public PlayerCharacter() {
-        //TODO adjust starting player info
         initiativeID = 0;
         health = 100;
+        maxHealth = 100;
         energy = 100;
+        maxEnergy = 100;
         moveRate = 1;
         offenseA = 1.0;
         offenseB = 1.0;
-        accuracy = 1.0;
-        evade = 1.0;
-        resistA = 1.0;
-        resistB = 1.0;
-        resistC = 1.0;
-        resistD = 1.0;
+        accuracy = 0.5;
+        evade = 0.9;
+        resistA = 0.95;
+        resistB = 0.95;
+        resistC = 0.95;
+        resistD = 0.95;
         xp = 0;
         level = 1;
         inventory = new Item[16];
-        //TODO some way to look up gear needs to be implemented
         equip(GearTable.lookupEquipmentByName("Stick"));
         equip(GearTable.lookupEquipmentByName("Jacket"));
         //no value for equipUtil in constructor, have to equip one later
@@ -55,6 +55,26 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         //TODO fill in special actions
         return new String[1];
     }
+
+    //this first block of getters right now is just for testing and probably
+    //won't see any use in actual code.
+    public int getXP(){ return xp; }
+
+    public int getLevel(){ return level; }
+
+    public String[] getActions(){ return actions; }
+
+    public Item[] getInventory(){ return inventory; }
+
+    public EquipableItem getEquipOffA(){ return equipOffA; }
+
+    public EquipableItem getEquipOffB(){ return equipOffB; }
+
+    public EquipableItem getEquipDefA(){ return equipDefA; }
+
+    public EquipableItem getEquipDefB(){ return equipDefB; }
+
+    public EquipableItem getEquipUtil(){ return equipUtil; }
 
     //TODO
     /* for now the getters will just give raw stats
@@ -105,6 +125,25 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     public double getResistD() {
         return resistD;
     }
+
+    //these setters are also just for testing right now
+    public void setMoveRate(int val){ moveRate = val; }
+
+    public void setOffenseA(double val){ offenseA = val; }
+
+    public void setOffenseB(double val){ offenseB = val; }
+
+    public void setAccuracy(double val){ accuracy = val; }
+
+    public void setEvade(double val){ evade = val; }
+
+    public void setResistA(double val){ resistA = val; }
+
+    public void setResistB(double val){ resistB = val; }
+
+    public void setResistC(double val){ resistC = val; }
+
+    public void setResistD(double val){ resistD = val; }
 
     /* @param amount how much XP is gained
      * adds to XP count, then checks for level up
