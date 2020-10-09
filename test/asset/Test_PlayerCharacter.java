@@ -1,7 +1,7 @@
-package main;
+package asset;
 
-import main.character.PlayerCharacter;
-import main.items.Item;
+import asset.character.PlayerCharacter;
+import asset.items.Item;
 import org.junit.*;
 import static org.junit.Assert.*;
 

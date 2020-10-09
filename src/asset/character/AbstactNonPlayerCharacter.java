@@ -1,4 +1,4 @@
-package main.character;
+package asset.character;
 
 public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
 

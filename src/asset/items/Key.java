@@ -1,8 +1,4 @@
-package main.items;
-
-import main.world.TileObjects;
-
-import java.awt.*;
+package asset.items;
 
 public class Key extends Item {
     //Code to unlock door. If the codes match, the door will open. An unlock code of -1 will unlock any door.

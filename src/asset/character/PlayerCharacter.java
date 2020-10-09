@@ -1,12 +1,14 @@
-package main.character;
+package asset.character;
 
 /* since the only persistent thing in game is the player character,
  * do we want to just put all the world state save game info in here?
  */
-import main.items.EquipableItem;
-import main.items.GearTable;
-import main.items.Item;
+import asset.items.EquipableItem;
+import asset.items.GearTable;
+import asset.items.Item;
+import console.ConsoleGlyph;
 
+import java.awt.*;
 import java.io.Serializable;
 
 public class PlayerCharacter extends AbstractCharacter implements Serializable {
@@ -191,6 +193,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         if (removedItem != null) {
             //todo - put it back in inventory
         }
+    }
+
+    @Override
+    public ConsoleGlyph getConsoleGlyph() {
+        return new ConsoleGlyph(null, Color.WHITE, '@');
     }
 
     //TODO add some other actions

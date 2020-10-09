@@ -1,6 +1,8 @@
-package main.character;
+package asset.character;
 
-public abstract class AbstractCharacter {
+import asset.AbstractGameAsset;
+
+public abstract class AbstractCharacter extends AbstractGameAsset {
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in

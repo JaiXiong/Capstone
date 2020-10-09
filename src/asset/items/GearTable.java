@@ -1,5 +1,5 @@
-package main.items;
-import main.items.EquipableItem.Slot;
+package asset.items;
+import asset.items.EquipableItem.Slot;
 
 /**
  * Lookup a pre-defined gear item by its name.

@@ -1,6 +1,6 @@
 package main;
 
-import io.GUIManager;
+import io.gui.GUIManager;
 
 public class Driver {
     public static void main(String[] args) {

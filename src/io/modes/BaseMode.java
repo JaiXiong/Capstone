@@ -1,6 +1,6 @@
 package io.modes;
 
-import main.Console;
+import io.gui.ConsoleInterface;
 
 import java.awt.*;
 
@@ -16,11 +16,11 @@ public class BaseMode extends IOMode {
     private boolean startup = true;
 
     @Override
-    public void update(Console console) {
+    public void update(ConsoleInterface consoleInterface) {
         if (startup) {
-            console.writeSingleLine(1, 1, Color.BLUE, "(Startup Splash Screen)");
+            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
         } else {
-            console.writeSingleLine(1, 1, "(Exit Splash Screen)");
+            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
         }
     }
 

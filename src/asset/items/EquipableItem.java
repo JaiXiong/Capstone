@@ -1,4 +1,4 @@
-package main.items;
+package asset.items;
 
 /**
  * Define items which can be equipped as gear.
