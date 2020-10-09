@@ -1,6 +1,6 @@
 package io.modes;
 
-import main.Console;
+import io.gui.ConsoleInterface;
 
 /**
  * IOMode corresponds to a game state such as the start screen, main game screen, inventory screen, etc.
@@ -11,6 +11,6 @@ import main.Console;
  * might move the player on the main screen, or scroll through options on a menu screen.
  */
 public abstract class IOMode {
-    public abstract void update(Console console);
+    public abstract void update(ConsoleInterface consoleInterface);
     //todo - handle input as well!
 }

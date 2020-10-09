@@ -1,4 +1,4 @@
-package main.world;
+package asset.world;
 
 import java.awt.*;
 
@@ -10,8 +10,8 @@ public class Door extends TileObjects {
     /*
         Full constructor.
      */
-    public Door(String name, Color color, int xSpot, int ySpot, boolean locked, int unlockCode) {
-        super(name, color, xSpot, ySpot);
+    public Door(String name, Color color, char symbol, int xSpot, int ySpot, boolean locked, int unlockCode) {
+        super(name, color, symbol, xSpot, ySpot);
         this.locked = locked;
         this.unlockCode = unlockCode;
     }
@@ -20,7 +20,7 @@ public class Door extends TileObjects {
         Simplified constructor.
      */
     public Door(int xSpot, int ySpot, boolean locked) {
-        super("Door", Color.GRAY, xSpot, ySpot);
+        super("Door", Color.GRAY, '+', xSpot, ySpot);
         this.locked = locked;
         this.unlockCode = -1;
     }

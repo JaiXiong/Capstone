@@ -1,10 +1,8 @@
-package io;
+package io.gui;
 
 import io.modes.BaseMode;
 import io.modes.IOMode;
-import main.Console;
 
-import java.awt.*;
 import java.util.Stack;
 
 /**
@@ -21,13 +19,11 @@ public class GUIManager {
 
     private static GUIManager instance = null;
 
-    private final Console CONSOLE;
+    private final ConsoleInterface CONSOLE_INTERFACE = new ConsoleInterface();
     private final Stack<IOMode> MODE_STACK = new Stack<>();
 
     //keep access private - only our static getInstance method is allowed to construct a new GUIManager
-    private GUIManager() {
-        CONSOLE = new Console(24, 64, new Dimension(9, 16));
-    }
+    private GUIManager() {}
 
     /**
      * Provides global access to the singleton instance.
@@ -61,6 +57,6 @@ public class GUIManager {
      * Update the Console based on the current IOMode.
      */
     public void updateScreen() {
-        MODE_STACK.peek().update(CONSOLE);
+        MODE_STACK.peek().update(CONSOLE_INTERFACE);
     }
 }

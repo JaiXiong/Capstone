@@ -1,4 +1,4 @@
-package main.items;
+package asset.items;
 
 public class Item {
     //todo - define additional item properties not specific to implementations, as needed

@@ -1,4 +1,4 @@
-package main.world;
+package asset.world;
 
 import java.awt.*;
 
@@ -21,11 +21,11 @@ public class Floor{
     //create the basic floor depending on type
     public Terrain makeFloor(String type, Color color, int row, int col) {
         if (type == "terrain") {
-            return new Terrain("terrain", color, row, col);
+            return new Terrain("terrain", color, null, ' ', row, col);
         } else if (type == "wall") {
-            return new Terrain("wall", color, row, col);
+            return new Terrain("wall", null, color, '#', row, col);
         } else if (type == "door") {
-            return new Terrain("door", color, row, col);
+            return new Terrain("door", null, color, '+', row, col);
         } else {
             return null;
         }
@@ -50,19 +50,13 @@ public class Floor{
     }
 
     //checks to see if tile is a passable terrain
-    public Boolean Passable(int x, int y) {
+    public Boolean isTerrainPassableAt(int x, int y) {
         String item = terrain[x][y].getType();
-        if (item == "wall") {
-            return false;
-        }
-        else if (item == "terrain") {
-            return true;
-        }
-        else if (item == "door") {
-            return true;
-        }
-        else {
-            return false;
+        switch (item) {
+            case "wall": case "terrain": case "door":
+                return true;
+            default:
+                return false;
         }
     }
 }
