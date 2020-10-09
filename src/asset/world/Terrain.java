@@ -21,6 +21,6 @@ public class Terrain extends TileObjects{
 
     @Override
     public ConsoleGlyph getConsoleGlyph() {
-        return new ConsoleGlyph(getColor(), getBackgroundColor(), getSymbol());
+        return new ConsoleGlyph(getBackgroundColor(), getColor(), getSymbol());
     }
 }

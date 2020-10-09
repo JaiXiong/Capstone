@@ -34,9 +34,18 @@ public class Floor{
     public void fillAll(String type, Color color) {
         for(int x = 0; x < ROWS; x++) {
             for(int y = 0; y < COLUMNS; y++) {
-                terrain[ROWS][COLUMNS] = makeFloor(type, color, x, y);
+                terrain[x][y] = makeFloor(type, color, x, y);
             }
         }
+    }
+
+
+    public int getColumns() {
+        return COLUMNS;
+    }
+
+    public int getRows() {
+        return ROWS;
     }
 
     //returns a terrain
@@ -44,6 +53,9 @@ public class Floor{
         return terrain[x][y];
     }
 
+    public void setTerrainAt(int x, int y, Terrain t) {
+        terrain[x][y] = t;
+    }
     //returns the string type of the terrain
     public String getTerrainType(int x, int y) {
         return terrain[x][y].getType();

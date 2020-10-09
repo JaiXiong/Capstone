@@ -1,5 +1,6 @@
 package io.modes;
 
+import engine.Gamestate;
 import io.gui.ConsoleInterface;
 
 import java.awt.*;
@@ -17,11 +18,13 @@ public class BaseMode extends IOMode {
 
     @Override
     public void update(ConsoleInterface consoleInterface) {
-        if (startup) {
-            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
-        } else {
-            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
-        }
+        //hack - test display! todo: reinstate commented out code below
+        consoleInterface.drawFloor(Gamestate.getInstance().getFloor(), new Point());
+//        if (startup) {
+//            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
+//        } else {
+//            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
+//        }
     }
 
     /*todo - on any input:

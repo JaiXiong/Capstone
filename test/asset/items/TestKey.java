@@ -1,6 +1,5 @@
 package asset.items;
 
-import main.items.Key;
 import org.junit.*;
 import static org.junit.Assert.*;
 public class TestKey {

@@ -1,7 +1,5 @@
 package asset.world;
 
-import main.world.Floor;
-import main.world.Terrain;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.awt.*;

@@ -1,9 +1,8 @@
 package asset.world;
 
-import main.world.Door;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.awt.*;
+
 public class TestDoor {
     @Test
     public void testDoorLock(){
