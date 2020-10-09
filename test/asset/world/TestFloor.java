@@ -1,4 +1,4 @@
-package main;
+package asset.world;
 
 import main.world.Floor;
 import main.world.Terrain;

@@ -1,4 +1,4 @@
-package asset;
+package asset.character;
 
 import asset.character.PlayerCharacter;
 import asset.items.Item;

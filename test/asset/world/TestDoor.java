@@ -1,4 +1,4 @@
-package main;
+package asset.world;
 
 import main.world.Door;
 import org.junit.Test;

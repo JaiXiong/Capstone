@@ -1,4 +1,4 @@
-package main;
+package asset.items;
 
 import main.items.Key;
 import org.junit.*;

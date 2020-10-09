@@ -1,6 +1,6 @@
-package main;
+package asset.items;
 
-import main.items.EquipableItem;
+import asset.items.EquipableItem;
 import org.junit.*;
 import static org.junit.Assert.*;
 public class Test_EquipableItem {
