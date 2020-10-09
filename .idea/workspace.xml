@@ -19,8 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d4e3d843-27bb-4cae-9dbd-bc7959308dd0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/main/TestFloor.java" afterDir="false" />
+    <list default="true" id="d4e3d843-27bb-4cae-9dbd-bc7959308dd0" name="Default Changelist" comment="Initial tests for world, items, and playercharacters">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,8 +70,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602178187340</updated>
-      <workItem from="1602178188539" duration="6014000" />
+      <workItem from="1602178188539" duration="6976000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial tests for world, items, and playercharacters">
+      <created>1602196438720</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1602196438720</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -88,7 +96,15 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial tests for world, items, and playercharacters" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial tests for world, items, and playercharacters" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="0" y="74" key="Vcs.Push.Dialog.v2" timestamp="1602196444464">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="0" y="74" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1602196444464" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1602196040189">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
