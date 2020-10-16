@@ -12,6 +12,16 @@ public class TileObjects extends AbstractGameAsset {
     char symbol;
     String type;
 
+    /**
+     *  Define possible Tile Types
+     */
+    public enum TileType {
+        //override  toString() for enum, is there a better way?
+        WALL { public String toString() { return "wall"; } },
+        DOOR { public String toString() { return "door"; } },
+        TERRAIN { public String toString() {return "terrain"; } }
+    }
+
     public TileObjects(String name, Color color, char symbol, int xSpot, int ySpot) {
         this.x = xSpot;
         this.y = ySpot;
