@@ -20,12 +20,12 @@ public class Floor{
 
     //create the basic floor depending on type
     public Terrain makeFloor(String type, Color color, int row, int col) {
-        if (type == "terrain") {
-            return new Terrain("terrain", color, null, ' ', row, col);
-        } else if (type == "wall") {
-            return new Terrain("wall", null, color, '#', row, col);
-        } else if (type == "door") {
-            return new Terrain("door", null, color, '+', row, col);
+        if (type.equals(TileObjects.TileType.TERRAIN.toString())) {
+            return new Terrain(TileObjects.TileType.TERRAIN.toString(), color, null, ' ', row, col);
+        } else if (type.equals(TileObjects.TileType.WALL.toString())) {
+            return new Terrain(TileObjects.TileType.WALL.toString(), null, color, '#', row, col);
+        } else if (type.equals(TileObjects.TileType.DOOR.toString())) {
+            return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
         } else {
             return null;
         }
@@ -38,7 +38,6 @@ public class Floor{
             }
         }
     }
-
 
     public int getColumns() {
         return COLUMNS;
@@ -53,8 +52,15 @@ public class Floor{
         return terrain[x][y];
     }
 
+    //sets a terrain at location x y
     public void setTerrainAt(int x, int y, Terrain t) {
         terrain[x][y] = t;
+    }
+
+    //remove a terrain at location x y
+    public void removeTerrainAt(int x, int y) {
+        //to do still
+        terrain[x][y] = null;
     }
     //returns the string type of the terrain
     public String getTerrainType(int x, int y) {
@@ -63,6 +69,7 @@ public class Floor{
 
     //checks to see if tile is a passable terrain
     public Boolean isTerrainPassableAt(int x, int y) {
+        //to do, I need to change  these to the standardize enum string??
         String item = terrain[x][y].getType();
         switch (item) {
             case "wall": case "terrain": case "door":
