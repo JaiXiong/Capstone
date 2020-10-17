@@ -1,9 +1,10 @@
 package io.modes;
 
-import engine.Gamestate;
 import io.gui.ConsoleInterface;
+import io.gui.GUIManager;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 
 /**
  * The base mode, used to display splash screens.
@@ -17,23 +18,21 @@ public class BaseMode extends IOMode {
     private boolean startup = true;
 
     @Override
-    public void update(ConsoleInterface consoleInterface) {
-        //hack - test display! todo: reinstate commented out code below
-        consoleInterface.drawFloor(Gamestate.getInstance().getFloor(), new Point());
-        //consoleInterface.drawFloor(Gamestate.getInstance().getFloor(), new Point());
-//        if (startup) {
-//            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
-//        } else {
-//            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
-//        }
+    public void handle(KeyEvent ke) {
+        if (startup) {
+            GUIManager.getInstance().transitionTo(new GameplayMode()/* todo - implement main menu! new MainMenuMode()*/);
+            startup = false;
+        } else {
+            System.exit(0);
+        }
     }
 
-    /*todo - on any input:
-     * if (startup) {
-     *  GUIManager.getInstance().transitionTo(new MainMenuMode());
-     *  startup = false;
-     * } else {
-     *  System.exit(0);
-     * }
-     */
+    @Override
+    public void update(ConsoleInterface consoleInterface) {
+        if (startup) {
+            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
+        } else {
+            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
+        }
+    }
 }

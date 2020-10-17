@@ -3,6 +3,8 @@ package io.gui;
 import io.modes.BaseMode;
 import io.modes.IOMode;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Stack;
 
 /**
@@ -15,11 +17,11 @@ import java.util.Stack;
  * exiting the game will revert to the main menu, so that the player may start a new game or exit the program,
  * and exiting something like an inventory screen or a message recall screen will return to the main game mode.
  */
-public class GUIManager {
+public class GUIManager implements KeyListener {
 
     private static GUIManager instance = null;
 
-    private final ConsoleInterface CONSOLE_INTERFACE = new ConsoleInterface();
+    private final ConsoleInterface CONSOLE_INTERFACE = new ConsoleInterface(this);
     private final Stack<IOMode> MODE_STACK = new Stack<>();
 
     //keep access private - only our static getInstance method is allowed to construct a new GUIManager
@@ -41,6 +43,7 @@ public class GUIManager {
      * Leave the current IOMode and revert to the previous IOMode - this destroys the current mode.
      */
     public void revert() {
+        CONSOLE_INTERFACE.clearScreen();
         MODE_STACK.pop();
         updateScreen();
     }
@@ -49,6 +52,7 @@ public class GUIManager {
      * Leave the current IOMode and transition to a new IOMode - this preserves the current mode for later use.
      */
     public void transitionTo(IOMode nextMode) {
+        CONSOLE_INTERFACE.clearScreen();
         MODE_STACK.push(nextMode);
         updateScreen();
     }
@@ -58,5 +62,20 @@ public class GUIManager {
      */
     public void updateScreen() {
         MODE_STACK.peek().update(CONSOLE_INTERFACE);
+    }
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //nothing to do here
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        MODE_STACK.peek().handle(e);
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        //nothing to do here
     }
 }

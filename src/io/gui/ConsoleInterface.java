@@ -2,9 +2,9 @@ package io.gui;
 
 import asset.world.Floor;
 import console.Console;
-import engine.Gamestate;
 
 import java.awt.*;
+import java.awt.event.KeyListener;
 
 /**
  * Wrap the Console and provide implementation specific methods.
@@ -12,8 +12,22 @@ import java.awt.*;
 public class ConsoleInterface {
     private final Console CONSOLE;
 
-    public ConsoleInterface(){
+    public ConsoleInterface(KeyListener keyListener){
         CONSOLE = new Console(24, 64, new Dimension(9, 16));
+        CONSOLE.addKeyListener(keyListener);
+    }
+
+    public void clearScreen() {
+        CONSOLE.clearScreen();
+    }
+
+    public void drawFloor(Floor floor, Point playerAt) {
+        for (int i = 0; i < floor.getRows(); ++i) {
+            for (int j = 0; j < floor.getColumns(); ++j) {
+                CONSOLE.update(i, j, floor.getTerrainAt(i, j).getConsoleGlyph());
+            }
+        }
+        CONSOLE.refresh();
     }
 
     /**
@@ -31,15 +45,6 @@ public class ConsoleInterface {
             if (CONSOLE.validatePosition(row, currentColumn))
                 CONSOLE.update(row, currentColumn, text.charAt(i), colorOverrides);
             else break;
-        }
-        CONSOLE.refresh();
-    }
-
-    public void drawFloor(Floor floor, Point playerAt) {
-        for (int i = 0; i < floor.getRows(); ++i) {
-            for (int j = 0; j < floor.getColumns(); ++j) {
-                CONSOLE.update(i, j, floor.getTerrainAt(i, j).getConsoleGlyph());
-            }
         }
         CONSOLE.refresh();
     }

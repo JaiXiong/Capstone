@@ -2,6 +2,8 @@ package io.modes;
 
 import io.gui.ConsoleInterface;
 
+import java.awt.event.KeyEvent;
+
 /**
  * IOMode corresponds to a game state such as the start screen, main game screen, inventory screen, etc.
  * Implementing classes must properly draw the screen for that game state, drawing on necessary information like
@@ -11,6 +13,6 @@ import io.gui.ConsoleInterface;
  * might move the player on the main screen, or scroll through options on a menu screen.
  */
 public abstract class IOMode {
+    public abstract void handle(KeyEvent ke);
     public abstract void update(ConsoleInterface consoleInterface);
-    //todo - handle input as well!
 }
