@@ -1,10 +1,11 @@
 package engine;
 
+import asset.character.AbstractCharacter;
 import asset.world.Floor;
-import asset.world.Terrain;
 import asset.world.TileObjects;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Gamestate {
     private static Gamestate instance = null;
@@ -15,7 +16,7 @@ public class Gamestate {
     }
 
     private Floor floor;
-    //todo - actor list?
+    private ArrayList<AbstractCharacter> characters;
 
     private Gamestate() {
         //megahack - generate a floor to test display
@@ -53,5 +54,9 @@ public class Gamestate {
     }
     public Floor getFloor() {
         return floor;
+    }
+
+    public ArrayList<AbstractCharacter> getCharacters() {
+        return characters;
     }
 }

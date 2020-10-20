@@ -1,5 +1,6 @@
 package io.modes;
 
+import engine.Engine;
 import engine.Gamestate;
 import io.gui.ConsoleInterface;
 import io.gui.GUIManager;
@@ -21,6 +22,7 @@ public class GameplayMode extends IOMode {
         int mod = ke.getModifiersEx();
         switch (code) {
             case VK_ESCAPE:
+                Engine.getInstance().endGame();
                 GUIManager.getInstance().revert();
                 break;
             //todo - lots here! movement commands, info commands, combat commands, etc.
