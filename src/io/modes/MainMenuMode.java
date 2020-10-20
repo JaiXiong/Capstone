@@ -13,7 +13,7 @@ public class MainMenuMode extends MenuMode {
 
     public MainMenuMode() {
         super(
-                "Welcome to <untitled rogulike>!",
+                "Welcome to <untitled roguelike>!",
                 new Color[] {
                      null,
                      Color.BLUE,

@@ -46,6 +46,8 @@ public class Engine extends Thread {
                 ; //NOP for now
             }
         } while (!gameInProgress);
+        //discard the current instance - if we begin a new game during this process, we'll create a new thread for it
+        instance = null;
     }
 
     /**
