@@ -31,6 +31,34 @@ public class ConsoleInterface {
     }
 
     /**
+     * Find the best row to start a block of text so that it appears centered.
+     * @param blockHeight the height of the block of text
+     * @return the row to start the block on
+     */
+    public int getVerticalCenter(int blockHeight) {
+        int h0 = CONSOLE.getSize().height;
+        int dh = h0 - blockHeight;
+        if (dh <= 0) throw new IllegalArgumentException("Input text too large to center on the Console.");
+        return dh / 2;
+    }
+
+    /**
+     * Write a string centered on the console at the specified row. Strings exceeding the available size will
+     * cause an IllegalArgumentException to be thrown.
+     */
+    public void writeCenteredLine(int row, String text) throws IllegalArgumentException{
+        writeCenteredLine(row, text, new Color[0]);
+    }
+
+    public void writeCenteredLine(int row, String text, Color... colorOverrides) throws IllegalArgumentException {
+        int w0 = CONSOLE.getSize().width;
+        int w1 = text.length();
+        int dw = w0 - w1;
+        if (dw <= 0) throw new IllegalArgumentException("Input text too large to center on the Console.");
+        writeSingleLine(row, dw / 2, text, colorOverrides);
+    }
+
+    /**
      * Write a string as image data on the canvas. Strings exceeding the available size will be cut off.
      * These methods do not change the image visible on the screen.
      */

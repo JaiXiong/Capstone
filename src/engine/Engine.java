@@ -15,10 +15,8 @@ public class Engine extends Thread {
     private Engine(){}
 
     public static Engine getInstance() {
-        if (instance == null) {
+        if (instance == null)
             instance = new Engine();
-            instance.start();
-        }
         return instance;
     }
 

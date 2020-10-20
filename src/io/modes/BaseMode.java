@@ -21,8 +21,7 @@ public class BaseMode extends IOMode {
     @Override
     public void handle(KeyEvent ke) {
         if (startup) {
-            GUIManager.getInstance().transitionTo(new GameplayMode()/* todo - implement main menu! new MainMenuMode()*/);
-            Engine.getInstance().start(); //todo - this should go in MainMenuMode when we transition to GameplayMode
+            GUIManager.getInstance().transitionTo(new MainMenuMode());
             startup = false;
         } else {
             System.exit(0);
