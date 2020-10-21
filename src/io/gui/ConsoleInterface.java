@@ -13,7 +13,7 @@ public class ConsoleInterface {
     private final Console CONSOLE;
 
     public ConsoleInterface(KeyListener keyListener){
-        CONSOLE = new Console(24, 64, new Dimension(9, 16));
+        CONSOLE = new Console(24, 64, new Dimension(20, 32));
         CONSOLE.addKeyListener(keyListener);
     }
 
