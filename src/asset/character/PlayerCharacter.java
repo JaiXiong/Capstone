@@ -366,6 +366,8 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
                 frontIndex++;
             }
         }
+        //a return was missing here???
+        return null;
     }
 
     @Override
