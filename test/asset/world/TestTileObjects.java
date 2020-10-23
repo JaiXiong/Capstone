@@ -10,6 +10,7 @@ public class TestTileObjects {
         TileObjects t = new TileObjects("Dungeon", Color.CYAN, '?',10, 10 );
         assertEquals(t.getType(), "Dungeon");
         assertEquals(t.getColor(), Color.CYAN);
+        assertEquals(t.getSymbol(), '?');
         assertEquals(t.getX(), 10);
         assertEquals(t.getY(), 10);
     }
