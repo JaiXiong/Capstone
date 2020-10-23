@@ -8,9 +8,6 @@
     <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/items/EquipableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/items/EquipableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/items/GearTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/items/GearTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +159,14 @@
       <option name="project" value="LOCAL" />
       <updated>1603207475135</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable">
+      <created>1603431742369</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1603431742369</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -195,9 +199,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603431214133">
+    <state x="275" y="84" key="Vcs.Push.Dialog.v2" timestamp="1603431754044">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1603431214133" />
+    <state x="275" y="84" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603431754044" />
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603483404904">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1603483404904" />
   </component>
 </project>

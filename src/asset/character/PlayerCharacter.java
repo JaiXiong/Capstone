@@ -203,7 +203,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     }
 
     //these setters are also just for testing right now
-    public void setMoveRate(int val){ moveRate = val; }
+    public void setBaseStat(int val){ moveRate = val; }
 
     public void setOffenseA(double val){ offenseA = val; }
 
@@ -366,6 +366,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
                 frontIndex++;
             }
         }
+        //a return was missing here???
         return null;
     }
 
