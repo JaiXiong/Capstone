@@ -103,8 +103,33 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
      * takeDamage to modify that character's health.
      */
     public void takeDamage(int amount, String type, double chanceToHit){
+        if (Math.random() < evade * chanceToHit) {
+            double resist;
+            switch (type) {
+                case "typeA":
+                    resist = resistA;
+                    break;
+                case "typeB":
+                    resist = resistB;
+                    break;
+                case "typeC":
+                    resist = resistC;
+                    break;
+                case "typeD":
+                    resist = resistD;
+                    break;
+                case "heal":
+                    resist = -1.0;
+                    break;
+                default:
+                    resist = 1.0;
+            }
+            health -= (int)(amount * resist);
+            if (health <= 0) health = 0; //TODO implement game over
+        }
     }
 
+    //TODO move to child classes, amount is calculated slightly differently for each
     /*TODO fill in amount calculation, figure out if targetting needs to be
      * within the method or a seperate method.
      */
