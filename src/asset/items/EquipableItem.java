@@ -12,8 +12,13 @@ public class EquipableItem extends Item {
         UTIL
     }
     private final Slot SLOT;
-    int moveRate;
+
+    //the damage value modified by offense stats and used by offensive abilities
+    //generally 0 for DEFENSE_A, DEFENSE_B, and UTIL slot items
     int baseDamage;
+
+    //the following values are how much the equipment adjust the player's stats by
+    int moveRate;
     double offenseA, offenseB;
     double accuracy, evade;
     double defenseA, defenseB, defenseC, defenseD;
