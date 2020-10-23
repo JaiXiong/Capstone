@@ -39,4 +39,18 @@ public class TestFloor {
         Floor f = new Floor(10, 10);
         assertNull(f.makeFloor("testinvalid", Color.CYAN, 10 , 10 ));
     }
+
+    @Test
+    public void test_FloorGetTerrainAt(){
+        //todo when terrain[x][y] is known and populated
+    }
+    @Test
+    public void test_FloorGetTerrainType (){
+        //todo when terrain[x][y] is known and populated
+    }
+
+    @Test
+    public void test_FloorTerrainIsPassable(){
+        //todo when terrain[x][y] is known and populated
+    }
 }
