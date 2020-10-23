@@ -7,28 +7,45 @@ import asset.items.EquipableItem.Slot;
 public class GearTable {
     //TODO is storing gear info in a series of arrays ick?
     //TODO seems better than making a bunch of different constructors in EquipableItem?
+    //TODO could make constructor with name, slotid, slotvalue, etc instead of multiple constructors
     //equipment's name is indexed to its itemID
     private static final String[] nameTable =
             {"Stick",
-             "Jacket"};
+             "Jacket",
+             "School Uniform",
+             "Lab Coat",
+             "Sharp Pencil",
+             "Fountain Pen",
+             "Tablet",
+             "Laptop",
+             "Graduation Robes"};
 
     //equipment's Slot is indexed to its itemID
     private static final EquipableItem.Slot[] slotTable =
             {Slot.OFFENSE_A,
-             Slot.DEFENSE_A};
-
-    private static final int[][] intTable =
-            {{1, 0, 10},
-             {1, 0, 0}};
+             Slot.OFFENSE_B,
+             Slot.DEFENSE_A,
+             Slot.DEFENSE_B,
+             Slot.UTIL};
 
     /* first index is equipment's itemID
      * second index is, in order:
-     * [0]offenseA, [1]offenseB, [2]accuracy, [3]evade, [4]defenseA, [5]defenseB,
-     * [6]defenseC, [7]defenseD
+     * [0]baseStat, [1]accuracy, [2]evade
      */
     private static final double[][] doubleTable =
-            {{0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0},
-             {0.0,0.0,0.0,0.05,0.0,0.0,0.0,0.0}};
+            {{0.0,0.0,0.0},
+             {0.0,0.0,0.05},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0},
+             {0.0,0.0,0.0}};
+
+    /*price array*/
+    private static final int [] priceTable =
+            {0, 0, 0, 0, 0, 0, 0, 0, 0};
 
     /* @param name: item name
      * equipment lookup used by more user-facing
@@ -50,10 +67,8 @@ public class GearTable {
     public static EquipableItem lookupEquipmentByID(int id)
         throws CannotEquipException {
         if (nameTable.length > id){
-            return new EquipableItem(id, slotTable[id], nameTable[id], intTable[id][0],
-                intTable[id][1], intTable[id][2], doubleTable[id][0], doubleTable[id][1],
-                doubleTable[id][2], doubleTable[id][3], doubleTable[id][4], doubleTable[id][5],
-                doubleTable[id][6], doubleTable[id][7]);
+            return new EquipableItem(id, slotTable[id], nameTable[id], priceTable[id], doubleTable[id][0], doubleTable[id][1],
+                doubleTable[id][2]);
         }
         throw new CannotEquipException("Item ID error, ID number " + id);
     }
