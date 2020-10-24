@@ -5,9 +5,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable">
+    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Removed room code from Gamestate()&#10;2. Create Methods to call different rooms.&#10;3. Testroom(), Room1(), Room2(), Bigroom3()&#10;4. All rooms are different with doors.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Gamestate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,25 +31,21 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="ROOT_SYNC" value="SYNC" />
   </component>
-  <component name="ProjectId" id="1jGXPlznkGLjAGCm9gULQZuaXvr" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="62" />
+    <option name="y" value="97" />
+    <option name="width" value="1762" />
+    <option name="height" value="983" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -176,15 +173,6 @@
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
@@ -195,17 +183,6 @@
     <MESSAGE value="Added character list to Gamestate.&#10;&#10;Implemented basic engine loop.&#10;&#10;Updated modes to start and stop engine." />
     <MESSAGE value="Added MenuMode and MainMenuMode.&#10;&#10;Updates to Console to provide information necessary to support MenuModes.&#10;&#10;Fixed a font size bug in Renderer." />
     <MESSAGE value="Bugfix: Clear the engine instance when the thread terminates.&#10;&#10;Fixed a typo in Main Menu placeholder text." />
-    <MESSAGE value="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored /items&#10;Consolidated offense &amp; defense stats into single stat variable" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="275" y="84" key="Vcs.Push.Dialog.v2" timestamp="1603431754044">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="275" y="84" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1603431754044" />
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1603483404904">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1603483404904" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bugfix: Clear the engine instance when the thread terminates.&#10;&#10;Fixed a typo in Main Menu placeholder text." />
   </component>
 </project>
