@@ -90,11 +90,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getOffenseA() {
         double totalOffA = offenseA;
-        if (equipOffA != null) totalOffA += equipOffA.getOffenseA();
-        if (equipOffB != null) totalOffA += equipOffB.getOffenseA();
-        if (equipDefA != null) totalOffA += equipDefA.getOffenseA();
-        if (equipDefB != null) totalOffA += equipDefB.getOffenseA();
-        if (equipUtil != null) totalOffA += equipUtil.getOffenseA();
+        if (equipOffA != null) totalOffA += equipOffA.getBaseStat();
+        if (equipOffB != null) totalOffA += equipOffB.getBaseStat();
+        if (equipDefA != null) totalOffA += equipDefA.getBaseStat();
+        if (equipDefB != null) totalOffA += equipDefB.getBaseStat();
+        if (equipUtil != null) totalOffA += equipUtil.getBaseStat();
 
         return totalOffA;
     }
@@ -103,11 +103,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getOffenseB() {
         double totalOffB = offenseB;
-        if (equipOffA != null) totalOffB += equipOffA.getOffenseB();
-        if (equipOffB != null) totalOffB += equipOffB.getOffenseB();
-        if (equipDefA != null) totalOffB += equipDefA.getOffenseB();
-        if (equipDefB != null) totalOffB += equipDefB.getOffenseB();
-        if (equipUtil != null) totalOffB += equipUtil.getOffenseB();
+        if (equipOffA != null) totalOffB += equipOffA.getBaseStat();
+        if (equipOffB != null) totalOffB += equipOffB.getBaseStat();
+        if (equipDefA != null) totalOffB += equipDefA.getBaseStat();
+        if (equipDefB != null) totalOffB += equipDefB.getBaseStat();
+        if (equipUtil != null) totalOffB += equipUtil.getBaseStat();
 
         return totalOffB;
     }
@@ -146,11 +146,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getResistA() {
         double totalResA = resistA;
-        if (equipOffA != null) totalResA += equipOffA.getDefenseA();
-        if (equipOffB != null) totalResA += equipOffB.getDefenseA();
-        if (equipDefA != null) totalResA += equipDefA.getDefenseA();
-        if (equipDefB != null) totalResA += equipDefB.getDefenseA();
-        if (equipUtil != null) totalResA += equipUtil.getDefenseA();
+        if (equipOffA != null) totalResA += equipOffA.getBaseStat();
+        if (equipOffB != null) totalResA += equipOffB.getBaseStat();
+        if (equipDefA != null) totalResA += equipDefA.getBaseStat();
+        if (equipDefB != null) totalResA += equipDefB.getBaseStat();
+        if (equipUtil != null) totalResA += equipUtil.getBaseStat();
 
         if (totalResA < .1) totalResA = .1;
 
@@ -161,11 +161,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getResistB() {
         double totalResB = resistB;
-        if (equipOffA != null) totalResB += equipOffA.getDefenseB();
-        if (equipOffB != null) totalResB += equipOffB.getDefenseB();
-        if (equipDefA != null) totalResB += equipDefA.getDefenseB();
-        if (equipDefB != null) totalResB += equipDefB.getDefenseB();
-        if (equipUtil != null) totalResB += equipUtil.getDefenseB();
+        if (equipOffA != null) totalResB += equipOffA.getBaseStat();
+        if (equipOffB != null) totalResB += equipOffB.getBaseStat();
+        if (equipDefA != null) totalResB += equipDefA.getBaseStat();
+        if (equipDefB != null) totalResB += equipDefB.getBaseStat();
+        if (equipUtil != null) totalResB += equipUtil.getBaseStat();
 
         if (totalResB < .1) totalResB = .1;
 
@@ -176,11 +176,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getResistC() {
         double totalResC = resistC;
-        if (equipOffA != null) totalResC += equipOffA.getDefenseC();
-        if (equipOffB != null) totalResC += equipOffB.getDefenseC();
-        if (equipDefA != null) totalResC += equipDefA.getDefenseC();
-        if (equipDefB != null) totalResC += equipDefB.getDefenseC();
-        if (equipUtil != null) totalResC += equipUtil.getDefenseC();
+        if (equipOffA != null) totalResC += equipOffA.getBaseStat();
+        if (equipOffB != null) totalResC += equipOffB.getBaseStat();
+        if (equipDefA != null) totalResC += equipDefA.getBaseStat();
+        if (equipDefB != null) totalResC += equipDefB.getBaseStat();
+        if (equipUtil != null) totalResC += equipUtil.getBaseStat();
 
         if (totalResC < .1) totalResC = .1;
 
@@ -191,11 +191,11 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getResistD() {
         double totalResD = resistD;
-        if (equipOffA != null) totalResD += equipOffA.getDefenseD();
-        if (equipOffB != null) totalResD += equipOffB.getDefenseD();
-        if (equipDefA != null) totalResD += equipDefA.getDefenseD();
-        if (equipDefB != null) totalResD += equipDefB.getDefenseD();
-        if (equipUtil != null) totalResD += equipUtil.getDefenseD();
+        if (equipOffA != null) totalResD += equipOffA.getBaseStat();
+        if (equipOffB != null) totalResD += equipOffB.getBaseStat();
+        if (equipDefA != null) totalResD += equipDefA.getBaseStat();
+        if (equipDefB != null) totalResD += equipDefB.getBaseStat();
+        if (equipUtil != null) totalResD += equipUtil.getBaseStat();
 
         if (totalResD < .1) totalResD = .1;
 
@@ -203,7 +203,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     }
 
     //these setters are also just for testing right now
-    public void setMoveRate(int val){ moveRate = val; }
+    public void setBaseStat(int val){ moveRate = val; }
 
     public void setOffenseA(double val){ offenseA = val; }
 

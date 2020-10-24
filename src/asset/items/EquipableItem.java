@@ -15,62 +15,22 @@ public class EquipableItem extends Item {
 
     //the damage value modified by offense stats and used by offensive abilities
     //generally 0 for DEFENSE_A, DEFENSE_B, and UTIL slot items
-    int baseDamage;
 
     //the following values are how much the equipment adjust the player's stats by
-    int moveRate;
-    double offenseA, offenseB;
-    double accuracy, evade;
-    double defenseA, defenseB, defenseC, defenseD;
+    double baseStat, accuracy, evade;
 
-    public EquipableItem(int id, Slot slot, String name, int price, int moveRate, int baseDamage,
-        double offenseA, double offenseB, double accuracy, double evade, double defenseA,
-        double defenseB, double defenseC, double defenseD) {
+    public EquipableItem(int id, Slot slot, String name, int price, double baseStat,
+        double accuracy, double evade) {
 
         super(id, name, price);
         SLOT = slot;
-        this.moveRate = moveRate;
-        this.baseDamage = baseDamage;
-        this.offenseA = offenseA;
-        this.offenseB = offenseB;
-        this.defenseA = defenseA;
-        this.defenseB = defenseB;
-        this.defenseC = defenseC;
-        this.defenseD = defenseD;
+        this.baseStat = baseStat;
         this.accuracy = accuracy;
         this.evade = evade;
     }
 
     public Slot getSlot() {
         return SLOT;
-    }
-
-    public int getMoveRate() {
-        return moveRate;
-    }
-
-    public double getOffenseA() {
-        return offenseA;
-    }
-
-    public double getOffenseB() {
-        return offenseB;
-    }
-
-    public double getDefenseA() {
-        return defenseA;
-    }
-
-    public double getDefenseB() {
-        return defenseB;
-    }
-
-    public double getDefenseC() {
-        return defenseC;
-    }
-
-    public double getDefenseD() {
-        return defenseD;
     }
 
     public double getAccuracy() {
@@ -80,4 +40,6 @@ public class EquipableItem extends Item {
     public double getEvade() {
         return evade;
     }
+
+    public double getBaseStat() { return baseStat; }
 }
