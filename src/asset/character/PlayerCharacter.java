@@ -45,8 +45,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         xp = 0;
         level = 1;
         inventory = new Item[16];
-        equip(GearTable.lookupEquipmentByName("Stick"));
-        equip(GearTable.lookupEquipmentByName("Jacket"));
+        //todo - this constructor is in an infinite loop. I suspect the gear lookup. -ncb
+//        equip(GearTable.lookupEquipmentByName("Stick"));
+//        equip(GearTable.lookupEquipmentByName("Jacket"));
         //no value for equipUtil in constructor, have to equip one later
         actions = buildActions();
     }

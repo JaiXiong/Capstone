@@ -1,7 +1,10 @@
 package io.gui;
 
+import asset.character.PlayerCharacter;
 import asset.world.Floor;
+import asset.world.Terrain;
 import console.Console;
+import engine.Gamestate;
 
 import java.awt.*;
 import java.awt.event.KeyListener;
@@ -21,12 +24,32 @@ public class ConsoleInterface {
         CONSOLE.clearScreen();
     }
 
-    public void drawFloor(Floor floor, Point playerAt) {
-        for (int i = 0; i < floor.getRows(); ++i) {
-            for (int j = 0; j < floor.getColumns(); ++j) {
-                CONSOLE.update(i, j, floor.getTerrainAt(i, j).getConsoleGlyph());
+    private Point getConsoleCenterpoint() {
+        Dimension d = CONSOLE.getSize();
+        return new Point(d.width / 2, d.height / 2);
+    }
+
+    public void drawFloor() {
+        Floor floor = Gamestate.getInstance().getFloor();
+        PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
+        Point playerAt = playerCharacter.getLocation();
+        Point center = getConsoleCenterpoint();
+        int cOffset = center.x - playerAt.x;
+        int rOffset = center.y - playerAt.y;
+        Terrain terrain;
+        int cFloor;
+        int rFloor;
+        for (int r = 0; r < CONSOLE.getSize().getHeight(); ++r) {
+            for (int c = 0; c < CONSOLE.getSize().getWidth(); ++c) {
+                cFloor = c - cOffset;
+                rFloor = r - rOffset;
+                if (cFloor < 0 || rFloor < 0 || cFloor >= floor.getColumns() || rFloor >= floor.getRows()) continue; //out of floor bounds
+                terrain = floor.getTerrainAt(rFloor, cFloor);
+                CONSOLE.update(r, c, terrain.getConsoleGlyph());
             }
         }
+        //todo - draw actors correctly - hack: just draw the player at the center
+        CONSOLE.update(center.y, center.x, playerCharacter.getConsoleGlyph());
         CONSOLE.refresh();
     }
 

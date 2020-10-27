@@ -48,13 +48,13 @@ public class Floor{
     }
 
     //returns a terrain
-    public Terrain getTerrainAt(int x, int y) {
-        return terrain[x][y];
+    public Terrain getTerrainAt(int r, int c) {
+        return terrain[r][c];
     }
 
     //sets a terrain at location x y
-    public void setTerrainAt(int x, int y, Terrain t) {
-        terrain[x][y] = t;
+    public void setTerrainAt(int r, int c, Terrain t) {
+        terrain[r][c] = t;
     }
 
     //remove a terrain at location x y

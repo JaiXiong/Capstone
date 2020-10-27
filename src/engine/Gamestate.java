@@ -1,6 +1,7 @@
 package engine;
 
 import asset.character.AbstractCharacter;
+import asset.character.PlayerCharacter;
 import asset.world.Floor;
 import asset.world.TileObjects;
 
@@ -24,7 +25,10 @@ public class Gamestate {
         //Room1();
         //Room2();
         Bigroom3();
-
+        characters = new ArrayList<>();
+        PlayerCharacter playerCharacter = new PlayerCharacter();
+        playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
+        characters.add(playerCharacter);
     }
 
     public void Testroom() {
@@ -162,5 +166,11 @@ public class Gamestate {
 
     public ArrayList<AbstractCharacter> getCharacters() {
         return characters;
+    }
+    public PlayerCharacter getPlayerCharacter() {
+        AbstractCharacter playerCharacter = getCharacters().get(0);
+        if (playerCharacter instanceof PlayerCharacter)
+            return (PlayerCharacter)playerCharacter;
+        throw new IllegalStateException("Character at index 0 was not a player character.");
     }
 }

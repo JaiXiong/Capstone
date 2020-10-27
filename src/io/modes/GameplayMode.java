@@ -33,7 +33,8 @@ public class GameplayMode extends IOMode {
 
     @Override
     public void update(ConsoleInterface consoleInterface) {
-        //hack - test display! todo: other relevant information, stats, enemy info, etc.
-        consoleInterface.drawFloor(Gamestate.getInstance().getFloor(), new Point());
+        consoleInterface.clearScreen();
+        consoleInterface.drawFloor();
+        //todo: other relevant information, stats, enemy info, etc.
     }
 }

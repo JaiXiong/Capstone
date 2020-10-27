@@ -2,6 +2,8 @@ package asset.character;
 
 import asset.AbstractGameAsset;
 
+import java.awt.*;
+
 public abstract class AbstractCharacter extends AbstractGameAsset {
 
     /* characters may need the information on how they display
@@ -45,6 +47,8 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
     double resistB;
     double resistC;
     double resistD;
+
+    Point location = null;
 
 
     /* helper method for building the actions list so its
@@ -141,14 +145,17 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
         target.takeDamage(amount, "typeA", accuracy);
     }
 
-    //TODO needs to be filled in
-    /* action that moves the character
-     *
-     */
-    public void move(){
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
     }
 
     //TODO possibly implement persistant effects (buffs/debuffs, damage-over-time, etc)
 
     //TODO possibly implement interaction with non-character objects like doors
+
+
 }
