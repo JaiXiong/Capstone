@@ -153,6 +153,8 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
         this.location = location;
     }
 
+    abstract public String getNextAction();
+
     //TODO possibly implement persistant effects (buffs/debuffs, damage-over-time, etc)
 
     //TODO possibly implement interaction with non-character objects like doors

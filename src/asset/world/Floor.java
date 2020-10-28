@@ -58,24 +58,28 @@ public class Floor{
     }
 
     //remove a terrain at location x y
-    public void removeTerrainAt(int x, int y) {
+    public void removeTerrainAt(int r, int c) {
         //to do still
-        terrain[x][y] = null;
+        terrain[r][c] = null;
     }
     //returns the string type of the terrain
-    public String getTerrainType(int x, int y) {
-        return terrain[x][y].getType();
+    public String getTerrainType(int r, int c) {
+        return terrain[r][c].getType();
     }
 
     //checks to see if tile is a passable terrain
-    public Boolean isTerrainPassableAt(int x, int y) {
+    public Boolean isTerrainPassableAt(int r, int c) {
+        if (r < 0 || c < 0 || r >= getRows() || c >= getColumns())
+            return false; //may not pass out of bounds
         //to do, I need to change  these to the standardize enum string??
-        String item = terrain[x][y].getType();
+        String item = terrain[r][c].getType();
         switch (item) {
-            case "wall": case "terrain": case "door":
+            case "terrain": case "door":
                 return true;
-            default:
+            case "wall":
                 return false;
+            default:
+                throw new IllegalArgumentException("Unhandled terrain string: " + item);
         }
     }
 }
