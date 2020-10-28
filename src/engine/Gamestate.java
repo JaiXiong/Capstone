@@ -11,11 +11,6 @@ import java.util.ArrayList;
 public class Gamestate {
     private static Gamestate instance = null;
 
-    public static Gamestate getInstance() {
-        if (instance == null) instance= new Gamestate();
-        return instance;
-    }
-
     private Floor floor;
     private ArrayList<AbstractCharacter> characters;
 
@@ -29,6 +24,15 @@ public class Gamestate {
         PlayerCharacter playerCharacter = new PlayerCharacter();
         playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
         characters.add(playerCharacter);
+    }
+
+    public static Gamestate getInstance() {
+        if (instance == null) instance= new Gamestate();
+        return instance;
+    }
+
+    public static void clearInstance() {
+        instance = null;
     }
 
     public void Testroom() {

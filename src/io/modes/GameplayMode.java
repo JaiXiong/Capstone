@@ -26,6 +26,7 @@ public class GameplayMode extends IOMode {
         switch (code) {
             case VK_ESCAPE:
                 Engine.getInstance().endGame();
+                Gamestate.clearInstance(); //todo - we should save the existing gamestate in case we exit the progam
                 GUIManager.getInstance().revert();
                 break;
             case VK_UP: case VK_NUMPAD8:
