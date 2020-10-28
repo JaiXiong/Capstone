@@ -1,5 +1,6 @@
 package io.gui;
 
+import asset.character.AbstractCharacter;
 import asset.character.PlayerCharacter;
 import asset.world.Floor;
 import asset.world.Terrain;
@@ -48,8 +49,12 @@ public class ConsoleInterface {
                 CONSOLE.update(r, c, terrain.getConsoleGlyph());
             }
         }
-        //todo - draw actors correctly - hack: just draw the player at the center
-        CONSOLE.update(center.y, center.x, playerCharacter.getConsoleGlyph());
+        for (AbstractCharacter character : Gamestate.getInstance().getCharacters()) {
+            Point at = character.getLocation();
+            int c = at.x + cOffset;
+            int r = at.y + rOffset;
+            CONSOLE.update(r, c, character.getConsoleGlyph());
+        }
         CONSOLE.refresh();
     }
 
