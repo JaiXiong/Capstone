@@ -19,7 +19,9 @@ public class Gamestate {
         //Testroom();
         //Room1();
         //Room2();
-        Bigroom3();
+        //Bigroom3();
+        //Bigroom4();
+        Bigroom5();
         characters = new ArrayList<>();
         PlayerCharacter playerCharacter = new PlayerCharacter();
         playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
@@ -163,6 +165,120 @@ public class Gamestate {
         floor.setTerrainAt(13, 11, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 13, 11));
         //eatery
         floor.setTerrainAt(13, 30, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 13, 30));
+    }
+
+    public void Bigroom4() {
+        floor = new Floor(24, 48);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        for (int i = 0; i < 24; ++i) {
+            for (int j = 0; j < 48; ++j) {
+                //Make the perimeter.
+                if (i == 0 || j == 0 || i == 23 || j == 47) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make vertical divider.
+                if (j == 16) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make horizontal divider.
+                if (i == 8) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make rooms on right side.
+                if (i > 8 && j == 38) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Divide rooms on right side.
+                if (i == 15 && j > 29) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Finish bottom room.
+                if (i > 14 && j == 29) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Create bottom left closet.
+                if (i == 18 && j < 7) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                if (i > 17 && j == 7) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Create top center closet.
+                if (i == 4 && j > 22 && j < 40) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                if (i < 5 && j == 22) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                if (i < 5 && j == 40) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+            }
+        }
+        //Doors in horizontal divider.
+        floor.setTerrainAt(8, 42, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 42));
+        floor.setTerrainAt(8, 23, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 23));
+        floor.setTerrainAt(8, 8, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 8));
+        //Doors in vertical divider.
+        floor.setTerrainAt(14, 16, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 14, 16));
+        floor.setTerrainAt(5, 16, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 5, 16));
+        //Doors for right side rooms.
+        floor.setTerrainAt(15, 33, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 15, 33));
+        floor.setTerrainAt(15, 42, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 15, 42));
+        floor.setTerrainAt(11, 38, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 11, 38));
+        floor.setTerrainAt(19, 38, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 19, 38));
+        //Door in bottom left closet.
+        floor.setTerrainAt(20, 7, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 20, 7));
+        //Doors in top center closet.
+        floor.setTerrainAt(2, 22, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 2, 22));
+        floor.setTerrainAt(2, 40, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 2, 40));
+    }
+
+    public void Bigroom5() {
+        floor = new Floor(24, 48);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        for (int i = 0; i < 24; ++i) {
+            for (int j = 0; j < 48; ++j) {
+                //Make the perimeter.
+                if (i == 0 || j == 0 || i == 23 || j == 47) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make the center room.
+                if (((i == 5 || i == 18) && j > 6 && j < 41) || ((j == 7 || j == 40) && i > 4 && i < 19)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make top left closet.
+                if (i > 5 && i < 11 && j == 15) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                if (i == 11 && j > 6 && j < 16) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make bottom right closet.
+                if (i > 12  && i < 19 && j == 32) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                if (i == 12 && j > 31 && j < 40) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //Make center room dividers.
+                if (i > 5 && i < 18 && (j == 19 || j == 28)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+            }
+        }
+        //Doors in center room.
+        floor.setTerrainAt(5, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 5, 24));
+        floor.setTerrainAt(18, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 18, 24));
+        floor.setTerrainAt(14, 7, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 14, 7));
+        floor.setTerrainAt(8, 40, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 40));
+        //Door for top left closet.
+        floor.setTerrainAt(11, 11, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 11, 11));
+        //Door for bottom right closet.
+        floor.setTerrainAt(12, 36, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 12, 36));
+        //Doors for divider.
+        floor.setTerrainAt(14, 19, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 18, 19));
+        floor.setTerrainAt(8, 28, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 28));
     }
     public Floor getFloor() {
         return floor;
