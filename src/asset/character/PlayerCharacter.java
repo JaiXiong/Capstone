@@ -69,6 +69,8 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     public EquipableItem getEquipDefB(){ return equipDefB; }
 
+    private String nextAction = null;
+
     /* TODO possibly add persistant effects to mutable stat getters
      * also figure out if moveRate is something that changes,
      * or if we'll even use it
@@ -136,6 +138,15 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         if (totalResB < .1) totalResB = .1;
 
         return totalResB;
+    }
+
+    @Override
+    public String getNextAction() {
+        return nextAction;
+    }
+
+    public void setNextAction(String nextAction) {
+        this.nextAction = nextAction;
     }
 
     //these setters are also just for testing right now

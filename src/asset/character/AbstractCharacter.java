@@ -1,8 +1,9 @@
 package asset.character;
 
 import asset.AbstractGameAsset;
+import java.awt.*;
 
-public abstract class AbstractCharacter extends AbstractGameAsset implements Comparable<AbstractCharacter> {
+public abstract class AbstractCharacter extends AbstractGameAsset implements Comparable<AbstractCharacter>{
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in
@@ -42,6 +43,8 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
     double evade;
     double resistA;
     double resistB;
+
+    Point location = null;
 
 
     /* helper method for building the actions list so its
@@ -112,6 +115,16 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
             if (health <= 0) health = 0; //TODO implement game over
         }
     }
+
+    public Point getLocation() {
+        return location;
+    }
+
+    public void setLocation(Point location) {
+        this.location = location;
+    }
+
+    abstract public String getNextAction();
 
     //TODO possibly implement persistant effects (buffs/debuffs, damage-over-time, etc)
 

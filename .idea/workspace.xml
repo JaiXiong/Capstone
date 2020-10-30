@@ -5,11 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Removed room code from Gamestate()&#10;2. Create Methods to call different rooms.&#10;3. Testroom(), Room1(), Room2(), Bigroom3()&#10;4. All rooms are different with doors.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/PlayerCharacter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Gamestate.java" afterDir="false" />
-    </list>
+    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -31,15 +27,53 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/jai" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="62" />
-    <option name="y" value="97" />
-    <option name="width" value="1762" />
-    <option name="height" value="983" />
-  </component>
+  <component name="ProjectId" id="1jaOwBbVQJPUFeraUFYk5JJmqeA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -62,17 +96,6 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Driver" />
       <module name="Capstone" />
@@ -163,16 +186,60 @@
       <option name="project" value="LOCAL" />
       <updated>1603431742369</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Basic implementation of actions and engine loop.&#10;&#10;Implementation of player movement controls.">
+      <created>1603920312873</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1603920312873</updated>
+    </task>
+    <task id="LOCAL-00010" summary="ConsoleInterface.drawFloor() now correctly uses actor locations rather than a hack to draw characters.">
+      <created>1603921006130</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1603921006130</updated>
+    </task>
+    <task id="LOCAL-00011" summary="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms.">
+      <created>1604039271853</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1604039271853</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16706000" />
+    <option name="totallyTimeSpent" value="28953000" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
@@ -183,6 +250,32 @@
     <MESSAGE value="Added character list to Gamestate.&#10;&#10;Implemented basic engine loop.&#10;&#10;Updated modes to start and stop engine." />
     <MESSAGE value="Added MenuMode and MainMenuMode.&#10;&#10;Updates to Console to provide information necessary to support MenuModes.&#10;&#10;Fixed a font size bug in Renderer." />
     <MESSAGE value="Bugfix: Clear the engine instance when the thread terminates.&#10;&#10;Fixed a typo in Main Menu placeholder text." />
-    <option name="LAST_COMMIT_MESSAGE" value="Bugfix: Clear the engine instance when the thread terminates.&#10;&#10;Fixed a typo in Main Menu placeholder text." />
+    <MESSAGE value="Drawing the floor now centers on the player.&#10;&#10;Added location field to characters and some logic in Gamestate constructor to support this." />
+    <MESSAGE value="Basic implementation of actions and engine loop.&#10;&#10;Implementation of player movement controls." />
+    <MESSAGE value="ConsoleInterface.drawFloor() now correctly uses actor locations rather than a hack to draw characters." />
+    <MESSAGE value="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1271" height="97" key="GridCell.Tab.0.bottom" timestamp="1604038965766">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1271" height="97" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
+    <state width="1271" height="97" key="GridCell.Tab.0.center" timestamp="1604038965766">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1271" height="97" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
+    <state width="1271" height="97" key="GridCell.Tab.0.left" timestamp="1604038965766">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1271" height="97" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
+    <state width="1271" height="97" key="GridCell.Tab.0.right" timestamp="1604038965766">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1271" height="97" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1604039296081">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604039296081" />
   </component>
 </project>
