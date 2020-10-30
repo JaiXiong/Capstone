@@ -4,11 +4,13 @@ public class Item {
     //todo - define additional item properties not specific to implementations, as needed
 
     private final String NAME;
-    //all EquipableItem itemIDs should be lower than all other itemIDs
+    /* all EquipableItems have an itemID from 0-99, all others from 100-199
+     * An item's itemID is for easily referencing items where it isn't player-facing,
+     * generating random items, and linking an item to what that item does when used
+     */
     int itemID;
     int pricetag;
 
-    //todo - replace with a builder pattern?
     public Item(int id, String name, int price) {
         itemID = id;
         NAME = name;
@@ -25,5 +27,24 @@ public class Item {
 
     public int getPricetag() {
         return pricetag;
+    }
+
+    /* @param itemID of item to create
+     * for IDs 0-99, calls GearTable to create an equipable item
+     * for IDs 100-199, creates a non-equippable item
+     * for IDs 200-299 and -1, creates a key with that itemID, keys use itemID as unlockCode
+     * for invalid IDs, creates null
+     */
+    public static Item createItem(int itemID){
+        if (itemID >= 0 && itemID < 100) return EquipableItem.createEquipment(itemID);
+        if (itemID == -1 || (itemID >= 200 && itemID < 300)) return new Item(itemID, "Key", 1);
+        switch (itemID) {
+            case 100:
+                return new Item(100, "Energy Drink", 15);
+            case 101:
+                return new Item(102, "Shoddy Notes", 4);
+            default:
+                return null;
+        }
     }
 }

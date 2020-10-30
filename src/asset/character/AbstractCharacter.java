@@ -2,7 +2,7 @@ package asset.character;
 
 import asset.AbstractGameAsset;
 
-public abstract class AbstractCharacter extends AbstractGameAsset {
+public abstract class AbstractCharacter extends AbstractGameAsset implements Comparable<AbstractCharacter> {
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in
@@ -32,7 +32,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
     int maxHealth;
     int energy;
     int maxEnergy;
-    int moveRate;
 
     // percentage stats
     // higher is better for offense
@@ -43,8 +42,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
     double evade;
     double resistA;
     double resistB;
-    double resistC;
-    double resistD;
 
 
     /* helper method for building the actions list so its
@@ -77,8 +74,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
      * effects, and have to calculate a total value based
      * off the fields
      */
-    abstract int getMoveRate();
-
     abstract double getOffenseA();
 
     abstract double getOffenseB();
@@ -91,18 +86,13 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
 
     abstract double getResistB();
 
-    abstract double getResistC();
-
-    abstract double getResistD();
-
-    //TODO needs to be filled in
     /* @param amount how much unmitigated damage is being dealt
      * @param type which resistance applies to the damage
      * @param chanceToHit the attacker's accuracy
      * actions that do damage to a character call that character's
      * takeDamage to modify that character's health.
      */
-    public void takeDamage(int amount, String type, double chanceToHit){
+    public void takeDamage(double amount, String type, double chanceToHit){
         if (Math.random() < evade * chanceToHit) {
             double resist;
             switch (type) {
@@ -111,12 +101,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
                     break;
                 case "typeB":
                     resist = resistB;
-                    break;
-                case "typeC":
-                    resist = resistC;
-                    break;
-                case "typeD":
-                    resist = resistD;
                     break;
                 case "heal":
                     resist = -1.0;
@@ -129,26 +113,13 @@ public abstract class AbstractCharacter extends AbstractGameAsset {
         }
     }
 
-    //TODO move to child classes, amount is calculated slightly differently for each
-    /*TODO fill in amount calculation, figure out if targetting needs to be
-     * within the method or a seperate method.
-     */
-    /* @param the character getting hit
-     * calculates base damage and calls takeDamage
-     */
-    public void basicOffense(AbstractCharacter target){
-        int amount = 0;
-        target.takeDamage(amount, "typeA", accuracy);
-    }
-
-    //TODO needs to be filled in
-    /* action that moves the character
-     *
-     */
-    public void move(){
-    }
-
     //TODO possibly implement persistant effects (buffs/debuffs, damage-over-time, etc)
 
-    //TODO possibly implement interaction with non-character objects like doors
+    @Override
+    /* Characters that compareTo==0 aren't necessarily equal,
+     * they have the same ID and originate from the same template
+     */
+    public int compareTo(AbstractCharacter other) {
+        return getInitiativeID() - other.getInitiativeID();
+    }
 }

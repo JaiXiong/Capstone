@@ -1,5 +1,5 @@
 package asset.items;
-
+/*
 import org.junit.*;
 import static org.junit.Assert.*;
 public class TestKey {
@@ -51,3 +51,5 @@ public class TestKey {
         assertEquals(k3.getUnlockCode(), 12345);
     }
 }
+
+ */
