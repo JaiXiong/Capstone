@@ -280,6 +280,107 @@ public class Gamestate {
         floor.setTerrainAt(14, 19, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 18, 19));
         floor.setTerrainAt(8, 28, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 28));
     }
+
+    public void Bigroom6() {
+        floor = new Floor(24, 48);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        int m,n;
+        for (int i = 0; i < 24; ++i) {
+            for (int j = 0; j < 48; ++j) {
+                if (i == 0 || j == 0 || i == 23 || j == 47) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //make left wall
+                if (j == 6) {
+                    floor.setTerrainAt(i, 6, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, 6));
+                }
+                //make right wall
+                if (j == 42) {
+                    floor.setTerrainAt(i, 42, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, 42));
+                }
+                //make top wall
+                if (i == 6) {
+                    floor.setTerrainAt(6, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, 6, j));
+                }
+
+                //make the central office desk
+
+                //left side of desk
+                if (j == 12 && (i >= 12 && i <= 18)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //right side of desk
+                if (j == 36 && (i >= 12 && i <= 18)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //front of desk
+                if (i == 18 && (j >= 12 && j <= 36)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+
+                //back left of desk
+                if (i == 12 && (j >= 12 && j <= 22)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //back right of desk
+                if (i == 12 && (j >= 26 && j <= 36)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+
+                //make doors
+
+                //dept chair door (right)
+                floor.setTerrainAt(18, 42, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 18, 42));
+                //dept char closet
+                floor.setTerrainAt(6, 45, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 45));
+                //assist dean door (left)
+                floor.setTerrainAt(18, 6, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 18, 2));
+                //assist dean closet
+                floor.setTerrainAt(6, 2, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 2));
+                //dean's door
+                floor.setTerrainAt(6, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 24));
+                //entrance
+                floor.setTerrainAt(23, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 23, 24));
+            }
+        }
+    }
+
+    public void Rooftop() {
+        //rooftop room
+        floor = new Floor(20, 20);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        for (int i = 0; i < 20; ++i) {
+            for (int j = 0; j < 20; ++j) {
+                if (i == 0 || j == 0 || i == 19 || j == 19) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //make North east stairwell
+                //entrance and exit???
+                if ((i >= 2 && i <= 6) && (j >= 2 && j <= 6  )) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //add door for stair well
+                floor.setTerrainAt(6, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 4));
+
+                //make EMS greenhouse (is there even on up there? has to be one right?)
+
+                //greenhouse back wall
+                if (i == 17 && (j >= 2 && j <= 17)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //greenhouse front wall
+                if (i == 12 && (j >=2 && j <=17 )) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //right walls of greenhouse
+                if ((i >= 12 && i <= 17) && (j == 2 || j == 17)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                }
+                //add greenhouse door
+                floor.setTerrainAt(12, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 5, 12));
+            }
+        }
+    }
     public Floor getFloor() {
         return floor;
     }
