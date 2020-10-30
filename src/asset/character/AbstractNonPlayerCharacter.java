@@ -1,6 +1,6 @@
 package asset.character;
 
-public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
+public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in
@@ -12,11 +12,6 @@ public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
      * but if we add persistant effects we'll have to
      * figure those in
      */
-    @Override
-    public int getMoveRate() {
-        return moveRate;
-    }
-
     @Override
     public double getOffenseA() {
         return offenseA;
@@ -47,16 +42,6 @@ public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
         return resistB;
     }
 
-    @Override
-    public double getResistC() {
-        return resistC;
-    }
-
-    @Override
-    public double getResistD() {
-        return resistD;
-    }
-
     public int getXP(){
         return xp;
     }
@@ -68,7 +53,7 @@ public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
      */
     public void upgrade() {
         for (int i=0;i<5;i++){
-            int randStat = (int)(Math.random()*10);
+            int randStat = (int)(Math.random()*8);
             xp = (int)(xp * 1.05);
             switch (randStat) {
                 case 0:
@@ -96,12 +81,6 @@ public abstract class AbstactNonPlayerCharacter extends AbstractCharacter{
                     break;
                 case 7:
                     resistB = resistB * .98;
-                    break;
-                case 8:
-                    resistC = resistC * .98;
-                    break;
-                case 9:
-                    resistD = resistD * .98;
                     break;
             }
         }

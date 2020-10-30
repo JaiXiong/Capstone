@@ -16,15 +16,12 @@ public class Test_PlayerCharacter {
         assertEquals(p.getMaxHealth(), 100);
         assertEquals(p.getEnergy(), 100);
         assertEquals(p.getMaxEnergy(), 100);
-        assertEquals(p.getMoveRate(), 1);
         assertEquals(p.getOffenseA(), 1.0, 0);
         assertEquals(p.getOffenseB(), 1.0, 0);
         assertEquals(p.getAccuracy(), 0.5, 0);
         assertEquals(p.getEvade(), 0.9, 0);  //presuming equip "Jacket" lowers .05
         assertEquals(p.getResistA(), 0.9, 0);
         assertEquals(p.getResistB(), 0.95, 0);
-        assertEquals(p.getResistC(), 0.95, 0);
-        assertEquals(p.getResistD(), 0.95, 0);
         assertEquals(p.getXP(), 0);
         assertEquals(p.getLevel(), 1);
         assertNull(i[0]);
@@ -48,7 +45,6 @@ public class Test_PlayerCharacter {
         assertNull(p.getEquipOffB());
         assertEquals(p.getEquipDefA().getName(), "Jacket");
         assertNull(p.getEquipDefB());
-        assertNull(p.getEquipUtil());
     }
 
     @Test
@@ -155,18 +151,6 @@ public class Test_PlayerCharacter {
         // 200*resistD(.95) = 190 damage, 90 damage overkill
         p.takeDamage(200, "typeD", 1.0);
         assertEquals(p.getHealth(), 0);
-    }
-
-    @Test
-    // basicOffense() inherited from AbstractCharacter
-    public void test_basicOffense(){
-        //TODO figuring out attack won't come until after we have the debug room set up
-    }
-
-    @Test
-    // move() inherited from AbstractCharacter
-    public void test_move(){
-        //TODO figuring out movement won't come until after we have the debug room set up
     }
 }
 
