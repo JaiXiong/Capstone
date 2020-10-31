@@ -27,6 +27,8 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     public PlayerCharacter() {
         initiativeID = 0;
+        name = "you";
+        leadName = "You";
         health = 100;
         maxHealth = 100;
         energy = 100;
@@ -80,7 +82,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getOffenseA() {
         double totalOffA = offenseA;
-        if (equipOffA != null) totalOffA += equipOffA.getBaseStat();
+        if (equipOffA != null) totalOffA = totalOffA * equipOffA.getBaseStat();
 
         return totalOffA;
     }
@@ -89,7 +91,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public double getOffenseB() {
         double totalOffB = offenseB;
-        if (equipOffB != null) totalOffB += equipOffB.getBaseStat();
+        if (equipOffB != null) totalOffB = totalOffB * equipOffB.getBaseStat();
 
         return totalOffB;
     }

@@ -7,5 +7,12 @@ public class NPCFactory {
      * id 10 isn't used
      * id 0 is the player
      */
-    public static AbstractNonPlayerCharacter npcLookup(int id){ return null; }
+    public static AbstractNonPlayerCharacter npcLookup(int id){
+        switch (id) {
+            case 1:
+                return new Freshman();
+            default:
+                return null;
+        }
+    }
 }

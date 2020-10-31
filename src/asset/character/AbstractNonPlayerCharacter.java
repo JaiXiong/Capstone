@@ -85,13 +85,4 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
             }
         }
     }
-
-    //TODO
-    /* this method scripts what actions an NPC
-     * takes on their turn
-     */
-    public void executeTurn(){
-    }
-
-    //TODO add some other actions
 }
