@@ -18,4 +18,15 @@ public class ActionDefinitions {
      * Wait in place one turn
      */
     public static final String WAIT = "wait";
+
+    /**
+     * Basic attack everyone has
+     */
+    public static final String ATTACK = "attack";
+
+    /**
+     * Freshman (id 1) actions
+     */
+    public static final String TOO_MANY_MEMES = "tooManyMemes";
+    public static final String HOMESICK = "homesick";
 }

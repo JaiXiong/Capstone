@@ -14,6 +14,7 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
      * which also lets us use it as a character hash
      */
     int initiativeID;
+    String name,leadName;
 
     /* contains all the actions a given character has available
      * beyond the handful of default actions
@@ -46,6 +47,7 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
 
     Point location = null;
 
+    //TODO buildActions may not be necessary anymore
 
     /* helper method for building the actions list so its
      * not all crammed in the constructor
@@ -61,6 +63,14 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
         return initiativeID;
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public String getLeadName(){
+        return leadName;
+    }
+
     public int getHealth(){
         return health;
     }
@@ -73,21 +83,33 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
 
     public int getMaxEnergy() { return maxEnergy; }
 
+    /**
+     * @param amount how much energy spent
+     * returns true if valid change, false if invalid
+     */
+    public boolean useEnergy(int amount) {
+        if ((amount >= energy && amount >= 0) || (amount < 0 && (energy - maxEnergy < amount))) {
+            energy -= amount;
+            return true;
+        }
+        else return false;
+    }
+
     /* the remaining stats can be modified by persistant
      * effects, and have to calculate a total value based
      * off the fields
      */
-    abstract double getOffenseA();
+    public abstract double getOffenseA();
 
-    abstract double getOffenseB();
+    public abstract double getOffenseB();
 
-    abstract double getAccuracy();
+    public abstract double getAccuracy();
 
-    abstract double getEvade();
+    public abstract double getEvade();
 
-    abstract double getResistA();
+    public abstract double getResistA();
 
-    abstract double getResistB();
+    public abstract double getResistB();
 
     /* @param amount how much unmitigated damage is being dealt
      * @param type which resistance applies to the damage
