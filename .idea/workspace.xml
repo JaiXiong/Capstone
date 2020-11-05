@@ -5,17 +5,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms.">
+    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="Created tests for freshman and NPCFactory. Added consoleGlyph onto my project. Updated all of the console files with the ones on git. Fixed tests for equipableitem. Deleted inital tests and updated workspace.xml.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/InitialTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/ASCIITile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/ASCIITile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/Canvas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/Canvas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/Console.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/Console.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/ConsoleTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/ConsoleTile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/DisplayFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/DisplayFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/DisplayPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/DisplayPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Console595/src/main/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Console595/src/console/Renderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/world/TestFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/world/TestFloor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +98,7 @@
       <recent name="asset" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TestFloor">
+  <component name="RunManager" selected="JUnit.test_Actions.test_attack">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -114,54 +106,6 @@
         </value>
       </option>
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDoor.testDoorLock" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Capstone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="asset.world.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="asset.world" />
-      <option name="MAIN_CLASS_NAME" value="asset.world.TestDoor" />
-      <option name="METHOD_NAME" value="testDoorLock" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDoor.testUnlock1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Capstone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="asset.world.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="asset.world" />
-      <option name="MAIN_CLASS_NAME" value="asset.world.TestDoor" />
-      <option name="METHOD_NAME" value="testUnlock1" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="TestDoor.testUnlockCode" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Capstone" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="asset.world.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="asset.world" />
-      <option name="MAIN_CLASS_NAME" value="asset.world.TestDoor" />
-      <option name="METHOD_NAME" value="testUnlockCode" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -181,17 +125,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test_NPCFactory.test_ID1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="TestFloor.test_FloorGetTerrainAt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Capstone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="asset.character.*" />
+          <option name="PATTERN" value="asset.world.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="asset.character" />
-      <option name="MAIN_CLASS_NAME" value="asset.character.Test_NPCFactory" />
-      <option name="METHOD_NAME" value="test_ID1" />
+      <option name="PACKAGE_NAME" value="asset.world" />
+      <option name="MAIN_CLASS_NAME" value="asset.world.TestFloor" />
+      <option name="METHOD_NAME" value="test_FloorGetTerrainAt" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFloor.test_FloorGetTerrainType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.world.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.world" />
+      <option name="MAIN_CLASS_NAME" value="asset.world.TestFloor" />
+      <option name="METHOD_NAME" value="test_FloorGetTerrainType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestFloor.test_FloorTerrainIsPassable" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.world.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.world" />
+      <option name="MAIN_CLASS_NAME" value="asset.world.TestFloor" />
+      <option name="METHOD_NAME" value="test_FloorTerrainIsPassable" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="test_Actions.test_attack" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.Engine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.Engine" />
+      <option name="MAIN_CLASS_NAME" value="asset.Engine.test_Actions" />
+      <option name="METHOD_NAME" value="test_attack" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -199,11 +191,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.test_Actions.test_attack" />
+        <item itemvalue="JUnit.TestFloor.test_FloorTerrainIsPassable" />
+        <item itemvalue="JUnit.TestFloor.test_FloorGetTerrainType" />
+        <item itemvalue="JUnit.TestFloor.test_FloorGetTerrainAt" />
         <item itemvalue="JUnit.TestFloor" />
-        <item itemvalue="JUnit.TestDoor.testUnlock1" />
-        <item itemvalue="JUnit.TestDoor.testUnlockCode" />
-        <item itemvalue="JUnit.TestDoor.testDoorLock" />
-        <item itemvalue="JUnit.Test_NPCFactory.test_ID1" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +234,7 @@
       <workItem from="1602273717568" duration="1450000" />
       <workItem from="1602850793752" duration="922000" />
       <workItem from="1602952466259" duration="9884000" />
-      <workItem from="1604603884506" duration="4455000" />
+      <workItem from="1604603884506" duration="7052000" />
     </task>
     <task id="LOCAL-00004" summary="Basic support for handling keyboard input has been added to Console and implemented in IOModes.">
       <created>1602953825421</created>
@@ -300,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1604039271853</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Created tests for freshman and NPCFactory. Added consoleGlyph onto my project. Updated all of the console files with the ones on git. Fixed tests for equipableitem. Deleted inital tests and updated workspace.xml.">
+      <created>1604608613078</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1604608613078</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -344,36 +343,41 @@
     <MESSAGE value="Basic implementation of actions and engine loop.&#10;&#10;Implementation of player movement controls." />
     <MESSAGE value="ConsoleInterface.drawFloor() now correctly uses actor locations rather than a hack to draw characters." />
     <MESSAGE value="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
-    <option name="LAST_COMMIT_MESSAGE" value="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
+    <MESSAGE value="Created tests for freshman and NPCFactory. Added consoleGlyph onto my project. Updated all of the console files with the ones on git. Fixed tests for equipableitem. Deleted inital tests and updated workspace.xml." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created tests for freshman and NPCFactory. Added consoleGlyph onto my project. Updated all of the console files with the ones on git. Fixed tests for equipableitem. Deleted inital tests and updated workspace.xml." />
   </component>
   <component name="WindowStateProjectService">
     <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog" timestamp="1604607728726">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="93" y="93" width="1095" height="495" key="#com.intellij.execution.junit2.states.ComparisonFailureState$DiffDialog/0.0.1280.680@0.0.1280.680" timestamp="1604607728726" />
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1604608232674">
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom" timestamp="1604609890652">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1604608232674" />
+    <state width="1237" height="163" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1604609890652" />
     <state width="1271" height="97" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
-    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1604608232674">
+    <state width="1237" height="163" key="GridCell.Tab.0.center" timestamp="1604609890651">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1604608232674" />
+    <state width="1237" height="163" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1604609890651" />
     <state width="1271" height="97" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
-    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1604608232673">
+    <state width="1237" height="163" key="GridCell.Tab.0.left" timestamp="1604609890651">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1604608232673" />
+    <state width="1237" height="163" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1604609890651" />
     <state width="1271" height="97" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
-    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1604608232674">
+    <state width="1237" height="163" key="GridCell.Tab.0.right" timestamp="1604609890652">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1604608232674" />
+    <state width="1237" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1604609890652" />
     <state width="1271" height="97" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
     <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1604039296081">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604039296081" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1604609442586">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1604609442586" />
   </component>
 </project>
