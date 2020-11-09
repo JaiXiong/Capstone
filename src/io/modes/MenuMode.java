@@ -62,11 +62,15 @@ public abstract class MenuMode extends IOMode {
         COLORS = colors;
         OPTS = opts;
         int enabledCount = 0;
-        for (MenuOption mo : OPTS) {
-            if (mo.enabled) ++enabledCount;
+        for (int i = 0; i < OPTS.length; ++i) {
+            MenuOption mo = OPTS[i];
+            if (mo.enabled) {
+                if (selectedOption < 0)
+                    selectedOption = i;
+                ++enabledCount;
+            }
         }
         ENABLED_OPTION_COUNT = enabledCount;
-        if (ENABLED_OPTION_COUNT > 0) selectedOption = 0; //if any options are enabled, default to selecting the first
     }
 
     public abstract void execute();

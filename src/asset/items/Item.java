@@ -1,6 +1,11 @@
 package asset.items;
 
-public class Item {
+import asset.AbstractGameAsset;
+import console.ConsoleGlyph;
+
+import java.awt.*;
+
+public class Item extends AbstractGameAsset {
     //todo - define additional item properties not specific to implementations, as needed
 
     private final String NAME;
@@ -46,5 +51,10 @@ public class Item {
             default:
                 return null;
         }
+    }
+
+    @Override
+    public ConsoleGlyph getConsoleGlyph() {
+        return new ConsoleGlyph(Color.BLACK, Color.WHITE, '?'); //todo - field set by constructor
     }
 }

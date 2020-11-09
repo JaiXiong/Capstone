@@ -2,5 +2,7 @@ package asset;
 
 import io.gui.ConsoleWriteable;
 
-public abstract class AbstractGameAsset implements ConsoleWriteable {
+import java.io.Serializable;
+
+public abstract class AbstractGameAsset implements ConsoleWriteable, Serializable {
 }

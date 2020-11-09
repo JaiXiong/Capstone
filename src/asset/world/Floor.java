@@ -1,8 +1,9 @@
 package asset.world;
 
 import java.awt.*;
+import java.io.Serializable;
 
-public class Floor{
+public class Floor implements Serializable {
 
     //The size of the floor
     private int ROWS;

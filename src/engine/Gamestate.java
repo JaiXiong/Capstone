@@ -6,9 +6,10 @@ import asset.world.Floor;
 import asset.world.TileObjects;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Gamestate {
+public class Gamestate implements Serializable {
     private static Gamestate instance = null;
 
     private Floor floor;
@@ -28,13 +29,17 @@ public class Gamestate {
         characters.add(playerCharacter);
     }
 
+    public static void clearInstance() {
+        instance = null;
+    }
+
     public static Gamestate getInstance() {
         if (instance == null) instance= new Gamestate();
         return instance;
     }
 
-    public static void clearInstance() {
-        instance = null;
+    public static void loadInstance(Gamestate gamestate) {
+        instance = gamestate;
     }
 
     public void Testroom() {
