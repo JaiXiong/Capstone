@@ -9,8 +9,12 @@ import console.ConsoleGlyph;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class PlayerCharacter extends AbstractCharacter implements Serializable {
+
+    //maximum number of items the player's inventory may contain
+    private static final int INVENTORY_CAPACITY = 16;
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in
@@ -19,7 +23,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     int level;
 
-    Item inventory[];
+    ArrayList<Item> inventory;
     EquipableItem equipOffA;
     EquipableItem equipOffB;
     EquipableItem equipDefA;
@@ -41,7 +45,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         resistB = 0.95;
         xp = 0;
         level = 1;
-        inventory = new Item[16];
+        inventory = new ArrayList<>();
         equip(EquipableItem.createEquipment(0)); //Stick
         equip(EquipableItem.createEquipment(1)); //Jacket
         actions = buildActions();
@@ -61,7 +65,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     public String[] getActions(){ return actions; }
 
-    public Item[] getInventory(){ return inventory; }
+    public ArrayList<Item> getInventory(){ return inventory; }
 
     public EquipableItem getEquipOffA(){ return equipOffA; }
 
@@ -264,11 +268,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
      * false otherwise (inventory is full)
      */
     public boolean addToInventory(Item item){
-        for (int i=0;i<16;i++){
-            if (inventory[i] == null) {
-                inventory[i] = item;
-                return true;
-            }
+        if (inventory.size() < INVENTORY_CAPACITY) {
+            inventory.add(item);
+            return true;
         }
         return false;
     }
@@ -279,27 +281,10 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
      */
     public Item removeFromInventory(int itemId){
         Item removedItem = null;
-        int backIndex = 16;
-        int frontIndex = 0;
-
-        while (frontIndex < backIndex){
-
-            if (inventory[frontIndex] != null && inventory[frontIndex].getItemID() == itemId){
-                removedItem = inventory[frontIndex];
-                inventory[frontIndex] = null;
-            }
-
-            if (inventory[frontIndex] == null) {
-                while ((backIndex - 1) > frontIndex) {
-                    backIndex--;
-                    if (inventory[backIndex] != null) {
-                        inventory[frontIndex] = inventory[backIndex];
-                        break;
-                    }
-                }
-            }
-            else {
-                frontIndex++;
+        for (Item inventoryItem : inventory) {
+            if (inventoryItem.getItemID() == itemId) {
+                removedItem = inventoryItem;
+                break;
             }
         }
         return removedItem;
