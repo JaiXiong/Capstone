@@ -1,6 +1,8 @@
 package engine;
 
 import asset.character.AbstractCharacter;
+import asset.character.AbstractNonPlayerCharacter;
+import asset.character.Freshman;
 import asset.character.PlayerCharacter;
 import asset.world.Floor;
 import asset.world.TileObjects;
@@ -8,6 +10,7 @@ import asset.world.TileObjects;
 import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Gamestate implements Serializable {
     private static Gamestate instance = null;
@@ -28,6 +31,19 @@ public class Gamestate implements Serializable {
         PlayerCharacter playerCharacter = new PlayerCharacter();
         playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
         characters.add(playerCharacter);
+        //MEGAHACK, place an actor to test:
+        boolean npcPlaced = false;
+        Random rng = new Random();
+        do {
+            int c = rng.nextInt(floor.getColumns());
+            int r = rng.nextInt(floor.getRows());
+            if (floor.isTerrainPassableAt(r, c)) {
+                AbstractNonPlayerCharacter npc = new Freshman();
+                npc.setLocation(new Point(c, r));
+                characters.add(npc);
+                npcPlaced = true;
+            }
+        } while(!npcPlaced);
     }
 
     public static void clearInstance() {

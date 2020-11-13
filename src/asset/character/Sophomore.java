@@ -44,4 +44,9 @@ public class Sophomore extends AbstractNonPlayerCharacter {
         else if (toDo <= 1 && energy >= 5) return actions[1]; //STACK_OVERFLOW costs 5 energy
         else return ATTACK;
     }
+
+    @Override
+    public String getNextAction() {
+        return WAIT; //todo
+    }
 }

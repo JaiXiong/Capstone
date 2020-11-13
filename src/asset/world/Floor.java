@@ -108,7 +108,8 @@ public class Floor implements Serializable {
             case "door":
                 return (!terrain[r][c].getLocked());
             default:
-                throw new IllegalArgumentException("Unhandled terrain string: " + item);
+                return false; //hack
+                //throw new IllegalArgumentException("Unhandled terrain string: " + item);
         }
     }
 }

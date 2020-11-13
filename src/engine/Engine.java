@@ -44,7 +44,10 @@ public class Engine extends Thread {
             // in case of major updates like a new floor being generated with a new list of characters
             characters = Gamestate.getInstance().getCharacters();
             for (AbstractCharacter character : characters) {
-                handleAction(character, character.getNextAction());
+                String action = character.getNextAction();
+                if (!validateAction(character, action))
+                    action = WAIT;
+                handleAction(character, action);
             }
             GUIManager.getInstance().updateScreen(); //once all actions for this turn have been processed, redraw the screen
         } while (gameInProgress);
@@ -79,6 +82,8 @@ public class Engine extends Thread {
             case MOVE_NORTH_WEST:
                 actor.setLocation(getDestinationOrTarget(actorAt, -1, -1));
                 return;
+            case WAIT:
+                return; //do nothing
             default:
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
@@ -107,6 +112,8 @@ public class Engine extends Thread {
                 return validateMovement(actorAt, -1, 0);
             case MOVE_NORTH_WEST:
                 return validateMovement(actorAt, -1, -1);
+            case WAIT:
+                return true; //this is always fine
                 default:
                     return false;
         }
