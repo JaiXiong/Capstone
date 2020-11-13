@@ -49,6 +49,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         equip(EquipableItem.createEquipment(0)); //Stick
         equip(EquipableItem.createEquipment(1)); //Jacket
         actions = buildActions();
+
+        //TODO PLAYTEST remove this key before release version
+        inventory.add(Item.createItem(-1));
     }
 
     @Override
@@ -238,22 +241,22 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
             case OFFENSE_A:
                 removedItem = equipOffA;
                 equipOffA = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case OFFENSE_B:
                 removedItem = equipOffB;
                 equipOffB = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case DEFENSE_A:
                 removedItem = equipDefA;
                 equipDefA = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case DEFENSE_B:
                 removedItem = equipDefB;
                 equipDefB = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             default:
                 throw new IllegalArgumentException("Equipped item slot not recognized: " + equipableItem.getSlot());
@@ -275,19 +278,28 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return false;
     }
 
-    /* @param itemID of item to remove from inventory
-     * returns the removed item if successful, null otherwise
-     * keeps all non-null slots together at low indices
+    /**
+     * @param item Item object to remove from inventory
+     * @return true if item was in inventory, false if not
      */
-    public Item removeFromInventory(int itemId){
-        Item removedItem = null;
-        for (Item inventoryItem : inventory) {
-            if (inventoryItem.getItemID() == itemId) {
-                removedItem = inventoryItem;
-                break;
+    public boolean removeFromInventory(Item item){
+        return inventory.remove(item);
+    }
+
+    public boolean keyRing(int unlockCode) {
+        for (Item item : inventory) {
+            if (item != null && item.getItemID() == unlockCode) {
+                removeFromInventory(item);
+                return true;
             }
         }
-        return removedItem;
+        for (Item item : inventory) {
+            if (item != null && item.getItemID() == -1) {
+                removeFromInventory(item);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

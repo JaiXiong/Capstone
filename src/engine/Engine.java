@@ -116,9 +116,17 @@ public class Engine extends Thread {
      * Validate a movement action.
      */
     private boolean validateMovement(Point origin, int colChange, int rowChange) {
+        Floor thisFloor = Gamestate.getInstance().getFloor();
         Point destination = getDestinationOrTarget(origin, colChange, rowChange);
-        if (!Gamestate.getInstance().getFloor().isTerrainPassableAt(destination.y, destination.x))
+        if (!thisFloor.isTerrainPassableAt(destination.y, destination.x)) {
+
+            //TODO this validation method currently only works for the player because of this door check
+            if (thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
+                Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x));
+            }
+
             return false; //impassable terrain at destination
+        }
         for (AbstractCharacter abstractCharacter : Gamestate.getInstance().getCharacters()) {
             if (abstractCharacter.getLocation().equals(destination))
                 return false; //actor at destination
