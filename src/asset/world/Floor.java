@@ -29,6 +29,30 @@ public class Floor implements Serializable {
         } else if (type.equals(TileObjects.TileType.DOOR.toString())) {
             //return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
             return new Terrain(TileObjects.TileType.DOOR.toString(), color, '+', row, col, true, 200);
+
+            //TODO need to replace all Color. with  color
+        } else if (type.equals(TileObjects.TileType.TREE.toString())) {
+            return new Terrain(TileObjects.TileType.TREE.toString(), null, Color.green, 'Ÿ', row, col);
+        } else if (type.equals(TileObjects.TileType.TABLE.toString())) {
+            return new Terrain(TileObjects.TileType.TABLE.toString(), null, Color.darkGray, '╥', row, col);
+        } else if (type.equals(TileObjects.TileType.WATER.toString())) {
+            return new Terrain(TileObjects.TileType.WATER.toString(), null, Color.blue, '≈', row, col);
+        } else if (type.equals(TileObjects.TileType.TOILETRIGHT.toString())) {
+            return new Terrain(TileObjects.TileType.TOILETRIGHT.toString(), null, Color.white, '╛', row, col);
+        } else if (type.equals(TileObjects.TileType.TOILETLEFT.toString())) {
+            return new Terrain(TileObjects.TileType.TOILETLEFT.toString(), null, Color.white, '╘', row, col);
+        } else if (type.equals(TileObjects.TileType.LIGHTPOST1.toString())) {
+            return new Terrain(TileObjects.TileType.LIGHTPOST1.toString(), null, Color.YELLOW, 'Î', row, col);
+        } else if (type.equals(TileObjects.TileType.LIGHTPOST2.toString())) {
+            return new Terrain(TileObjects.TileType.LIGHTPOST2.toString(), null, Color.YELLOW, '¶', row, col);
+        } else if (type.equals(TileObjects.TileType.GRASS.toString())) {
+            return new Terrain(TileObjects.TileType.GRASS.toString(), null, Color.GREEN, '▓', row, col);
+        } else if (type.equals(TileObjects.TileType.CEMENTEDWALKWAY.toString())) {
+            return new Terrain(TileObjects.TileType.CEMENTEDWALKWAY.toString(), null, Color.ORANGE, '▓', row, col);
+        } else if (type.equals(TileObjects.TileType.CLOVERPLANT.toString())) {
+            return new Terrain(TileObjects.TileType.CLOVERPLANT.toString(), null, Color.GREEN, '♣', row, col);
+        } else if (type.equals(TileObjects.TileType.SPADEPLANT.toString())) {
+            return new Terrain(TileObjects.TileType.SPADEPLANT.toString(), null, Color.ORANGE, '♠', row, col);
         } else {
             return null;
         }
