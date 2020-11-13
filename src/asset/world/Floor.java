@@ -19,6 +19,7 @@ public class Floor implements Serializable {
         this.terrain = new Terrain[ROWS][COLUMNS];
     }
 
+    //TODO update to allow for DOOR tiles to have different unlock codes paired to Key items
     //create the basic floor depending on type
     public Terrain makeFloor(String type, Color color, int row, int col) {
         if (type.equals(TileObjects.TileType.TERRAIN.toString())) {
@@ -26,7 +27,8 @@ public class Floor implements Serializable {
         } else if (type.equals(TileObjects.TileType.WALL.toString())) {
             return new Terrain(TileObjects.TileType.WALL.toString(), null, color, '#', row, col);
         } else if (type.equals(TileObjects.TileType.DOOR.toString())) {
-            return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
+            //return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
+            return new Terrain(TileObjects.TileType.DOOR.toString(), color, '+', row, col, true, 200);
         } else {
             return null;
         }
@@ -75,10 +77,12 @@ public class Floor implements Serializable {
         //to do, I need to change  these to the standardize enum string??
         String item = terrain[r][c].getType();
         switch (item) {
-            case "terrain": case "door":
+            case "terrain":
                 return true;
             case "wall":
                 return false;
+            case "door":
+                return (!terrain[r][c].getLocked());
             default:
                 throw new IllegalArgumentException("Unhandled terrain string: " + item);
         }
