@@ -3,10 +3,10 @@ package io.modes;
 import asset.character.PlayerCharacter;
 import engine.Engine;
 import engine.Gamestate;
+import io.file.FileManager;
 import io.gui.ConsoleInterface;
 import io.gui.GUIManager;
 
-import java.awt.*;
 import java.awt.event.KeyEvent;
 
 import static java.awt.event.KeyEvent.*;
@@ -24,10 +24,22 @@ public class GameplayMode extends IOMode {
         int mod = ke.getModifiersEx();
         String nextAction = null;
         switch (code) {
-            case VK_ESCAPE:
-                Engine.getInstance().endGame();
-                Gamestate.clearInstance(); //todo - we should save the existing gamestate in case we exit the progam
-                GUIManager.getInstance().revert();
+            case VK_S:
+                if (mod == CTRL_DOWN_MASK) {
+                    Engine.getInstance().endGame();
+                    FileManager.saveGame();
+                    Gamestate.clearInstance();
+                    GUIManager.getInstance().revert(); //pop off the GamePlayMode
+                    GUIManager.getInstance().revert(); //pop off the current MainMenuMode
+                    GUIManager.getInstance().transitionTo(new MainMenuMode()); //create a new MainMenuMode to reflect new savegame state
+                }
+                break;
+            case VK_Q:
+                if (mod == CTRL_DOWN_MASK) {
+                    Engine.getInstance().endGame();
+                    Gamestate.clearInstance();
+                    GUIManager.getInstance().revert();
+                }
                 break;
             case VK_UP: case VK_NUMPAD8:
                 nextAction = MOVE_NORTH;

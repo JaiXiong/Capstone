@@ -6,9 +6,10 @@ import asset.world.Floor;
 import asset.world.TileObjects;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Gamestate {
+public class Gamestate implements Serializable {
     private static Gamestate instance = null;
 
     private Floor floor;
@@ -21,11 +22,16 @@ public class Gamestate {
         //Room2();
         //Bigroom3();
         //Bigroom4();
-        Bigroom5();
+        //Bigroom5();
+        Rooftop();
         characters = new ArrayList<>();
         PlayerCharacter playerCharacter = new PlayerCharacter();
         playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
         characters.add(playerCharacter);
+    }
+
+    public static void clearInstance() {
+        instance = null;
     }
 
     public static Gamestate getInstance() {
@@ -33,8 +39,8 @@ public class Gamestate {
         return instance;
     }
 
-    public static void clearInstance() {
-        instance = null;
+    public static void loadInstance(Gamestate gamestate) {
+        instance = gamestate;
     }
 
     public void Testroom() {
@@ -348,38 +354,76 @@ public class Gamestate {
     public void Rooftop() {
         //rooftop room
         floor = new Floor(20, 20);
-        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.darkGray);
         for (int i = 0; i < 20; ++i) {
             for (int j = 0; j < 20; ++j) {
                 if (i == 0 || j == 0 || i == 19 || j == 19) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.white, i, j));
                 }
                 //make North east stairwell
                 //entrance and exit???
                 if ((i >= 2 && i <= 6) && (j >= 2 && j <= 6  )) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.darkGray, i, j));
                 }
                 //add door for stair well
-                floor.setTerrainAt(6, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 4));
+                floor.setTerrainAt(6, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.RED, 6, 4));
 
                 //make EMS greenhouse (is there even on up there? has to be one right?)
 
                 //greenhouse back wall
                 if (i == 17 && (j >= 2 && j <= 17)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //greenhouse front wall
                 if (i == 12 && (j >=2 && j <=17 )) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //right walls of greenhouse
                 if ((i >= 12 && i <= 17) && (j == 2 || j == 17)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //add greenhouse door
-                floor.setTerrainAt(12, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 5, 12));
+                floor.setTerrainAt(12, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.RED, 5, 12));
+
+                //add plants in greenhouse
+                if ((i >=14 && i <=15) && (j >= 4 && j <=15)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.TREE.toString(), Color.green, i, j));
+                }
+
+                //add some lights to the roof top
+                if ((i == 1 || i == 4 || i == 7 || i == 10) && (j == 18)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.LIGHTPOST1.toString(), Color.yellow, i, j));
+                }
+
+                //add clover plants
+                if ((i == 2 || i == 6) && (j >=9 && j <=15)){
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CLOVERPLANT.toString(), Color.green, i, j));
+                }
+                //add spade plants
+                if ((i == 4) && (j >=9 && j <=15)){
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SPADEPLANT.toString(), Color.ORANGE, i, j));
+                }
             }
         }
+    }
+
+    //TODO add more custom colors
+    public enum customColor {
+        BROWN { public String toString() {return "brown";}},
+        GOLD { public String toString() {return "gold";}},
+        LIGHTBROWN{ public String toString() {return "lightbrown";}},
+        LIGHTBLUE { public String toString() {return "lightblue";}},
+        LIGHTRED { public String toString() {return "lightred";}},
+        DARKGREEN { public String toString() {return "darkgreen";}},
+    }
+
+    //TODO finish custom colors method
+    public Color findColor(String color) {
+        switch (color) {
+            //case customColor():
+            //return Color.HSBtoRGB(102, 51, 0);
+        }
+        return null;
     }
     public Floor getFloor() {
         return floor;

@@ -86,7 +86,6 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
             }
         }
     }
-
     public String getNextAction(){
         Point pcWhere = Gamestate.getInstance().getPlayerCharacter().getLocation();
         double distance = location.distance(pcWhere);

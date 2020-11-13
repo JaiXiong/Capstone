@@ -3,13 +3,16 @@ package asset.character;
 import asset.character.PlayerCharacter;
 import asset.items.Item;
 import org.junit.*;
+
+import java.util.ArrayList;
+
 import static org.junit.Assert.*;
 
 public class Test_PlayerCharacter {
     @Test
     public void testInit(){
         PlayerCharacter p = new PlayerCharacter();
-        Item[] i = p.getInventory();
+        ArrayList<Item> i = p.getInventory();
         String[] a = p.getActions();
         assertEquals(p.getInitiativeID(), 0);
         assertEquals(p.getHealth(), 100);
@@ -24,22 +27,7 @@ public class Test_PlayerCharacter {
         assertEquals(p.getResistB(), 0.95, 0);
         assertEquals(p.getXP(), 0);
         assertEquals(p.getLevel(), 1);
-        assertNull(i[0]);
-        assertNull(i[1]);
-        assertNull(i[2]);
-        assertNull(i[3]);
-        assertNull(i[4]);
-        assertNull(i[5]);
-        assertNull(i[6]);
-        assertNull(i[7]);
-        assertNull(i[8]);
-        assertNull(i[9]);
-        assertNull(i[10]);
-        assertNull(i[11]);
-        assertNull(i[12]);
-        assertNull(i[13]);
-        assertNull(i[14]);
-        assertNull(i[15]);
+        assertEquals(i.size(), 0);
         assertEquals(a.length, 0); //TODO no actual actions defined yet
         assertEquals(p.getEquipOffA().getName(), "Stick");
         assertNull(p.getEquipOffB());
