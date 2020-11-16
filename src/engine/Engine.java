@@ -134,11 +134,7 @@ public class Engine extends Thread {
 
             return false; //impassable terrain at destination
         }
-        for (AbstractCharacter abstractCharacter : Gamestate.getInstance().getCharacters()) {
-            if (abstractCharacter.getLocation().equals(destination))
-                return false; //actor at destination
-        }
-        return true;
+        return Gamestate.getInstance().getCharacterAt(destination.y, destination.x) == null;
     }
 
     /**
