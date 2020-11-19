@@ -18,5 +18,20 @@ public class test_Actions {
         assertEquals(a, b);
     }
 
-    // TODO: 11/5/2020 add more tests for actions
+   @Test
+    public void test_homesick(){
+       PlayerCharacter p = new PlayerCharacter();
+       String a = Actions.homesick(p);
+       String b = "You is homesick.";
+       assertEquals(a, b);
+   }
+
+   @Test
+    public void test_tooManyMemes(){
+       PlayerCharacter p = new PlayerCharacter();
+       Freshman f = new Freshman();
+       String a = Actions.tooManyMemes(p, f);
+       String b = "You sends freshman too many memes.";
+       assertEquals(a, b);
+   }
 }
