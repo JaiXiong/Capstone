@@ -5,10 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="Created tests for freshman and NPCFactory. Added consoleGlyph onto my project. Updated all of the console files with the ones on git. Fixed tests for equipableitem. Deleted inital tests and updated workspace.xml.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/asset/Engine/test_Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/Engine/test_Actions.java" afterDir="false" />
-    </list>
+    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,6 +94,10 @@
       <recent name="asset.character" />
       <recent name="asset" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="asset.items" />
+      <recent name="asset.IO" />
+    </key>
   </component>
   <component name="RunManager" selected="JUnit.Test_ConsoleInterface.test_getVertCenterInv">
     <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -112,13 +113,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -378,15 +381,15 @@
     </state>
     <state width="618" height="163" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1605748861123" />
     <state width="1271" height="97" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604038965766" />
-    <state x="466" y="147" key="Vcs.Push.Dialog.v2" timestamp="1604611683369">
+    <state x="466" y="147" key="Vcs.Push.Dialog.v2" timestamp="1605750578911">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="466" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1604611683369" />
+    <state x="466" y="147" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1605750578910" />
     <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604039296081" />
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605746444445">
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605750741736">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1605746444445" />
+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1605750741736" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1605747494816">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
