@@ -9,8 +9,12 @@ import console.ConsoleGlyph;
 
 import java.awt.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class PlayerCharacter extends AbstractCharacter implements Serializable {
+
+    //maximum number of items the player's inventory may contain
+    private static final int INVENTORY_CAPACITY = 16;
 
     /* characters may need the information on how they display
      * (which char, what color, what background) included in
@@ -19,7 +23,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     int level;
 
-    Item inventory[];
+    ArrayList<Item> inventory;
     EquipableItem equipOffA;
     EquipableItem equipOffB;
     EquipableItem equipDefA;
@@ -41,10 +45,13 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         resistB = 0.95;
         xp = 0;
         level = 1;
-        inventory = new Item[16];
+        inventory = new ArrayList<>();
         equip(EquipableItem.createEquipment(0)); //Stick
         equip(EquipableItem.createEquipment(1)); //Jacket
         actions = buildActions();
+
+        //TODO PLAYTEST remove this key before release version
+        inventory.add(Item.createItem(-1));
     }
 
     @Override
@@ -61,7 +68,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     public String[] getActions(){ return actions; }
 
-    public Item[] getInventory(){ return inventory; }
+    public ArrayList<Item> getInventory(){ return inventory; }
 
     public EquipableItem getEquipOffA(){ return equipOffA; }
 
@@ -234,22 +241,22 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
             case OFFENSE_A:
                 removedItem = equipOffA;
                 equipOffA = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case OFFENSE_B:
                 removedItem = equipOffB;
                 equipOffB = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case DEFENSE_A:
                 removedItem = equipDefA;
                 equipDefA = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             case DEFENSE_B:
                 removedItem = equipDefB;
                 equipDefB = equipableItem;
-                removeFromInventory(equipableItem.getItemID());
+                removeFromInventory(equipableItem);
                 break;
             default:
                 throw new IllegalArgumentException("Equipped item slot not recognized: " + equipableItem.getSlot());
@@ -264,45 +271,35 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
      * false otherwise (inventory is full)
      */
     public boolean addToInventory(Item item){
-        for (int i=0;i<16;i++){
-            if (inventory[i] == null) {
-                inventory[i] = item;
-                return true;
-            }
+        if (inventory.size() < INVENTORY_CAPACITY) {
+            inventory.add(item);
+            return true;
         }
         return false;
     }
 
-    /* @param itemID of item to remove from inventory
-     * returns the removed item if successful, null otherwise
-     * keeps all non-null slots together at low indices
+    /**
+     * @param item Item object to remove from inventory
+     * @return true if item was in inventory, false if not
      */
-    public Item removeFromInventory(int itemId){
-        Item removedItem = null;
-        int backIndex = 16;
-        int frontIndex = 0;
+    public boolean removeFromInventory(Item item){
+        return inventory.remove(item);
+    }
 
-        while (frontIndex < backIndex){
-
-            if (inventory[frontIndex] != null && inventory[frontIndex].getItemID() == itemId){
-                removedItem = inventory[frontIndex];
-                inventory[frontIndex] = null;
-            }
-
-            if (inventory[frontIndex] == null) {
-                while ((backIndex - 1) > frontIndex) {
-                    backIndex--;
-                    if (inventory[backIndex] != null) {
-                        inventory[frontIndex] = inventory[backIndex];
-                        break;
-                    }
-                }
-            }
-            else {
-                frontIndex++;
+    public boolean keyRing(int unlockCode) {
+        for (Item item : inventory) {
+            if (item != null && item.getItemID() == unlockCode) {
+                removeFromInventory(item);
+                return true;
             }
         }
-        return removedItem;
+        for (Item item : inventory) {
+            if (item != null && item.getItemID() == -1) {
+                removeFromInventory(item);
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

@@ -1,31 +1,79 @@
 package engine;
 
-import asset.character.AbstractCharacter;
-import asset.character.PlayerCharacter;
+import asset.character.*;
 import asset.world.Floor;
 import asset.world.TileObjects;
 
 import java.awt.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Gamestate {
+public class Gamestate implements Serializable {
     private static Gamestate instance = null;
 
     private Floor floor;
     private ArrayList<AbstractCharacter> characters;
 
+    /**
+     * The difficulty level of the current floor.
+     * This is NOT the game's difficulty setting - instead it corresponds to the floor's "depth" in the game.
+     * In our current design, this should roughly correspond to:
+     * -1 - ERROR(no current floor)
+     * 0 - the dorm or hub area
+     * 1 - freshman year, first semester
+     * 2 - fresgman year, second semester
+     * 3 - sophomore year, first semester
+     * ...
+     * 8 - senior year, second semester
+     */
+    private int floorDifficulty = -1;
+
     private Gamestate() {
-        //megahack - generate a floor to test display
-        //Testroom();
-        //Room1();
-        //Room2();
-        //Bigroom3();
-        //Bigroom4();
-        Bigroom5();
+        generateAndPopulateFloor(0);
+    }
+
+    /**
+     * Call this method to change the floor the player is on.
+     */
+    private void generateAndPopulateFloor(int depth) {
+        if (depth < 0)
+            throw new IllegalArgumentException("Depth may not be less than zero.");
+        setFloorDifficulty(depth);
+        //PlayerCharacter playerCharacter = depth == 0 ? new PlayerCharacter() : getPlayerCharacter();
+        PlayerCharacter playerCharacter = new PlayerCharacter(); //todo - remove this line and use the one above. For now, this lets us test depths other than 4(if we need to generate NPCs)
+        Point pcLocation;
+        Point bossLocation = null;
+        switch (depth) {
+            /*
+             * case 0:
+             *     Call a generation method corresponding to the hub level.
+             *     Set pcLocation to an appropriate point on that level - the player's dorm, for example.
+             * case 1:
+             *     Call a generation method corresponding to the first game floor.
+             *     Set pcLocation to wherever we want the player to appear on that floor.
+             * case 2:
+             *     Call a generation method corresponding to the second game floor.
+             *     Set pcLocation to wherever we want the player to appear on that floor.
+             * case 3:
+             *     Call a generation method corresponding to the first game floor.
+             *     Set pcLocation to wherever we want the player to appear on that floor.
+             *     Set bossLocation to wherever we want the boss to appear on that floor.
+             * ... etc.
+             * default:
+             *     throw new IllegalArgumentException("Depth " + depth + " has no associated floor pattern.");
+             */
+            default: //for testing, pick a generation method and place the player in the center
+                Rooftop();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+        }
+        playerCharacter.setLocation(pcLocation);
         characters = new ArrayList<>();
-        PlayerCharacter playerCharacter = new PlayerCharacter();
-        playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
         characters.add(playerCharacter);
+        populate(bossLocation);
+    }
+
+    public static void clearInstance() {
+        instance = null;
     }
 
     public static Gamestate getInstance() {
@@ -33,11 +81,19 @@ public class Gamestate {
         return instance;
     }
 
-    public static void clearInstance() {
-        instance = null;
+    public static void loadInstance(Gamestate gamestate) {
+        instance = gamestate;
     }
 
-    public void Testroom() {
+    public int getFloorDifficulty() {
+        return floorDifficulty;
+    }
+
+    public void setFloorDifficulty(int floorDifficulty) {
+        this.floorDifficulty = floorDifficulty;
+    }
+
+    private void Testroom() {
         floor = new Floor(16, 16);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 16; ++i) {
@@ -50,7 +106,8 @@ public class Gamestate {
         }
     }
 
-    public void Room1() {
+
+    private void Room1() {
         floor = new Floor(16, 16);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 16; ++i) {
@@ -83,7 +140,7 @@ public class Gamestate {
         }
     }
 
-    public void Room2() {
+    private void Room2() {
         floor = new Floor(16, 16);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         int m,n;
@@ -118,7 +175,7 @@ public class Gamestate {
         floor.setTerrainAt(14, 5, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, 14, 5));
     }
 
-    public void Bigroom3() {
+    private void Bigroom3() {
         floor = new Floor(24, 48);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 24; ++i) {
@@ -167,7 +224,7 @@ public class Gamestate {
         floor.setTerrainAt(13, 30, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 13, 30));
     }
 
-    public void Bigroom4() {
+    private void Bigroom4() {
         floor = new Floor(24, 48);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 24; ++i) {
@@ -234,7 +291,7 @@ public class Gamestate {
         floor.setTerrainAt(2, 40, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 2, 40));
     }
 
-    public void Bigroom5() {
+    private void Bigroom5() {
         floor = new Floor(24, 48);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 24; ++i) {
@@ -281,7 +338,7 @@ public class Gamestate {
         floor.setTerrainAt(8, 28, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 8, 28));
     }
 
-    public void Bigroom6() {
+    private void Bigroom6() {
         floor = new Floor(24, 48);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         int m,n;
@@ -345,42 +402,62 @@ public class Gamestate {
         }
     }
 
-    public void Rooftop() {
+    private void Rooftop() {
         //rooftop room
         floor = new Floor(20, 20);
-        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.darkGray);
         for (int i = 0; i < 20; ++i) {
             for (int j = 0; j < 20; ++j) {
                 if (i == 0 || j == 0 || i == 19 || j == 19) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.white, i, j));
                 }
                 //make North east stairwell
                 //entrance and exit???
                 if ((i >= 2 && i <= 6) && (j >= 2 && j <= 6  )) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.darkGray, i, j));
                 }
                 //add door for stair well
-                floor.setTerrainAt(6, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 6, 4));
+                floor.setTerrainAt(6, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.RED, 6, 4));
 
                 //make EMS greenhouse (is there even on up there? has to be one right?)
 
                 //greenhouse back wall
                 if (i == 17 && (j >= 2 && j <= 17)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //greenhouse front wall
                 if (i == 12 && (j >=2 && j <=17 )) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //right walls of greenhouse
                 if ((i >= 12 && i <= 17) && (j == 2 || j == 17)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.cyan, i, j));
                 }
                 //add greenhouse door
-                floor.setTerrainAt(12, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.DARK_GRAY, 5, 12));
+                floor.setTerrainAt(12, 4, floor.makeFloor(TileObjects.TileType.DOOR.toString(), Color.RED, 5, 12));
+
+                //add plants in greenhouse
+                if ((i >=14 && i <=15) && (j >= 4 && j <=15)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.TREE.toString(), Color.green, i, j));
+                }
+
+                //add some lights to the roof top
+                if ((i == 1 || i == 4 || i == 7 || i == 10) && (j == 18)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.LIGHTPOST1.toString(), Color.yellow, i, j));
+                }
+
+                //add clover plants
+                if ((i == 2 || i == 6) && (j >=9 && j <=15)){
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CLOVERPLANT.toString(), Color.green, i, j));
+                }
+                //add spade plants
+                if ((i == 4) && (j >=9 && j <=15)){
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SPADEPLANT.toString(), Color.ORANGE, i, j));
+                }
             }
         }
     }
+
     public Floor getFloor() {
         return floor;
     }
@@ -393,5 +470,54 @@ public class Gamestate {
         if (playerCharacter instanceof PlayerCharacter)
             return (PlayerCharacter)playerCharacter;
         throw new IllegalStateException("Character at index 0 was not a player character.");
+    }
+
+    public AbstractCharacter getCharacterAt(int row, int column) {
+        for (AbstractCharacter character : characters) {
+            Point location = character.getLocation();
+            if (location.x == column && location.y == row) {
+                return character;
+            }
+        }
+        return null;
+    }
+    private void populate(Point bossLocation) {
+        //generate and place a boss if appropriate for this floor:
+        if (bossLocation != null) {
+            AbstractNonPlayerCharacter boss = NPCFactory.npcLookup((floorDifficulty / 3) + 10);
+            boss.setLocation(bossLocation);
+            characters.add(boss);
+            return;
+        }
+        //otherwise generate non-boss NPCs:
+        int npcCount = 2 * floorDifficulty + RNG.get().nextInt((int)Math.pow(floorDifficulty, 2.0) + 1);
+        int attemptCount = 0;
+        boolean placed = false;
+        while (npcCount > 0) {
+            do {
+                //paranoia - don't let us get stuck in an infinite loop if we can't place all the npcs we want.
+                if (++attemptCount > 1_024) {
+                    npcCount = 0;
+                    break;
+                }
+                int c = RNG.get().nextInt(floor.getColumns());
+                int r = RNG.get().nextInt(floor.getRows());
+                if (floor.isTerrainPassableAt(r, c) && getCharacterAt(r, c) == null) {
+                    AbstractNonPlayerCharacter npc = NPCFactory.randomNPC(floorDifficulty);
+                    npc.setLocation(new Point(c, r));
+                    if ((RNG.get().nextInt(6) + floorDifficulty - 7) > 0) {
+                        //how many times to upgrade, trending up with floor level
+                        int upgrades = (int) ((Math.random() * (floorDifficulty / 3)) + 1);
+                        for (int j = 0; j < upgrades; j++) {
+                            npc.upgrade();
+                        }
+                    }
+                    characters.add(npc);
+                    placed = true;
+                }
+            } while (!placed);
+            --npcCount;
+            placed = false;
+        }
     }
 }

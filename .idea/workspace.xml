@@ -6,7 +6,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/world/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/Floor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/world/TileObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/TileObjects.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/engine/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Gamestate.java" afterDir="false" />
@@ -230,6 +229,9 @@
     </task>
     <option name="localTasksCounter" value="13" />
     <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="38787000" />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />

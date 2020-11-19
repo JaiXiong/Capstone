@@ -35,8 +35,8 @@ public class ConsoleInterface {
         PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
         Point playerAt = playerCharacter.getLocation();
         Point center = getConsoleCenterpoint();
-        int cOffset = center.x - playerAt.x;
-        int rOffset = center.y - playerAt.y;
+        final int cOffset = center.x - playerAt.x;
+        final int rOffset = center.y - playerAt.y;
         Terrain terrain;
         int cFloor;
         int rFloor;
@@ -53,6 +53,8 @@ public class ConsoleInterface {
             Point at = character.getLocation();
             int c = at.x + cOffset;
             int r = at.y + rOffset;
+            if (r < 0 || r >= CONSOLE.getSize().getHeight() || c < 0 || c >= CONSOLE.getSize().getWidth())
+                continue;
             CONSOLE.update(r, c, character.getConsoleGlyph());
         }
         CONSOLE.refresh();

@@ -45,6 +45,7 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
     public int getXP(){
         return xp;
     }
+    public String attack() { return "default"; }
 
     /* Makes hostile NPCs stronger and more varied.
      * Improves a random stat, repeated five times,
