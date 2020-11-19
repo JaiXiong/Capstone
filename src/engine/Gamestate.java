@@ -76,10 +76,6 @@ public class Gamestate implements Serializable {
         instance = null;
     }
 
-    public static void clearInstance() {
-        instance = null;
-    }
-
     public static Gamestate getInstance() {
         if (instance == null) instance= new Gamestate();
         return instance;
