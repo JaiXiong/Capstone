@@ -55,8 +55,6 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
     public String attackPC() { return "default"; }
 
-    public int takeDamage(String attack) { return health; }
-
     /* Makes hostile NPCs stronger and more varied.
      * Improves a random stat, repeated five times,
      * re-randomizing the chosen stat each time.
