@@ -45,9 +45,15 @@ public class Item extends AbstractGameAsset {
         if (itemID == -1 || (itemID >= 200 && itemID < 300)) return new Item(itemID, "Key", 1);
         switch (itemID) {
             case 100:
-                return new Item(100, "Energy Drink", 15);
+                return new Item(100, "Energy Drink", 4); //restore energy
             case 101:
-                return new Item(102, "Shoddy Notes", 4);
+                return new Item(101, "Big Energy Drink", 6); //restore energy
+            case 102:
+                return new Item(102, "'Juice' (21+)", 6); //cost energy, restore health
+            case 103:
+                return new Item(103, "Craft Dinner", 6); //restore health
+            case 104:
+                return new Item(104, "Some Kinda Tex-Mex?", 10); //restore health
             default:
                 return null;
         }
