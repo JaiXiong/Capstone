@@ -55,6 +55,12 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.SPADEPLANT.toString(), null, color, '♠', row, col);
         } else if (type.equals(TileObjects.TileType.SOLIDWALL.toString())) {
             return new Terrain(TileObjects.TileType.SOLIDWALL.toString(), null, color, '▓', row, col);
+        } else if (type.equals(TileObjects.TileType.DIVIDER.toString())) {
+            return new Terrain(TileObjects.TileType.DIVIDER.toString(), null, color, '|', row, col);
+        } else if (type.equals(TileObjects.TileType.SHELF.toString())) {
+            return new Terrain(TileObjects.TileType.SHELF.toString(), null, color, '=', row, col);
+        } else if (type.equals(TileObjects.TileType.CHAIR.toString())) {
+            return new Terrain(TileObjects.TileType.CHAIR.toString(), null, color, 'L', row, col);
         } else {
             return null;
         }
