@@ -31,7 +31,7 @@ public class TileObjects extends AbstractGameAsset {
         CEMENTEDWALKWAY { public String toString() {return "cementedwalkway";}},
         CLOVERPLANT { public String toString() {return "cloverplant";}},
         SPADEPLANT{ public String toString() {return "spadeplant";}},
-        SOLIDWALL{ public String toString() {return "solidwall";}}
+        SOLIDWALL{ public String toString() {return "solidwall";}},
         DIVIDER{ public String toString() {return "divider";}},
         SHELF{ public String toString() {return "shelf";}},
         CHAIR{ public String toString() {return "chair";}},
