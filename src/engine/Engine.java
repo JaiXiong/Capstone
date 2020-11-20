@@ -129,7 +129,7 @@ public class Engine extends Thread {
 
             //TODO this validation method currently only works for the player because of this door check
             if (thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
-                Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x));
+                Messages.addMessage(Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x)));
             }
 
             return false; //impassable terrain at destination

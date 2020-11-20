@@ -1,6 +1,7 @@
 package io.modes;
 
 import engine.Engine;
+import engine.Messages;
 import io.file.FileManager;
 import io.gui.GUIManager;
 
@@ -59,6 +60,7 @@ public class MainMenuMode extends MenuMode {
 
     private void startGame() {
         GUIManager.getInstance().transitionTo(new GameplayMode());
+        Messages.addMessage("Welcome to <untitled roguelike>!");
         Engine.getInstance().start();
     }
 }

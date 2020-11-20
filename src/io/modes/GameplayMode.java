@@ -3,11 +3,14 @@ package io.modes;
 import asset.character.PlayerCharacter;
 import engine.Engine;
 import engine.Gamestate;
+import engine.Messages;
 import io.file.FileManager;
 import io.gui.ConsoleInterface;
 import io.gui.GUIManager;
 
+import java.awt.*;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 import static java.awt.event.KeyEvent.*;
 import static engine.ActionDefinitions.*;
@@ -88,6 +91,16 @@ public class GameplayMode extends IOMode {
     public void update(ConsoleInterface consoleInterface) {
         consoleInterface.clearScreen();
         consoleInterface.drawFloor();
+        ArrayList messages = Messages.getMessages();
+        final int firstLine = messages.size() > 2 ? 2 : messages.size() - 1;
+        for (int line = firstLine; line >= 0 && messages.size() > (firstLine - line); --line) {
+            consoleInterface.writeSingleLine(
+                    line,
+                    1,
+                    "> " + messages.get(messages.size() - (1 + (firstLine - line))),
+                    Color.BLACK,
+                    line == firstLine ? Color.WHITE : Color.DARK_GRAY);
+        }
         //todo: other relevant information, stats, enemy info, etc.
     }
 }
