@@ -30,7 +30,7 @@ public class Floor implements Serializable {
             //return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
             return new Terrain(TileObjects.TileType.DOOR.toString(), color, '+', row, col, true, 200);
 
-            //TODO need to replace all Color. with  color
+            //TODO need to replace all Color. with color or do we want hard coded colors for specific objects???
         } else if (type.equals(TileObjects.TileType.TREE.toString())) {
             return new Terrain(TileObjects.TileType.TREE.toString(), null, color, 'Ÿ', row, col);
         } else if (type.equals(TileObjects.TileType.TABLE.toString())) {
@@ -46,13 +46,15 @@ public class Floor implements Serializable {
         } else if (type.equals(TileObjects.TileType.LIGHTPOST2.toString())) {
             return new Terrain(TileObjects.TileType.LIGHTPOST2.toString(), null, color, '¶', row, col);
         } else if (type.equals(TileObjects.TileType.GRASS.toString())) {
-            return new Terrain(TileObjects.TileType.GRASS.toString(), null, color, '▓', row, col);
+            return new Terrain(TileObjects.TileType.GRASS.toString(), null, color, '“', row, col);
         } else if (type.equals(TileObjects.TileType.CEMENTEDWALKWAY.toString())) {
-            return new Terrain(TileObjects.TileType.CEMENTEDWALKWAY.toString(), null, color, '▓', row, col);
+            return new Terrain(TileObjects.TileType.CEMENTEDWALKWAY.toString(), null, color, '░', row, col);
         } else if (type.equals(TileObjects.TileType.CLOVERPLANT.toString())) {
             return new Terrain(TileObjects.TileType.CLOVERPLANT.toString(), null, color, '♣', row, col);
         } else if (type.equals(TileObjects.TileType.SPADEPLANT.toString())) {
             return new Terrain(TileObjects.TileType.SPADEPLANT.toString(), null, color, '♠', row, col);
+        } else if (type.equals(TileObjects.TileType.SOLIDWALL.toString())) {
+            return new Terrain(TileObjects.TileType.SOLIDWALL.toString(), null, color, '▓', row, col);
         } else if (type.equals(TileObjects.TileType.DIVIDER.toString())) {
             return new Terrain(TileObjects.TileType.DIVIDER.toString(), null, color, '|', row, col);
         } else if (type.equals(TileObjects.TileType.SHELF.toString())) {
