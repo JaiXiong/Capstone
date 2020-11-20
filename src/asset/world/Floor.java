@@ -32,27 +32,33 @@ public class Floor implements Serializable {
 
             //TODO need to replace all Color. with  color
         } else if (type.equals(TileObjects.TileType.TREE.toString())) {
-            return new Terrain(TileObjects.TileType.TREE.toString(), null, Color.green, 'Ÿ', row, col);
+            return new Terrain(TileObjects.TileType.TREE.toString(), null, color, 'Ÿ', row, col);
         } else if (type.equals(TileObjects.TileType.TABLE.toString())) {
-            return new Terrain(TileObjects.TileType.TABLE.toString(), null, Color.darkGray, '╥', row, col);
+            return new Terrain(TileObjects.TileType.TABLE.toString(), null, color, '╥', row, col);
         } else if (type.equals(TileObjects.TileType.WATER.toString())) {
-            return new Terrain(TileObjects.TileType.WATER.toString(), null, Color.blue, '≈', row, col);
+            return new Terrain(TileObjects.TileType.WATER.toString(), null, color, '≈', row, col);
         } else if (type.equals(TileObjects.TileType.TOILETRIGHT.toString())) {
-            return new Terrain(TileObjects.TileType.TOILETRIGHT.toString(), null, Color.white, '╛', row, col);
+            return new Terrain(TileObjects.TileType.TOILETRIGHT.toString(), null, color, '╛', row, col);
         } else if (type.equals(TileObjects.TileType.TOILETLEFT.toString())) {
-            return new Terrain(TileObjects.TileType.TOILETLEFT.toString(), null, Color.white, '╘', row, col);
+            return new Terrain(TileObjects.TileType.TOILETLEFT.toString(), null, color, '╘', row, col);
         } else if (type.equals(TileObjects.TileType.LIGHTPOST1.toString())) {
-            return new Terrain(TileObjects.TileType.LIGHTPOST1.toString(), null, Color.YELLOW, 'Î', row, col);
+            return new Terrain(TileObjects.TileType.LIGHTPOST1.toString(), null, color, 'Î', row, col);
         } else if (type.equals(TileObjects.TileType.LIGHTPOST2.toString())) {
-            return new Terrain(TileObjects.TileType.LIGHTPOST2.toString(), null, Color.YELLOW, '¶', row, col);
+            return new Terrain(TileObjects.TileType.LIGHTPOST2.toString(), null, color, '¶', row, col);
         } else if (type.equals(TileObjects.TileType.GRASS.toString())) {
-            return new Terrain(TileObjects.TileType.GRASS.toString(), null, Color.GREEN, '▓', row, col);
+            return new Terrain(TileObjects.TileType.GRASS.toString(), null, color, '▓', row, col);
         } else if (type.equals(TileObjects.TileType.CEMENTEDWALKWAY.toString())) {
-            return new Terrain(TileObjects.TileType.CEMENTEDWALKWAY.toString(), null, Color.ORANGE, '▓', row, col);
+            return new Terrain(TileObjects.TileType.CEMENTEDWALKWAY.toString(), null, color, '▓', row, col);
         } else if (type.equals(TileObjects.TileType.CLOVERPLANT.toString())) {
-            return new Terrain(TileObjects.TileType.CLOVERPLANT.toString(), null, Color.GREEN, '♣', row, col);
+            return new Terrain(TileObjects.TileType.CLOVERPLANT.toString(), null, color, '♣', row, col);
         } else if (type.equals(TileObjects.TileType.SPADEPLANT.toString())) {
-            return new Terrain(TileObjects.TileType.SPADEPLANT.toString(), null, Color.ORANGE, '♠', row, col);
+            return new Terrain(TileObjects.TileType.SPADEPLANT.toString(), null, color, '♠', row, col);
+        } else if (type.equals(TileObjects.TileType.DIVIDER.toString())) {
+            return new Terrain(TileObjects.TileType.DIVIDER.toString(), null, color, '|', row, col);
+        } else if (type.equals(TileObjects.TileType.SHELF.toString())) {
+            return new Terrain(TileObjects.TileType.SHELF.toString(), null, color, '=', row, col);
+        } else if (type.equals(TileObjects.TileType.CHAIR.toString())) {
+            return new Terrain(TileObjects.TileType.CHAIR.toString(), null, color, 'L', row, col);
         } else {
             return null;
         }
