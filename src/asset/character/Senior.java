@@ -38,10 +38,16 @@ public class Senior extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 10) return actions[0]; //HOMESICK costs 10 energy
-        else if (toDo <= 1 && energy >= 5) return actions[1]; //TOO_MANY_MEMES costs 5 energy
+        if (toDo == 0 && energy >= 20){
+            energy-=20;
+            return actions[0]; //FINAL_PROJECT costs 20 energy
+        }
+        else if (toDo <= 1 && energy >= 15){
+            energy-=15;
+            return actions[1]; //CODE_REVIEW costs 15 energy
+        }
         else return ATTACK;
     }
 }

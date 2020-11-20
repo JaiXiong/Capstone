@@ -38,11 +38,17 @@ public class Dean extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 55) return actions[0];
-        else if (toDo <= 1 && energy >= 30) return actions[1];
-        else if (toDo <= 1 && energy >= 25) return actions[2];
+        if (toDo == 0 && energy >= 55){
+            return actions[0]; //ACCREDITATION costs 55 energy
+        }
+        else if (toDo <= 1 && energy >= 30){
+            return actions[1]; //COURSE_EVAL costs 30 energy
+        }
+        else if (toDo <= 2 && energy >= 25){
+            return actions[2]; //TECH_UPGRADE costs 25 energy
+        }
         else return ATTACK;
     }
 }

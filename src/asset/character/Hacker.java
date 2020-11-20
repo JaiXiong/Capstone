@@ -38,10 +38,16 @@ public class Hacker extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 75) return actions[0];
-        else if (toDo <= 1 && energy >= 50) return actions[1];
+        if (toDo == 0 && energy >= 75){
+            energy-=75;
+            return actions[0]; //HACK costs 75 energy
+        }
+        else if (toDo <= 1 && energy >= 50){
+            energy-=50;
+            return actions[1]; //VIRUS costs 50 energy
+        }
         else return ATTACK;
     }
 }

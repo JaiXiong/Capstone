@@ -38,11 +38,17 @@ public class Researcher extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 40) return actions[1];
-        else if (toDo <= 1 && energy >= 20) return actions[0];
-        else if(toDo <= 1 && energy>= 15) return actions[2];
+        if (toDo == 0 && energy >= 40){
+            return actions[1]; //SOFTWARE_DEV costs 40 energy
+        }
+        else if (toDo <= 1 && energy >= 20){
+            return actions[0]; //MISS_SEMICOLON costs 20 energy
+        }
+        else if(toDo <= 2 && energy>= 15){
+            return actions[2]; //PRESENTATION costs 15 energy
+        }
         else return ATTACK;
     }
 }

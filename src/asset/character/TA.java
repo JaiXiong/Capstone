@@ -38,10 +38,14 @@ public class TA extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 30) return actions[0];
-        else if (toDo <= 1 && energy >= 20) return actions[1];
+        if (toDo == 0 && energy >= 30){
+            return actions[0]; //GRADE_HOMEWORK costs 30 energy
+        }
+        else if (toDo <= 1 && energy >= 20){
+            return actions[1]; //DISCUSSION costs 20 energy
+        }
         else return ATTACK;
     }
 }
