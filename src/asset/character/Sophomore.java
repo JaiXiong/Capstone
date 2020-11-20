@@ -38,15 +38,16 @@ public class Sophomore extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String attack(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 15) return actions[0]; //BUCKLE_DOWN costs 15 energy
-        else if (toDo <= 1 && energy >= 5) return actions[1]; //STACK_OVERFLOW costs 5 energy
+        if (toDo == 0 && energy >= 15){
+            energy-=15;
+            return actions[0]; //BUCKLE_DOWN costs 15 energy
+        }
+        else if (toDo <= 1 && energy >= 5){
+            energy-=5;
+            return actions[1]; //STACK_OVERFLOW costs 5 energy
+        }
         else return ATTACK;
-    }
-
-    @Override
-    public String getNextAction() {
-        return WAIT; //todo
     }
 }

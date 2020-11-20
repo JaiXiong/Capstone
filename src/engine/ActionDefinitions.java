@@ -62,5 +62,5 @@ public class ActionDefinitions {
     public static final String PRESENTATION = "presentation";
 
     public static final String HACK = "hack";
-    public static final String VIRUS = "VIRUS";
+    public static final String VIRUS = "virus";
 }

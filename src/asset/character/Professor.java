@@ -38,11 +38,17 @@ public class Professor extends AbstractNonPlayerCharacter {
     }
 
     @Override
-    public String getNextAction(){
+    public String attackPC(){
         int toDo = (int)(Math.random()*4);
-        if (toDo == 0 && energy >= 45) return actions[0];
-        else if (toDo <= 1 && energy >= 25) return actions[1];
-        else if (toDo <= 1 && energy >= 20) return actions[2];
+        if (toDo == 0 && energy >= 45){
+            return actions[0]; //LECTURE costs 45 energy
+        }
+        else if (toDo <= 1 && energy >= 25){
+            return actions[1]; //ASSIGN_HOMEWORK costs 25 energy
+        }
+        else if (toDo <= 2 && energy >= 20){
+            return actions[2]; //LIVE_CODE costs 20 energy
+        }
         else return ATTACK;
     }
 }

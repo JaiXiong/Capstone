@@ -1,5 +1,12 @@
 package asset.character;
 
+import engine.Gamestate;
+
+import java.awt.*;
+
+import static engine.ActionDefinitions.*;
+import static engine.ActionDefinitions.ATTACK;
+
 public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
     /* characters may need the information on how they display
@@ -9,7 +16,7 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
     //TODO
     /* for now the getters will just give raw stats
-     * but if we add persistant effects we'll have to
+     * but if we add persistent effects we'll have to
      * figure those in
      */
     @Override
@@ -45,7 +52,10 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
     public int getXP(){
         return xp;
     }
-    public String attack() { return "default"; }
+
+    public String attackPC() { return "default"; }
+
+    public int takeDamage(String attack) { return health; }
 
     /* Makes hostile NPCs stronger and more varied.
      * Improves a random stat, repeated five times,
@@ -84,6 +94,98 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
                     resistB = resistB * .98;
                     break;
             }
+        }
+    }
+
+    /**
+     * Basic movement system, inherited by all NPCs (keep here)
+     * @return npc's next action name
+     */
+    @Override
+    public String getNextAction(){
+        Point pcWhere = Gamestate.getInstance().getPlayerCharacter().getLocation();
+        double distance = location.distance(pcWhere);
+
+        //if player is far, wander
+        if (distance > 5) {
+            int direction = (int)(Math.random()*16);
+            switch (direction){
+                case 0:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_NORTH))
+                        return MOVE_NORTH;
+                case 1:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_NORTH_EAST))
+                        return MOVE_NORTH_EAST;
+                case 2:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_EAST))
+                        return MOVE_EAST;
+                case 3:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_EAST))
+                        return MOVE_SOUTH_EAST;
+                case 4:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_SOUTH))
+                        return MOVE_SOUTH;
+                case 5:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_WEST))
+                        return MOVE_SOUTH_WEST;
+                case 6:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_WEST))
+                        return MOVE_WEST;
+                case 7:
+                    if(engine.Engine.getInstance().validateAction(this, MOVE_NORTH_WEST))
+                        return MOVE_NORTH_WEST;
+                default:
+                    return WAIT;
+            }
+        }
+
+        //TODO the way this handles approaching the player is super dumb
+        //if player is near, approach
+        else if (distance <= 5 && distance > 1) {
+            if (location.x > pcWhere.x) {
+                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_WEST)) {
+                    return MOVE_SOUTH_WEST;
+                }
+                else if (location.y < pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_NORTH_WEST)) {
+                    return MOVE_NORTH_WEST;
+                }
+                else if (engine.Engine.getInstance().validateAction(this, MOVE_WEST)){
+                    return MOVE_WEST;
+                }
+                else {
+                    return WAIT;
+                }
+            }
+            else if (location.x < pcWhere.x) {
+                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_EAST)) {
+                    return MOVE_SOUTH_EAST;
+                }
+                else if (location.y < pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_NORTH_EAST)) {
+                    return MOVE_NORTH_EAST;
+                }
+                else if (engine.Engine.getInstance().validateAction(this, MOVE_EAST)) {
+                    return MOVE_EAST;
+                }
+                else{
+                    return WAIT;
+                }
+            }
+            else {
+                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH)) {
+                    return MOVE_SOUTH;
+                }
+                else if (engine.Engine.getInstance().validateAction(this, MOVE_NORTH)) {
+                    return MOVE_NORTH;
+                }
+                else {
+                    return WAIT;
+                }
+            }
+        }
+
+        //if player is adjacent, do stuff
+        else {
+            return attackPC();
         }
     }
 }
