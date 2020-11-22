@@ -118,21 +118,24 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
      * takeDamage to modify that character's health.
      */
     public void takeDamage(double amount, String type, double chanceToHit){
-        if (Math.random() < evade * chanceToHit) {
-            double resist;
-            switch (type) {
-                case "typeA":
-                    resist = resistA;
-                    break;
-                case "typeB":
-                    resist = resistB;
-                    break;
-                case "heal":
-                    resist = -1.0;
-                    break;
-                default:
-                    resist = 1.0;
-            }
+        double resist;
+        double modifiedEvade = evade;
+        switch (type) {
+            case "typeA":
+                resist = resistA;
+                break;
+            case "typeB":
+                resist = resistB;
+                break;
+            case "heal":
+                resist = -1.0;
+                modifiedEvade = 1.0;
+                chanceToHit = 1.0;
+                break;
+            default:
+                resist = 1.0;
+        }
+        if (Math.random() < modifiedEvade * chanceToHit) {
             health -= (int)(amount * resist);
             if (health <= 0) health = 0; //TODO implement game over
         }
