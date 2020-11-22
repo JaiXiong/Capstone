@@ -127,8 +127,9 @@ public class Engine extends Thread {
         Point destination = getDestinationOrTarget(origin, colChange, rowChange);
         if (!thisFloor.isTerrainPassableAt(destination.y, destination.x)) {
 
-            //TODO this validation method currently only works for the player because of this door check
-            if (thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
+            //Players can attempt to open doors by moving into a closed door
+            if (Gamestate.getInstance().getCharacterAt(origin.y,origin.x).getInitiativeID() == 0 &&
+                    thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
                 Messages.addMessage(Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x)));
             }
 

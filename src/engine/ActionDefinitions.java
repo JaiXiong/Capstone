@@ -30,6 +30,10 @@ public class ActionDefinitions {
      */
 
     public static final String OPEN_DOOR = "openDoor";
+    public static final String EQUIP = "equip";
+    public static final String DROP = "dropItem";
+    public static final String PICKUP = "pickupItem";
+    public static final String USE_ITEM = "useItem";
 
     /*
      * Freshman (id 1) actions

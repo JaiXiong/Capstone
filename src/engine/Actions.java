@@ -2,6 +2,7 @@ package engine;
 
 import asset.character.*;
 import asset.world.Terrain;
+import asset.items.*;
 
 public class Actions {
     /* Actions should typically take actor and (if applicable) target parameters.
@@ -21,7 +22,9 @@ public class Actions {
         return (actor.getLeadName() + " attacks " + target.getName() + ".");
     }
 
-    // Player (id 0) actions.
+    /* Player (id 0) actions. Player actions generally don't have an 'actor' parameter
+     * because the player is the assumed actor.
+     */
 
     /**
      * OPEN_DOOR is triggered by attempting to move into a locked door, it is not manually used
@@ -35,7 +38,94 @@ public class Actions {
             door.unlock(code);
             return "You unlocked a door.";
         }
-        return "You weren't able to unlock the door";
+        return "You weren't able to unlock the door.";
+    }
+
+    /**
+     * EQUIP equips the selected item if able. Has no target parameter.
+     * @param item the item to equip.
+     * @return message for output to user
+     */
+    public static String equip(Item item) {
+        if (item instanceof EquipableItem) {
+            Gamestate.getInstance().getPlayerCharacter().equip((EquipableItem)item);
+            return ("You've equipped " + item.getName() + ".");
+        }
+        return ("Can't equip " + item.getName() + ".");
+    }
+
+    /**
+     * DROP removes the selected item from inventory to make space. Has no target parameter.
+     * @param item to be removed
+     * @return message for output to user
+     */
+    public static String dropItem(Item item) {
+        if (item != null) {
+            if (Gamestate.getInstance().getPlayerCharacter().removeFromInventory(item)) {
+                return ("Dropped " + item.getName() + ".");
+            }
+        }
+        return ("You don't have one of those to drop.");
+    }
+
+    /**
+     * USE_ITEM expends the selected item to change health and energy values.
+     * Has no target parameter.
+     * @param item the item to use
+     * @return message for output to user
+     */
+    public static String useItem(Item item) {
+        PlayerCharacter you = Gamestate.getInstance().getPlayerCharacter();
+        if (item != null) {
+            switch (item.getItemID()) {
+                case 100:
+                    if (you.removeFromInventory(item)) {
+                        you.useEnergy(-20);
+                        return "You chug an Energy Drink.";
+                    }
+                case 101:
+                    if (you.removeFromInventory(item)) {
+                        you.useEnergy(-50);
+                        return "You chug a Big Energy Drink, your heart races!";
+                    }
+                case 102:
+                    if (you.removeFromInventory(item)) {
+                        int cost = 20;
+                        if (cost < you.getEnergy()) cost = you.getEnergy();
+                        you.takeDamage(60.0,"heal", 1.0);
+                        you.useEnergy(cost);
+                        return "You drink some 'Juice' (21+).";
+                    }
+                case 103:
+                    if (you.removeFromInventory(item)) {
+                        you.takeDamage(30.0, "heal", 1.0);
+                        return "You eat some Craft Dinner.";
+                    }
+                case 104:
+                    if (you.removeFromInventory(item)) {
+                        you.takeDamage(70.0,"heal",1.0);
+                        return "You eat Some Kinda Tex-Mex? Delish.";
+                    }
+            }
+        }
+        return "That's not an item you can use.";
+    }
+
+    /**
+     * PICKUP adds the selected item to the player's inventory
+     * This action should be triggered by walking over an item or by
+     * defeating an NPC, it should not be callable directly by the player.
+     * Has no target parameter.
+     * @param item item to add to the player's inventory
+     * @return message for output to user
+     */
+    public static String pickupItem(Item item) {
+        if (item != null) {
+            if (Gamestate.getInstance().getPlayerCharacter().addToInventory(item)) {
+                return ("Picked up a " + item.getName() + ".");
+            }
+        }
+        return ("You try to pick up an item, but nothing's there...");
     }
 
     //Freshman (id 1) actions

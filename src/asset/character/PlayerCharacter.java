@@ -289,14 +289,12 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     public boolean keyRing(int unlockCode) {
         for (Item item : inventory) {
             if (item != null && item.getItemID() == unlockCode) {
-                removeFromInventory(item);
-                return true;
+                return removeFromInventory(item);
             }
         }
         for (Item item : inventory) {
             if (item != null && item.getItemID() == -1) {
-                removeFromInventory(item);
-                return true;
+                return removeFromInventory(item);
             }
         }
         return false;
