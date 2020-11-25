@@ -35,5 +35,6 @@ public class BaseMode extends IOMode {
         } else {
             consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
         }
+        consoleInterface.updateScreen();
     }
 }

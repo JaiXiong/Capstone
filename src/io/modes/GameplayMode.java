@@ -1,9 +1,12 @@
 package io.modes;
 
+import asset.ColorDefinitions;
 import asset.character.PlayerCharacter;
+import asset.items.EquipableItem;
 import engine.Engine;
 import engine.Gamestate;
 import engine.Messages;
+import io.FormatUtility;
 import io.file.FileManager;
 import io.gui.ConsoleInterface;
 import io.gui.GUIManager;
@@ -101,6 +104,47 @@ public class GameplayMode extends IOMode {
                     Color.BLACK,
                     line == firstLine ? Color.WHITE : Color.DARK_GRAY);
         }
-        //todo: other relevant information, stats, enemy info, etc.
+        PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
+        Dimension consoleSize = consoleInterface.getConsoleSize();
+        int consoleHeight = consoleSize.height;
+        int consoleWidth = consoleSize.width;
+        int statLine = consoleHeight - 3;
+        int gearLine1 = consoleHeight - 2;
+        int gearLine2 = consoleHeight - 1;
+        //stats:
+        int playerHealthCurrent = playerCharacter.getHealth();
+        int playerHealthMax = playerCharacter.getMaxHealth();
+        double healthPercent = (double)playerHealthCurrent / (double)playerHealthMax;
+        int writeColumn = consoleInterface.writeSingleLine(statLine, 0, "HP: ");
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
+                FormatUtility.percentage(healthPercent), Color.BLACK, FormatUtility.colorizeByPercentage(healthPercent));
+        int playerEnergyCurrent = playerCharacter.getEnergy();
+        int playerEnergyMax = playerCharacter.getMaxEnergy();
+        double energyPercent = (double)playerEnergyCurrent / (double)playerEnergyMax;
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1, "   Energy: ");
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
+                FormatUtility.percentage(energyPercent), Color.BLACK, FormatUtility.colorizeByPercentage(energyPercent));
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
+                "   Level: " + playerCharacter.getLevel() + "(" + playerCharacter.getXP() + " XP)");
+        consoleInterface.writeSingleLine(statLine, writeColumn + 1,
+                "                                                                    "); //fill line with blanks
+        //gear:
+        EquipableItem weapon1 = playerCharacter.getEquipOffA();
+        writeColumn = consoleInterface.writeSingleLine(gearLine1, 0,
+                "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()));
+        EquipableItem weapon2 = playerCharacter.getEquipOffB();
+        writeColumn = consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
+                "  Weapon: " + (weapon2 == null ? "(none)" : weapon2.getName()));
+        consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
+                "                                                                    "); //fill line with blanks
+        EquipableItem armor1 = playerCharacter.getEquipDefA();
+        writeColumn = consoleInterface.writeSingleLine(gearLine2, 0,
+                "Armor: " + (armor1 == null ? "(none)" : armor1.getName()));
+        EquipableItem armor2 = playerCharacter.getEquipDefB();
+        writeColumn = consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
+                "  Armor: " + (armor2 == null ? "(none)" : armor2.getName()));
+        consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
+                "                                                                    "); //fill line with blanks
+        consoleInterface.updateScreen();
     }
 }

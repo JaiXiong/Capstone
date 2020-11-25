@@ -25,6 +25,10 @@ public class ConsoleInterface {
         CONSOLE.clearScreen();
     }
 
+    public void updateScreen() {
+        CONSOLE.refresh();
+    }
+
     private Point getConsoleCenterpoint() {
         Dimension d = CONSOLE.getSize();
         return new Point(d.width / 2, d.height / 2);
@@ -57,9 +61,11 @@ public class ConsoleInterface {
                 continue;
             CONSOLE.update(r, c, character.getConsoleGlyph());
         }
-        CONSOLE.refresh();
     }
 
+    public Dimension getConsoleSize() {
+        return CONSOLE.getSize();
+    }
     /**
      * Find the best row to start a block of text so that it appears centered.
      * @param blockHeight the height of the block of text
@@ -92,18 +98,18 @@ public class ConsoleInterface {
      * Write a string as image data on the canvas. Strings exceeding the available size will be cut off.
      * These methods do not change the image visible on the screen.
      */
-    public void writeSingleLine(int row, int originColumn, String text) {
-        writeSingleLine(row, originColumn, text, new Color[0]);
+    public int writeSingleLine(int row, int originColumn, String text) {
+        return writeSingleLine(row, originColumn, text, new Color[0]);
     }
 
-    public void writeSingleLine(int row, int originColumn, String text, Color... colorOverrides) {
-        int currentColumn;
+    public int writeSingleLine(int row, int originColumn, String text, Color... colorOverrides) {
+        int currentColumn = -1;
         for (int i = 0; i < text.length(); ++i) {
             currentColumn = originColumn + i;
             if (CONSOLE.validatePosition(row, currentColumn))
                 CONSOLE.update(row, currentColumn, text.charAt(i), colorOverrides);
             else break;
         }
-        CONSOLE.refresh();
+        return (currentColumn < CONSOLE.getSize().width) ? currentColumn : -1;
     }
 }

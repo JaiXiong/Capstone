@@ -125,5 +125,6 @@ public abstract class MenuMode extends IOMode {
                             new Color[]{COLORS[BG_DIS], COLORS[FG_DIS]}
             );
         }
+        consoleInterface.updateScreen();
     }
 }
