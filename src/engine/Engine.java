@@ -1,6 +1,9 @@
 package engine;
 
 import asset.character.AbstractCharacter;
+import asset.character.PlayerCharacter;
+import asset.items.EquipableItem;
+import asset.items.Item;
 import asset.world.Floor;
 import io.gui.GUIManager;
 
@@ -55,8 +58,34 @@ public class Engine extends Thread {
         instance = null;
     }
 
+    /**
+     * Separate an action into a truncated action string and an index.
+     * @param action the original action String
+     * @return an array of Objects where the first item is the parsed action string
+     * (or the original if not an indexed action), and the second is the parsed index(or -1 if not an indexed action)
+     */
+    private Object[] parseIndexedAction(String action) {
+        Object[] indexParsedAction = new Object[2];
+        int indexStart = action.length() - 2;
+        String rawAction;
+        Integer actionIndex;
+        try {
+            actionIndex = Integer.parseInt(action.substring(indexStart)); //store the parsed index
+            rawAction = action.substring(0, indexStart); //truncate the action String
+        } catch (NumberFormatException nfe) {
+            actionIndex = -1; //no valid index
+            rawAction = action; //do not truncate the action String
+        }
+        indexParsedAction[0] = rawAction;
+        indexParsedAction[1] = actionIndex;
+        return indexParsedAction;
+    }
+
     private void handleAction(AbstractCharacter actor, String action) {
         Point actorAt = actor.getLocation();
+        Object[] indexedParse = parseIndexedAction(action);
+        action = (String)indexedParse[0];
+        int index = (Integer)indexedParse[1];
         switch (action) {
             case MOVE_NORTH:
                 actor.setLocation(getDestinationOrTarget(actorAt, 0, -1));
@@ -84,6 +113,14 @@ public class Engine extends Thread {
                 return;
             case WAIT:
                 return; //do nothing
+            case USE_AT:
+                if (index < 0 || !(actor instanceof  PlayerCharacter))
+                    throw new IllegalArgumentException("Tried to handle an invalid USE_ITEM action.");
+                Item item = ((PlayerCharacter)actor).getInventory().get(index);
+                Messages.addMessage((item instanceof EquipableItem)
+                        ? Actions.equip(item)
+                        : Actions.useItem(item));
+                return;
             default:
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
@@ -95,6 +132,9 @@ public class Engine extends Thread {
      */
     public boolean validateAction(AbstractCharacter actor, String action) {
         Point actorAt = actor.getLocation();
+        Object[] indexedParse = parseIndexedAction(action);
+        action = (String)indexedParse[0];
+        int index = (Integer)indexedParse[1];
         switch (action) {
             case MOVE_NORTH:
                 return validateMovement(actorAt, 0, -1);
@@ -114,6 +154,10 @@ public class Engine extends Thread {
                 return validateMovement(actorAt, -1, -1);
             case WAIT:
                 return true; //this is always fine
+            case USE_AT:
+                if (index < 0) return false; //invalid index
+                if (!(actor instanceof  PlayerCharacter)) return false; //npcs do not have inventories
+                return (index < ((PlayerCharacter)actor).getInventory().size()); //return whether the player's inventory contains the passed index.
                 default:
                     return false;
         }

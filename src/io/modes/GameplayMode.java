@@ -71,6 +71,14 @@ public class GameplayMode extends IOMode {
             case VK_NUMPAD7:
                 nextAction = MOVE_NORTH_WEST;
                 break;
+            case VK_SLASH:
+                if (mod == SHIFT_DOWN_MASK) {
+                    GUIManager.getInstance().transitionTo(new HelpScreenMode());
+                }
+                break;
+            case VK_U: //use an item from inventory
+                GUIManager.getInstance().transitionTo(new UseItemSelectMenuMode());
+                return; //don't break - next action info and engine notification will be handled by the selection menu
             //todo - lots here! movement commands, info commands, combat commands, etc.
             default:
                 //nothing to do - unhandled input is ignored

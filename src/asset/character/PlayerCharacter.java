@@ -52,6 +52,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
         //TODO PLAYTEST remove this key before release version
         inventory.add(Item.createItem(-1));
+
+        //TEST - add a consumable to player inventory
+        inventory.add(Item.createItem(100));
     }
 
     @Override
