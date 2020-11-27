@@ -61,8 +61,12 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.SHELF.toString(), null, color, '=', row, col);
         } else if (type.equals(TileObjects.TileType.CHAIR.toString())) {
             return new Terrain(TileObjects.TileType.CHAIR.toString(), null, color, 'L', row, col);
+        } else if (type.equals(TileObjects.TileType.STAIRCASE.toString())){
+            return new Terrain(TileObjects.TileType.STAIRCASE.toString(), null, color, '>', row, col);
+        } else if (type.equals(TileObjects.TileType.EMERGENCY_EXIT.toString())){
+            return new Terrain(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.RED, color, '<', row, col);
         } else {
-            return null;
+            throw new IllegalArgumentException("Unrecognized type: " + type);
         }
     }
 

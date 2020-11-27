@@ -16,25 +16,41 @@ public class TileObjects extends AbstractGameAsset {
      *  Define possible Tile Types
      */
     public enum TileType {
-        //override  toString() for enum, is there a better way?
-        WALL { public String toString() { return "wall"; } },
-        DOOR { public String toString() { return "door"; } },
-        TERRAIN { public String toString() {return "terrain"; } },
-        TREE { public String toString() {return "tree";}},
-        TABLE { public String toString() {return "table";}},
-        WATER { public String toString() {return "water";}},
-        TOILETRIGHT { public String toString() {return "toiletright";}},
-        TOILETLEFT { public String toString() {return "toiletleft";}},
-        LIGHTPOST1 { public String toString() {return "lightpost1";}},
-        LIGHTPOST2 { public String toString() {return "lightpost2";}},
-        GRASS { public String toString() {return "grass";}},
-        CEMENTEDWALKWAY { public String toString() {return "cementedwalkway";}},
-        CLOVERPLANT { public String toString() {return "cloverplant";}},
-        SPADEPLANT{ public String toString() {return "spadeplant";}},
-        SOLIDWALL{ public String toString() {return "solidwall";}},
-        DIVIDER{ public String toString() {return "divider";}},
-        SHELF{ public String toString() {return "shelf";}},
-        CHAIR{ public String toString() {return "chair";}},
+        TERRAIN("terrain"),
+        WALL("wall"),
+        DOOR("door"),
+        TREE("tree"),
+        TABLE("table"),
+        WATER("water"),
+        TOILETRIGHT("toiletright"),
+        TOILETLEFT("toiletleft"),
+        LIGHTPOST1("lightpost1"),
+        LIGHTPOST2("lightpost2"),
+        GRASS("grass"),
+        CEMENTEDWALKWAY("cementedwalkway"),
+        CLOVERPLANT("cloverplant"),
+        SPADEPLANT("spadeplant"),
+        SOLIDWALL("solidwall"),
+        DIVIDER("divider"),
+        SHELF("shelf"),
+        CHAIR("chair"),
+        STAIRCASE("staircase"), // transition to the next level
+        EMERGENCY_EXIT("emergency exit"); // transition to the hub
+
+        private final String NAME;
+
+        TileType(String name){
+            NAME = name;
+        }
+
+        public String getName() {
+            return NAME;
+        }
+
+        @Override
+        public String toString() {
+            return getName();
+        }
     }
 
     public TileObjects(String name, Color color, char symbol, int xSpot, int ySpot) {

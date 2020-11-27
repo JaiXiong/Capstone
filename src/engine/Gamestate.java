@@ -274,6 +274,12 @@ public class Gamestate implements Serializable {
                 if (i < 5 && j == 40) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
                 }
+                if (i == 21 && j == 5) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), Color.WHITE, i , j));
+                }
+                if (i == 12 && j == 24) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.WHITE, i , j));
+                }
             }
         }
         //Doors in horizontal divider.
