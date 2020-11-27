@@ -64,7 +64,23 @@ public class Gamestate implements Serializable {
              *     throw new IllegalArgumentException("Depth " + depth + " has no associated floor pattern.");
              */
             default: //for testing, pick a generation method and place the player in the center
-                Bigroom4();
+                //for order purposes i'll start listing it here.
+                //lobby
+                EMSCourtYard();
+                //basement storage
+                //Room1();
+                //basement corridor
+                //Room2();
+                //level 1 (Student lounge)
+                //Bigroom3();
+                //level 2 (Teachers lounge?)
+                //Bigroom4();
+                //level 3 (A lab??)
+                //Bigroom5();
+                //level 4 (Dean's office)
+                //Bigroom6();
+                //level 5 (roof top of EMS)
+                //Rooftop();
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
         }
         playerCharacter.setLocation(pcLocation);
@@ -107,6 +123,155 @@ public class Gamestate implements Serializable {
         }
     }
 
+    //player main lobby
+    private void EMSCourtYard() {
+        floor = new Floor(35, 38);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), customColorMaker(customColor.DARKGREEN));
+        for (int i = 0; i < 35; ++i) {
+            for (int j = 0; j < 38; ++j) {
+                //original work
+                if (i == 0 || j == 0 || i == 34 || j == 37) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTGREEN), i, j));
+                }
+                //make EMS building
+                if (i < 11) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.MARBLEBLUE), i, j));
+                }
+                //Make the E in EMS
+                if (i >= 1 && i <= 5) {
+                    if ((i == 2 && j == 11) || i == 4 && j == 11) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                    if ((i == 1) && (j >= 11 && j <= 14)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                    if ((i == 3) && (j >= 11 && j <= 14)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                    if ((i == 5) && (j >= 11 && j <= 14)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                }
+                //make the M in EMS
+                if (i >= 1 && i <= 5) {
+                    if (j == 16 || j == 21) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                    if ((i == 2 && j == 17) || (i == 3 && j == 18) || (i == 3 && j == 19) || (i == 2 && j == 20)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                }
+                //make the S in EMS
+                if (i >= 1 && i <= 5) {
+                    if (((i == 1) && (j >= 23 && j <= 26)) || ((i == 3) && (j >= 23 && j <= 26)) || ((i == 5) && (j >= 23 && j <= 26))) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                    if ((i == 2 && j == 23) || (i == 4 && j == 26)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SOLIDWALL.toString(), customColorMaker(customColor.GOLD), i, j));
+                    }
+                }
+                //make the windows to the EMS building
+                if (i == 2 || i == 3 || i == 7 || i == 8) {
+                    if (j == 2 || j == 3 || j == 7 || j == 8 || j == 29 || j == 30 || j == 34 || j == 35) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWCROSS.toString(), customColorMaker(customColor.LIGHTBLUE), i, j));
+                    }
+                }
+                //make top window bars for EMS windows
+                if ((i == 1 || i == 6) && (j == 1 || j == 6 || j == 28 || j == 33)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), Color.white, i, j));
+                } else if ((i == 1 || i == 6) && (j == 4 || j == 9 || j == 31 || j == 36)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), Color.white, i, j));
+                } else if ((i == 4 || i == 9) && (j == 1 || j == 6 || j == 28 || j == 33)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), Color.white, i, j));
+                } else if ((i == 4 || i == 9) && (j == 4 || j == 9 || j == 31 || j == 36)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), Color.white, i, j));
+                } else if (((i == 1 || i == 4 || i == 6 || i == 9) && (j == 2 || j == 3 || j == 7 || j == 8 || j == 29 || j == 30 || j == 34 || j == 35))) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), Color.white, i, j));
+                } else if ((j == 1 || j == 4 || j == 6 || j == 9 || j == 28 || j == 31 || j == 33 || j == 36) && (i == 2 || i == 3 || i == 7 || i == 8)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), Color.white, i, j));
+                }
+                //make door frames
+                if ((i == 9) && (j == 13 || j == 23)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                } else if ((i == 9) && (j == 15 || j == 25)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                } else if ((i == 10) && (j == 13 || j == 15 || j == 23 || j == 25)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                } else if ((i == 9) && (j == 14 || j == 24)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                }
+                //2 doors
+                if ((i == 10) && (j == 14 || j == 24)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), i, j));
+                }
+                //pebble walk way
+                if ((i >= 11 && i <= 33) && (j == 14 || j == 24)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CEMENTEDWALKWAY.toString(), customColorMaker(customColor.GOLD), i, j));
+                }
+                //pebble garden path
+                if ((i == 12) && (j >= 25 && j <= 34)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CEMENTEDWALKWAY.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i == 29) && (j >= 25 && j <= 34)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CEMENTEDWALKWAY.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i >= 12 && i <= 29) && (j == 34)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CEMENTEDWALKWAY.toString(), customColorMaker(customColor.GOLD), i, j));
+                }
+                //TODO need to see if it's work refactoring background colors but grass doesn't look good with a black background, but it would be nice to have grass
+                //grass
+                /*if ((i >= 11 && i <= 33) && (j >= 1 && j <= 13 )) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.GRASS.toString(), customColorMaker(customColor.LIGHTGREEN), i, j));
+                }*/
+
+                //water pool
+                if ((i >= 15 && i <= 25) && (j == 4 || j == 10)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), Color.DARK_GRAY, i, j));
+                } else if (i == 14 && j == 4) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), Color.DARK_GRAY, i, j));
+                } else if (i == 26 && j == 4) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), Color.DARK_GRAY, i, j));
+                } else if (i == 14 && j == 10) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), Color.DARK_GRAY, i, j));
+                } else if (i == 26 && j == 10) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), Color.DARK_GRAY, i, j));
+                } else if ((i == 14 || i == 26) && (j >= 4 && j <= 10)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), Color.DARK_GRAY, i, j));
+                } else {
+                    //add water
+                    if ((i >= 15 && i <= 25) && (j >= 5 && j <= 9)) {
+                        floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WATER.toString(), Color.CYAN, i, j));
+                    }
+                }
+                //add left yard chairs
+                if ((i == 15 || i == 16) && (j == 12 || j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i == 20 || i == 21) && (j == 12 || j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i == 25 || i == 26) && (j == 12 || j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.GOLD), i, j));
+                }
+
+                //add right yard chairs
+                if ((i == 15 || i == 16) && (j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRRIGHT.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i == 20 || i == 21) && (j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRRIGHT.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i == 25 || i == 26) && (j == 26)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CHAIRRIGHT.toString(), customColorMaker(customColor.GOLD), i, j));
+                }
+
+                //add plants
+                if ((i >= 14 && i <= 26) && (j == 29)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.CLOVERPLANT.toString(), customColorMaker(customColor.GOLD), i, j));
+                } else if ((i >= 14 && i <= 26) && (j == 30)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.TREE.toString(), customColorMaker(customColor.LIGHTRED), i, j));
+                } else if ((i >= 14 && i <= 26) && (j == 31)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.TREE.toString(), Color.GREEN, i, j));
+                } else if ((i >= 14 && i <= 26) && (j == 32)) {
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.SPADEPLANT.toString(), customColorMaker(customColor.PURPLE), i, j));
+                }
+            }
+        }
+    }
 
     private void Room1() {
         floor = new Floor(16, 16);
@@ -320,10 +485,10 @@ public class Gamestate implements Serializable {
             floor.setTerrainAt(i, 46, floor.makeFloor(TileObjects.TileType.SHELF.toString(), Color.BLUE, i, 46));
         }
         //Chairs in top left room.
-        floor.setTerrainAt(2, 3, floor.makeFloor(TileObjects.TileType.CHAIR.toString(), Color.LIGHT_GRAY, 2, 3));
-        floor.setTerrainAt(3, 3, floor.makeFloor(TileObjects.TileType.CHAIR.toString(), Color.LIGHT_GRAY, 3, 3));
-        floor.setTerrainAt(5, 3, floor.makeFloor(TileObjects.TileType.CHAIR.toString(), Color.LIGHT_GRAY, 5, 3));
-        floor.setTerrainAt(6, 3, floor.makeFloor(TileObjects.TileType.CHAIR.toString(), Color.LIGHT_GRAY, 6, 3));
+        floor.setTerrainAt(2, 3, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), Color.LIGHT_GRAY, 2, 3));
+        floor.setTerrainAt(3, 3, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), Color.LIGHT_GRAY, 3, 3));
+        floor.setTerrainAt(5, 3, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), Color.LIGHT_GRAY, 5, 3));
+        floor.setTerrainAt(6, 3, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), Color.LIGHT_GRAY, 6, 3));
     }
 
     private void Bigroom5() {

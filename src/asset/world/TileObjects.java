@@ -33,7 +33,15 @@ public class TileObjects extends AbstractGameAsset {
         SOLIDWALL("solidwall"),
         DIVIDER("divider"),
         SHELF("shelf"),
-        CHAIR("chair"),
+        CHAIRLEFT("chairleft"),
+        CHAIRRIGHT("chairright"),
+        WINDOWCROSS("windowcross"),
+        WINDOWHORIZONTALBAR("windowhoriztonalbar"),
+        WINDOWVERTICALBAR("windowverticalcross"),
+        WINDOWLEFTBOTTOMCORNERBAR("windowleftbottomcornercross"),
+        WINDOWRIGHTBOTTOMCORNERBAR("windowrightbottomcornercross"),
+        WINDOWLEFTTOPCORNERBAR("windowleftopcornercross"),
+        WINDOWRIGHTTOPCORNERBAR("windowrighttopcornercross"),
         STAIRCASE("staircase"), // transition to the next level
         EMERGENCY_EXIT("emergency exit"); // transition to the hub
 

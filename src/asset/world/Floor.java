@@ -59,12 +59,28 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.DIVIDER.toString(), null, color, '|', row, col);
         } else if (type.equals(TileObjects.TileType.SHELF.toString())) {
             return new Terrain(TileObjects.TileType.SHELF.toString(), null, color, '=', row, col);
-        } else if (type.equals(TileObjects.TileType.CHAIR.toString())) {
-            return new Terrain(TileObjects.TileType.CHAIR.toString(), null, color, 'L', row, col);
+        } else if (type.equals(TileObjects.TileType.CHAIRLEFT.toString())) {
+            return new Terrain(TileObjects.TileType.CHAIRLEFT.toString(), null, color, 'L', row, col);
         } else if (type.equals(TileObjects.TileType.STAIRCASE.toString())){
             return new Terrain(TileObjects.TileType.STAIRCASE.toString(), null, color, '>', row, col);
         } else if (type.equals(TileObjects.TileType.EMERGENCY_EXIT.toString())){
             return new Terrain(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.RED, color, '<', row, col);
+        } else if (type.equals(TileObjects.TileType.CHAIRRIGHT.toString())) {
+            return new Terrain(TileObjects.TileType.CHAIRRIGHT.toString(), null, color, '┘', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWCROSS.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWCROSS.toString(), null, color, '┼', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWHORIZONTALBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), null, color, '═', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWVERTICALBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWVERTICALBAR.toString(), null, color, '║', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), null, color, '╚', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), null, color, '╝', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), null, color, '╔', row, col);
+        } else if (type.equals(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString())) {
+            return new Terrain(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), null, color, '╗', row, col);
         } else {
             throw new IllegalArgumentException("Unrecognized type: " + type);
         }
@@ -119,6 +135,8 @@ public class Floor implements Serializable {
                 return false;
             case "door":
                 return (!terrain[r][c].getLocked());
+            case "cementedwalkway":
+                return true;
             default:
                 return false; //hack
                 //throw new IllegalArgumentException("Unhandled terrain string: " + item);
