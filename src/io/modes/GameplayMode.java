@@ -1,6 +1,7 @@
 package io.modes;
 
 import asset.ColorDefinitions;
+import asset.character.AbstractCharacter;
 import asset.character.PlayerCharacter;
 import asset.items.EquipableItem;
 import asset.world.Terrain;
@@ -185,6 +186,19 @@ public class GameplayMode extends IOMode {
                 "  Armor: " + (armor2 == null ? "(none)" : armor2.getName()));
         consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
                 "                                                                    "); //fill line with blanks
+        //target:
+        writeColumn = consoleWidth - 16;
+        int writeRow = 0;
+        consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ");
+        AbstractCharacter playerTarget = playerCharacter.getTarget();
+        if (playerTarget == null) {
+            consoleInterface.writeSingleLine(writeRow, writeColumn, "<no target>     ");
+        } else {
+            consoleInterface.writeSingleLine(writeRow++, writeColumn, playerTarget.getLeadName());
+            double targetHPPct = (double)playerTarget.getHealth() / (double)playerTarget.getMaxHealth();
+            consoleInterface.writeSingleLine(writeRow, writeColumn, "HP: " + FormatUtility.percentage(targetHPPct)
+                    + "            ");
+        }
         consoleInterface.updateScreen();
     }
 }

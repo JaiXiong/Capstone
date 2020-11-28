@@ -3,6 +3,7 @@ package asset.character;
 import engine.Gamestate;
 
 import java.awt.*;
+import java.util.Iterator;
 
 import static engine.ActionDefinitions.*;
 import static engine.ActionDefinitions.ATTACK;
@@ -185,5 +186,9 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
         else {
             return attackPC();
         }
+    }
+
+    public void die() {
+        //todo - award XP and items here? if this needs to be specific, implement it in subclasses as necessary.
     }
 }

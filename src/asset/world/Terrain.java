@@ -20,8 +20,8 @@ public class Terrain extends TileObjects{
     }
 
     @Override
-    public ConsoleGlyph getConsoleGlyph() {
-        return new ConsoleGlyph(getBackgroundColor(), getColor(), getSymbol());
+    public ConsoleGlyph getConsoleGlyph() { //display unlocked doors with a different glyph
+        return new ConsoleGlyph(getBackgroundColor(), getColor(), (type.equals("door") && !locked ? '\'' : getSymbol()));
     }
 
 

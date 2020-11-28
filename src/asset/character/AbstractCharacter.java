@@ -47,6 +47,9 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
 
     Point location = null;
 
+    //this character's current target
+    private AbstractCharacter target = null;
+
     //TODO buildActions may not be necessary anymore
 
     /* helper method for building the actions list so its
@@ -137,9 +140,14 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
         }
         if (Math.random() < modifiedEvade * chanceToHit) {
             health -= (int)(amount * resist);
-            if (health <= 0) health = 0; //TODO implement game over
+            if (health <= 0) {
+                health = 0;
+                die();
+            }
         }
     }
+
+    public abstract void die();
 
     public Point getLocation() {
         return location;
@@ -147,6 +155,16 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
 
     public void setLocation(Point location) {
         this.location = location;
+    }
+
+    public AbstractCharacter getTarget() {
+        if (target != null && target.getHealth() <= 0)
+            setTarget(null); //target is dead, clear it
+        return target;
+    }
+
+    public void setTarget(AbstractCharacter target) {
+        this.target = target;
     }
 
     abstract public String getNextAction();

@@ -9,6 +9,7 @@ import io.gui.GUIManager;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import static engine.ActionDefinitions.*;
 
@@ -46,7 +47,13 @@ public class Engine extends Thread {
             //rather than saving a reference to this, we request it each iteration,
             // in case of major updates like a new floor being generated with a new list of characters
             characters = Gamestate.getInstance().getCharacters();
-            for (AbstractCharacter character : characters) {
+            AbstractCharacter character;
+            for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
+                character = i.next();
+                if (character.getHealth() <= 0) { //check that this character is alive - if not, remove it.
+                    i.remove();
+                    continue;
+                }
                 String action = character.getNextAction();
                 if (!validateAction(character, action))
                     action = WAIT;
@@ -126,10 +133,11 @@ public class Engine extends Thread {
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
         AbstractCharacter target = Gamestate.getInstance().getCharacterAt(destination.y, destination.x);
-        if (target == null)
-            actor.setLocation(destination);
-        else
+        if (target != null) {
+            actor.setTarget(target);
             Messages.addMessage(Actions.attack(actor, target));
+        } else
+            actor.setLocation(destination);
     }
 
     /**
@@ -185,7 +193,7 @@ public class Engine extends Thread {
 
             return false; //impassable terrain at destination
         }
-        return true; //Gamestate.getInstance().getCharacterAt(destination.y, destination.x) == null;
+        return true;
     }
 
     /**

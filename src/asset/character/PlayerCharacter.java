@@ -6,6 +6,7 @@ package asset.character;
 import asset.items.EquipableItem;
 import asset.items.Item;
 import console.ConsoleGlyph;
+import engine.Messages;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -150,6 +151,12 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         if (totalResB < .1) totalResB = .1;
 
         return totalResB;
+    }
+
+    @Override
+    public void die() {
+        Messages.addMessage("You have died!");
+        //todo - actually kill the player.
     }
 
     @Override

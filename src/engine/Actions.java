@@ -20,12 +20,11 @@ public class Actions {
     public static String attack(AbstractCharacter actor, AbstractCharacter target) {
         //customize our message for the player if appropriate:
         boolean isPc0 = actor == Gamestate.getInstance().getPlayerCharacter();
-        boolean isPc1 = target == Gamestate.getInstance().getPlayerCharacter();
         target.takeDamage(actor.getOffenseA(), "typeA", actor.getAccuracy());
         return (
-                (isPc0 ? " You" : actor.getLeadName()) +
+                actor.getLeadName() +
                         " attack" + (isPc0 ? " " : "s ") +
-                        (isPc1 ? " you." : target.getName()) + ".");
+                        target.getName() + ".");
     }
 
     /* Player (id 0) actions. Player actions generally don't have an 'actor' parameter
