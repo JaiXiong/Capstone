@@ -83,34 +83,35 @@ public class Engine extends Thread {
 
     private void handleAction(AbstractCharacter actor, String action) {
         Point actorAt = actor.getLocation();
+        Point destination;
         Object[] indexedParse = parseIndexedAction(action);
         action = (String)indexedParse[0];
         int index = (Integer)indexedParse[1];
         switch (action) {
             case MOVE_NORTH:
-                actor.setLocation(getDestinationOrTarget(actorAt, 0, -1));
-                return;
+                destination = getDestinationOrTarget(actorAt, 0, -1);
+                break;
             case MOVE_NORTH_EAST:
-                actor.setLocation(getDestinationOrTarget(actorAt, 1, -1));
-                return;
+                destination = getDestinationOrTarget(actorAt, 1, -1);
+                break;
             case MOVE_EAST:
-                actor.setLocation(getDestinationOrTarget(actorAt, 1, 0));
-                return;
+                destination = getDestinationOrTarget(actorAt, 1, 0);
+                break;
             case MOVE_SOUTH_EAST:
-                actor.setLocation(getDestinationOrTarget(actorAt, 1, 1));
-                return;
+                destination = getDestinationOrTarget(actorAt, 1, 1);
+                break;
             case MOVE_SOUTH:
-                actor.setLocation(getDestinationOrTarget(actorAt, 0, 1));
-                return;
+                destination = getDestinationOrTarget(actorAt, 0, 1);
+                break;
             case MOVE_SOUTH_WEST:
-                actor.setLocation(getDestinationOrTarget(actorAt, -1, 1));
-                return;
+                destination = getDestinationOrTarget(actorAt, -1, 1);
+                break;
             case MOVE_WEST:
-                actor.setLocation(getDestinationOrTarget(actorAt, -1, 0));
-                return;
+                destination = getDestinationOrTarget(actorAt, -1, 0);
+                break;
             case MOVE_NORTH_WEST:
-                actor.setLocation(getDestinationOrTarget(actorAt, -1, -1));
-                return;
+                destination = getDestinationOrTarget(actorAt, -1, -1);
+                break;
             case WAIT:
                 return; //do nothing
             case USE_AT:
@@ -124,6 +125,11 @@ public class Engine extends Thread {
             default:
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
+        AbstractCharacter target = Gamestate.getInstance().getCharacterAt(destination.y, destination.x);
+        if (target == null)
+            actor.setLocation(destination);
+        else
+            Messages.addMessage(Actions.attack(actor, target));
     }
 
     /**
@@ -179,7 +185,7 @@ public class Engine extends Thread {
 
             return false; //impassable terrain at destination
         }
-        return Gamestate.getInstance().getCharacterAt(destination.y, destination.x) == null;
+        return true; //Gamestate.getInstance().getCharacterAt(destination.y, destination.x) == null;
     }
 
     /**

@@ -129,14 +129,12 @@ public class Floor implements Serializable {
         //to do, I need to change  these to the standardize enum string??
         String item = terrain[r][c].getType();
         switch (item) {
-            case "terrain":
+            case "terrain": case "cementedwalkway": case "staircase": case "emergency exit":
                 return true;
             case "wall":
                 return false;
             case "door":
                 return (!terrain[r][c].getLocked());
-            case "cementedwalkway":
-                return true;
             default:
                 return false; //hack
                 //throw new IllegalArgumentException("Unhandled terrain string: " + item);

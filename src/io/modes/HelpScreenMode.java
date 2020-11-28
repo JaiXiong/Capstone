@@ -9,7 +9,8 @@ public class HelpScreenMode extends TextDisplayMode {
                 "Arrow Keys: Move (or Attack) in direction",
                 "u: (U)se an item from your inventory(equip or consume)",
                 "Ctrl-q: (Q)uit the game without saving",
-                "Ctrl-s: (S)ave the game and exit to the main menu"
+                "Ctrl-s: (S)ave the game and exit to the main menu",
+                ">, <: take a staircase or emergency exit"
         );
     }
 }

@@ -3,6 +3,8 @@ package io.modes;
 import asset.ColorDefinitions;
 import asset.character.PlayerCharacter;
 import asset.items.EquipableItem;
+import asset.world.Terrain;
+import asset.world.TileObjects;
 import engine.Engine;
 import engine.Gamestate;
 import engine.Messages;
@@ -26,6 +28,8 @@ import static engine.ActionDefinitions.*;
 public class GameplayMode extends IOMode {
     @Override
     public void handle(KeyEvent ke) {
+        PlayerCharacter pc;
+        Point at;
         int code = ke.getKeyCode();
         int mod = ke.getModifiersEx();
         String nextAction = null;
@@ -79,6 +83,34 @@ public class GameplayMode extends IOMode {
             case VK_U: //use an item from inventory
                 GUIManager.getInstance().transitionTo(new UseItemSelectMenuMode());
                 return; //don't break - next action info and engine notification will be handled by the selection menu
+            case VK_PERIOD: // ">"
+                if (mod == SHIFT_DOWN_MASK) {
+                    pc = Gamestate.getInstance().getPlayerCharacter();
+                    at = pc.getLocation();
+                    if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.STAIRCASE.getName())) {
+                        Messages.addMessage("You advance to the next floor.");
+                        Gamestate.getInstance().nextFloor();
+                        GUIManager.getInstance().updateScreen();
+                        return;
+                    } else {
+                        Messages.addMessage("There is no staircase here.");
+                    }
+                }
+                break;
+            case VK_COMMA: // "<"
+                if (mod == SHIFT_DOWN_MASK) {
+                    pc = Gamestate.getInstance().getPlayerCharacter();
+                    at = pc.getLocation();
+                    if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.EMERGENCY_EXIT.getName())) {
+                        Messages.addMessage("You escape through the emergency exit.");
+                        Gamestate.getInstance().returnToBase();
+                        GUIManager.getInstance().updateScreen();
+                        return;
+                    } else {
+                        Messages.addMessage("There is no emergency exit here.");
+                    }
+                }
+                break;
             //todo - lots here! movement commands, info commands, combat commands, etc.
             default:
                 //nothing to do - unhandled input is ignored

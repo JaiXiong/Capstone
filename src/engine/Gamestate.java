@@ -14,7 +14,6 @@ public class Gamestate implements Serializable {
 
     private Floor floor;
     private ArrayList<AbstractCharacter> characters;
-
     /**
      * The difficulty level of the current floor.
      * This is NOT the game's difficulty setting - instead it corresponds to the floor's "depth" in the game.
@@ -27,11 +26,20 @@ public class Gamestate implements Serializable {
      * ...
      * 8 - senior year, second semester
      */
-    private int floorDifficulty = -1;
+    private int floorDifficulty;
 
     private Gamestate() {
-        generateAndPopulateFloor(0);
+        returnToBase();
     }
+
+    public void returnToBase() {
+        generateAndPopulateFloor(floorDifficulty = 0);
+    }
+
+    public void nextFloor() {
+        generateAndPopulateFloor(++floorDifficulty);
+    }
+
 
     /**
      * Call this method to change the floor the player is on.
@@ -39,49 +47,47 @@ public class Gamestate implements Serializable {
     private void generateAndPopulateFloor(int depth) {
         if (depth < 0)
             throw new IllegalArgumentException("Depth may not be less than zero.");
-        setFloorDifficulty(depth);
         //PlayerCharacter playerCharacter = depth == 0 ? new PlayerCharacter() : getPlayerCharacter();
         PlayerCharacter playerCharacter = new PlayerCharacter(); //todo - remove this line and use the one above. For now, this lets us test depths other than 4(if we need to generate NPCs)
         Point pcLocation;
         Point bossLocation = null;
         switch (depth) {
-            /*
-             * case 0:
-             *     Call a generation method corresponding to the hub level.
-             *     Set pcLocation to an appropriate point on that level - the player's dorm, for example.
-             * case 1:
-             *     Call a generation method corresponding to the first game floor.
-             *     Set pcLocation to wherever we want the player to appear on that floor.
-             * case 2:
-             *     Call a generation method corresponding to the second game floor.
-             *     Set pcLocation to wherever we want the player to appear on that floor.
-             * case 3:
-             *     Call a generation method corresponding to the first game floor.
-             *     Set pcLocation to wherever we want the player to appear on that floor.
-             *     Set bossLocation to wherever we want the boss to appear on that floor.
-             * ... etc.
-             * default:
-             *     throw new IllegalArgumentException("Depth " + depth + " has no associated floor pattern.");
-             */
-            default: //for testing, pick a generation method and place the player in the center
-                //for order purposes i'll start listing it here.
-                //lobby
+            case 0:
                 EMSCourtYard();
-                //basement storage
-                //Room1();
-                //basement corridor
-                //Room2();
-                //level 1 (Student lounge)
-                //Bigroom3();
-                //level 2 (Teachers lounge?)
-                //Bigroom4();
-                //level 3 (A lab??)
-                //Bigroom5();
-                //level 4 (Dean's office)
-                //Bigroom6();
-                //level 5 (roof top of EMS)
-                //Rooftop();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2); //todo - edit pcLocations if we want specific spawn points
+                break;
+            case 1:
+                Room1();
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                break;
+            case 2:
+                Room2();
+                pcLocation = new Point(1, 1);
+                break;
+            case 3:
+                Bigroom3();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                bossLocation = new Point(1, 1); //todo - where's a good place to put the boss?
+                break;
+            case 4:
+                Bigroom4();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                break;
+            case 5:
+                Bigroom5();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                break;
+            case 6:
+                Bigroom6();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                bossLocation = new Point(1, 1); //todo - where does this boss go?
+                break;
+            case 7:
+                Rooftop();
+                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                break;
+            default:
+                throw new IllegalArgumentException("Depth " + depth + " has no associated floor pattern.");
         }
         playerCharacter.setLocation(pcLocation);
         characters = new ArrayList<>();
@@ -104,10 +110,6 @@ public class Gamestate implements Serializable {
 
     public int getFloorDifficulty() {
         return floorDifficulty;
-    }
-
-    public void setFloorDifficulty(int floorDifficulty) {
-        this.floorDifficulty = floorDifficulty;
     }
 
     private void Testroom() {
@@ -200,9 +202,9 @@ public class Gamestate implements Serializable {
                 } else if ((i == 9) && (j == 14 || j == 24)) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
                 }
-                //2 doors
+                //2 staircases into the first level
                 if ((i == 10) && (j == 14 || j == 24)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.BROWN), i, j));
                 }
                 //pebble walk way
                 if ((i >= 11 && i <= 33) && (j == 14 || j == 24)) {
@@ -305,6 +307,9 @@ public class Gamestate implements Serializable {
                 if ((i == 3 || i == 8 || i == 12) && (j == 6 || j == 9)){
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), i, j));
                 }
+                //make staircase and emergency exit:
+                floor.setTerrainAt(14, 7, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.BROWN), 14, 7));
+                floor.setTerrainAt(14, 8, floor.makeFloor(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.WHITE, 14, 7));
             }
         }
     }
@@ -342,6 +347,11 @@ public class Gamestate implements Serializable {
         floor.setTerrainAt(13, 5, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 13, 5));
         //create the walls to make room
         floor.setTerrainAt(14, 5, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.BROWN), 14, 5));
+        //create the emergency exit:
+        floor.setTerrainAt(1, 1, floor.makeFloor(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.WHITE, 1, 1));
+        //create the staircase:
+        floor.setTerrainAt(13, 14, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.BROWN), 13, 14));
+
     }
 
     private void Bigroom3() {
