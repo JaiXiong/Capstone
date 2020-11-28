@@ -5,7 +5,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="">
+    <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Added new player hub/lobby.&#10;2. Added some idea of a new room / level order.&#10;3. Added new window object to object enum.&#10;4. Added new tiletype for the new objects.&#10;5. Added passable for cementwalkway.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/world/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/Floor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/asset/world/TileObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/TileObjects.java" afterDir="false" />
@@ -32,26 +32,6 @@
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="master" />
-      </map>
-    </option>
-    <favorite-branches>
-      <branch-storage>
-        <map>
-          <entry type="REMOTE">
-            <value>
-              <list>
-                <branch-info repo="$PROJECT_DIR$" source="origin/jai" />
-              </list>
-            </value>
-          </entry>
-        </map>
-      </branch-storage>
-    </favorite-branches>
     <excluded-from-favorite>
       <branch-storage>
         <map>
@@ -66,12 +46,35 @@
             <value>
               <list>
                 <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+                <branch-info repo="$PROJECT_DIR$/../Console595" source="origin/master" />
               </list>
             </value>
           </entry>
         </map>
       </branch-storage>
     </excluded-from-favorite>
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/jai" />
+                <branch-info repo="$PROJECT_DIR$/../Console595" source="origin/jai" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$/../Console595" value="jai" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="ProjectId" id="1jaOwBbVQJPUFeraUFYk5JJmqeA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -270,29 +273,30 @@
     <MESSAGE value="ConsoleInterface.drawFloor() now correctly uses actor locations rather than a hack to draw characters." />
     <MESSAGE value="1. Bigroom6(), Deans office, Dept. chair, assistant&#10;2. Rooftop(), roof top, greenhouse&#10;&#10;Added 2 rooms." />
     <MESSAGE value="Player Inventory is now an ArrayList&lt;Item&gt;, not an Item[].&#10;&#10;Simplified addToInventory and removeItemFromInventory to make use of ArrayList API.&#10;&#10;Updated Test_PlayerCharacter to assert Inventory.size() = 0(rather than that each index is null)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Player Inventory is now an ArrayList&lt;Item&gt;, not an Item[].&#10;&#10;Simplified addToInventory and removeItemFromInventory to make use of ArrayList API.&#10;&#10;Updated Test_PlayerCharacter to assert Inventory.size() = 0(rather than that each index is null)." />
+    <MESSAGE value="1. Added new player hub/lobby.&#10;2. Added some idea of a new room / level order.&#10;3. Added new window object to object enum.&#10;4. Added new tiletype for the new objects.&#10;5. Added passable for cementwalkway." />
+    <option name="LAST_COMMIT_MESSAGE" value="1. Added new player hub/lobby.&#10;2. Added some idea of a new room / level order.&#10;3. Added new window object to object enum.&#10;4. Added new tiletype for the new objects.&#10;5. Added passable for cementwalkway." />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1370" height="326" key="GridCell.Tab.0.bottom" timestamp="1605846805067">
+    <state width="1258" height="48" key="GridCell.Tab.0.bottom" timestamp="1606517863167">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1370" height="326" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1605846805067" />
-    <state width="1370" height="326" key="GridCell.Tab.0.center" timestamp="1605846805067">
+    <state width="1258" height="48" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863167" />
+    <state width="1258" height="48" key="GridCell.Tab.0.center" timestamp="1606517863166">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1370" height="326" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1605846805067" />
-    <state width="1370" height="326" key="GridCell.Tab.0.left" timestamp="1605846805067">
+    <state width="1258" height="48" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
+    <state width="1258" height="48" key="GridCell.Tab.0.left" timestamp="1606517863166">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1370" height="326" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1605846805067" />
-    <state width="1370" height="326" key="GridCell.Tab.0.right" timestamp="1605846805067">
+    <state width="1258" height="48" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
+    <state width="1258" height="48" key="GridCell.Tab.0.right" timestamp="1606517863166">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="1370" height="326" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1605846805067" />
-    <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1604039296081">
+    <state width="1258" height="48" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1606518514582">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1604039296081" />
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606518514582" />
     <state x="1546" y="324" key="refactoring.ChangeSignatureDialog" timestamp="1605846547809">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
