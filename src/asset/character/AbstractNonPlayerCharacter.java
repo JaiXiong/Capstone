@@ -10,16 +10,6 @@ import static engine.ActionDefinitions.ATTACK;
 
 public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
-    /* characters may need the information on how they display
-     * (which char, what color, what background) included in
-     * the character class
-     */
-
-    //TODO
-    /* for now the getters will just give raw stats
-     * but if we add persistent effects we'll have to
-     * figure those in
-     */
     @Override
     public double getOffenseA() {
         return offenseA;
@@ -138,8 +128,8 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
             }
         }
 
-        //TODO the way this handles approaching the player is super dumb
-        //if player is near, approach
+        //TODO approaching can be smarter. Stretch goal.
+        //if player is near, approach.
         else if (distance <= 5 && distance > 1) {
             if (location.x > pcWhere.x) {
                 if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_WEST)) {
@@ -188,7 +178,6 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
         }
     }
 
-    public void die() {
-        //todo - award XP and items here? if this needs to be specific, implement it in subclasses as necessary.
-    }
+    //reward XP, a key, and potentially an item and/or a piece of gear
+    public abstract void die();
 }

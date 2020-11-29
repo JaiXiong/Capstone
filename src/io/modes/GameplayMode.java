@@ -175,15 +175,15 @@ public class GameplayMode extends IOMode {
                 "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()));
         EquipableItem weapon2 = playerCharacter.getEquipOffB();
         writeColumn = consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
-                "  Weapon: " + (weapon2 == null ? "(none)" : weapon2.getName()));
+                "  Tool: " + (weapon2 == null ? "(none)" : weapon2.getName()));
         consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
                 "                                                                    "); //fill line with blanks
         EquipableItem armor1 = playerCharacter.getEquipDefA();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, 0,
-                "Armor: " + (armor1 == null ? "(none)" : armor1.getName()));
+                "Clothes: " + (armor1 == null ? "(none)" : armor1.getName()));
         EquipableItem armor2 = playerCharacter.getEquipDefB();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
-                "  Armor: " + (armor2 == null ? "(none)" : armor2.getName()));
+                "  Hat: " + (armor2 == null ? "(none)" : armor2.getName()));
         consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
                 "                                                                    "); //fill line with blanks
         //target:

@@ -2,7 +2,10 @@ package asset.character;
 
 import asset.character.AbstractNonPlayerCharacter;
 import java.awt.*;
+
+import static asset.items.Item.createItem;
 import static engine.ActionDefinitions.*;
+import static engine.Actions.pickupItem;
 
 import console.ConsoleGlyph;
 import engine.Gamestate;
@@ -47,5 +50,44 @@ public class TA extends AbstractNonPlayerCharacter {
             return actions[1]; //DISCUSSION costs 20 energy
         }
         else return ATTACK;
+    }
+
+    @Override
+    public void die() {
+        Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
+
+        pickupItem(createItem(-1));
+
+        int dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+            case 8:
+            case 7:
+                pickupItem(createItem(101));
+                break;
+            case 6:
+            case 5:
+            case 4:
+                pickupItem(createItem(104));
+            case 3:
+            case 2:
+                pickupItem(createItem(102));
+        }
+
+        dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+                pickupItem(createItem(19));
+                break;
+            case 8:
+                pickupItem(createItem(14));
+                break;
+            case 7:
+                pickupItem(createItem(8));
+                break;
+            case 6:
+                pickupItem(createItem(3));
+        }
+        return;
     }
 }

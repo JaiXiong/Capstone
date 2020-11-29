@@ -3,6 +3,8 @@ package asset.character;
 import asset.character.AbstractNonPlayerCharacter;
 import java.awt.*;
 import static engine.ActionDefinitions.*;
+import static engine.Actions.pickupItem;
+import static asset.items.Item.createItem;
 
 import console.ConsoleGlyph;
 import engine.Gamestate;
@@ -47,5 +49,45 @@ public class Freshman extends AbstractNonPlayerCharacter {
             return actions[1]; //TOO_MANY_MEMES costs 5 energy
         }
         else return ATTACK;
+    }
+
+    @Override
+    public void die() {
+        Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
+
+        pickupItem(createItem(-1));
+
+        int dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+                pickupItem(createItem(100));
+                break;
+            case 5:
+            case 4:
+            case 3:
+            case 2:
+                pickupItem(createItem(103));
+        }
+
+        dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+            case 8:
+                pickupItem(createItem(17));
+                break;
+            case 7:
+                pickupItem(createItem(12));
+                break;
+            case 6:
+            case 5:
+                pickupItem(createItem(6));
+                break;
+            case 4:
+                pickupItem(createItem(1));
+        }
+        return;
     }
 }

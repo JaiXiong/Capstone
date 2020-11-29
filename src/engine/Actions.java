@@ -129,6 +129,9 @@ public class Actions {
             if (Gamestate.getInstance().getPlayerCharacter().addToInventory(item)) {
                 return ("Picked up a " + item.getName() + ".");
             }
+            else {
+                return ("You try to pick up an item, but you can't carry any more stuff.");
+            }
         }
         return ("You try to pick up an item, but nothing's there...");
     }

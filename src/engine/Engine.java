@@ -51,6 +51,7 @@ public class Engine extends Thread {
             for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
                 character = i.next();
                 if (character.getHealth() <= 0) { //check that this character is alive - if not, remove it.
+                    if (character.getInitiativeID() > 0) character.die();
                     i.remove();
                     continue;
                 }
