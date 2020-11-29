@@ -47,8 +47,7 @@ public class Gamestate implements Serializable {
     private void generateAndPopulateFloor(int depth) {
         if (depth < 0)
             throw new IllegalArgumentException("Depth may not be less than zero.");
-        //PlayerCharacter playerCharacter = depth == 0 ? new PlayerCharacter() : getPlayerCharacter();
-        PlayerCharacter playerCharacter = new PlayerCharacter(); //todo - remove this line and use the one above. For now, this lets us test depths other than 4(if we need to generate NPCs)
+        PlayerCharacter playerCharacter = depth == 0 ? new PlayerCharacter() : getPlayerCharacter();
         Point pcLocation;
         Point bossLocation = null;
         switch (depth) {
