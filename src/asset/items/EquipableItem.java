@@ -53,35 +53,35 @@ public class EquipableItem extends Item {
             case 7:
                 return new EquipableItem(7, Slot.OFFENSE_B, "Unopened Textbook", 70, 13.0, 0.02);
             case 8:
-                return new EquipableItem(6, Slot.OFFENSE_B, "Tablet (Clay)", 20, 20.0, 0.00);
+                return new EquipableItem(8, Slot.OFFENSE_B, "Tablet (Clay)", 20, 20.0, 0.00);
             case 9:
-                return new EquipableItem(6, Slot.OFFENSE_B, "Tablet (Digital)", 30, 22.0, 0.05);
+                return new EquipableItem(9, Slot.OFFENSE_B, "Tablet (Digital)", 30, 22.0, 0.05);
             case 10:
-                return new EquipableItem(6, Slot.OFFENSE_B, "Laptop With Stickers", 50, 30.0, 0.08);
+                return new EquipableItem(10, Slot.OFFENSE_B, "Laptop With Stickers", 50, 30.0, 0.08);
             case 11:
-                return new EquipableItem(6, Slot.DEFENSE_A, "Jacket", 5, 0.0, 0.05);
+                return new EquipableItem(11, Slot.DEFENSE_A, "Jacket", 5, 0.0, 0.05);
             case 12:
-                return new EquipableItem(6, Slot.DEFENSE_A, "School Uniform", 9, 0.05, 0.05);
+                return new EquipableItem(12, Slot.DEFENSE_A, "School Uniform", 9, 0.05, 0.05);
             case 13:
-                return new EquipableItem(6, Slot.DEFENSE_A, "Outdoor Jammies", 13, 0.07, 0.07);
+                return new EquipableItem(13, Slot.DEFENSE_A, "Outdoor Jammies", 13, 0.07, 0.07);
             case 14:
-                return new EquipableItem(6, Slot.DEFENSE_A, "Roomate's Clothes", 20, 0.10, 0.07);
+                return new EquipableItem(14, Slot.DEFENSE_A, "Roommate's Clothes", 20, 0.10, 0.07);
             case 15:
-                return new EquipableItem(6, Slot.DEFENSE_A, "TOGA!", 0, 0.13, 0.08);
+                return new EquipableItem(15, Slot.DEFENSE_A, "TOGA!", 0, 0.13, 0.08);
             case 16:
-                return new EquipableItem(6, Slot.DEFENSE_A, "Graduation Robe", 30, 0.18, 0.10);
+                return new EquipableItem(16, Slot.DEFENSE_A, "Graduation Robe", 30, 0.18, 0.10);
             case 17:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Tinfoil", 1, 0.05, 0.00);
+                return new EquipableItem(17, Slot.DEFENSE_B, "Tinfoil", 1, 0.05, 0.00);
             case 18:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Hip Beanie", 5, 0.08, 0.02);
+                return new EquipableItem(18, Slot.DEFENSE_B, "Hip Beanie", 5, 0.08, 0.02);
             case 19:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Beer Goggles", 10, 0.15, -0.05);
+                return new EquipableItem(19, Slot.DEFENSE_B, "Beer Goggles", 10, 0.15, -0.05);
             case 20:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Ill-Advised Haircut", 20, 0.15, 0.02);
+                return new EquipableItem(20, Slot.DEFENSE_B, "Ill-Advised Haircut", 20, 0.15, 0.02);
             case 21:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Sunglasses at Night", 22, 0.18, 0.05);
+                return new EquipableItem(21, Slot.DEFENSE_B, "Sunglasses at Night", 22, 0.18, 0.05);
             case 22:
-                return new EquipableItem(6, Slot.DEFENSE_B, "Mortarboard", 30, 0.20, 0.06);
+                return new EquipableItem(22, Slot.DEFENSE_B, "Mortarboard", 30, 0.20, 0.06);
             default:
                 return null;
         }

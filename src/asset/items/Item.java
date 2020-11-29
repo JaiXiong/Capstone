@@ -6,7 +6,6 @@ import console.ConsoleGlyph;
 import java.awt.*;
 
 public class Item extends AbstractGameAsset {
-    //todo - define additional item properties not specific to implementations, as needed
 
     private final String NAME;
     /* all EquipableItems have an itemID from 0-99, all others from 100-199

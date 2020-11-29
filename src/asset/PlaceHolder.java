@@ -5,11 +5,10 @@ import asset.character.NPCFactory;
 import java.util.Collections;
 
 
-//The following code will likely end up in Gamestate, Engine, or Floor
-//This class is just a temporary home for it
+//TODO this code is not used, and is only maintained for reference.
 public class PlaceHolder {
 
-    //TODO assumes 8 regular floors with 4 evenly spaced boss floors, can switch up if I remembered wrong
+    //assumes 8 regular floors with 4 evenly spaced boss floors
 
     /* @param the number floor being populated, used to seed random generation
      * This method generates and sorts the NPCs for a floor, which can

@@ -5,11 +5,6 @@ import java.awt.*;
 
 public abstract class AbstractCharacter extends AbstractGameAsset implements Comparable<AbstractCharacter>{
 
-    /* characters may need the information on how they display
-     * (which char, what color, what background) included in
-     * the character class
-     */
-
     /* to avoid initiative collision, each initiativeID should be unique,
      * which also lets us use it as a character hash
      */
@@ -168,8 +163,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
     }
 
     abstract public String getNextAction();
-
-    //TODO possibly implement persistant effects (buffs/debuffs, damage-over-time, etc)
 
     @Override
     /* Characters that compareTo==0 aren't necessarily equal,

@@ -17,11 +17,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     //maximum number of items the player's inventory may contain
     private static final int INVENTORY_CAPACITY = 16;
 
-    /* characters may need the information on how they display
-     * (which char, what color, what background) included in
-     * the character class
-     */
-
     int level;
 
     ArrayList<Item> inventory;
@@ -48,7 +43,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         level = 1;
         inventory = new ArrayList<>();
         equip(EquipableItem.createEquipment(0)); //Stick
-        equip(EquipableItem.createEquipment(1)); //Jacket
+        equip(EquipableItem.createEquipment(11)); //Jacket
         actions = buildActions();
 
         //TODO PLAYTEST remove this key before release version
@@ -83,11 +78,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     public EquipableItem getEquipDefB(){ return equipDefB; }
 
     private String nextAction = null;
-
-    /* TODO possibly add persistant effects to mutable stat getters
-     * also figure out if moveRate is something that changes,
-     * or if we'll even use it
-     */
 
     //applies offenseA adjustments from gear, no cap
     @Override
@@ -208,36 +198,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         resistA = resistA * .98;
         resistB = resistB * .98;
 
-        switch (level) {
-            //TODO number of cases is arbitrary, we can add/remove
-            case 2:
-                //TODO add new ability
-                break;
-            case 3:
-                //TODO add new ability
-                break;
-            case 4:
-                //TODO add new ability
-                break;
-            case 6:
-                //TODO add new ability
-                break;
-            case 8:
-                //TODO add new ability
-                break;
-            case 10:
-                //TODO add new ability
-                break;
-            case 13:
-                //TODO add new ability
-                break;
-            case 16:
-                //TODO add new ability
-                break;
-            case 20:
-                //TODO add new ability
-                break;
-        }
+        //TODO additional actions as we level go here. Stretch goal.
     }
 
     /* @param item to equip (object, not name or ID)
@@ -314,8 +275,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     public ConsoleGlyph getConsoleGlyph() {
         return new ConsoleGlyph(null, Color.WHITE, '@');
     }
-
-    //TODO add some other actions
 
     //TODO possibly include fields/methods for world state information
 }

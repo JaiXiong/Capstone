@@ -2,7 +2,10 @@ package asset.character;
 
 import asset.character.AbstractNonPlayerCharacter;
 import java.awt.*;
+
+import static asset.items.Item.createItem;
 import static engine.ActionDefinitions.*;
+import static engine.Actions.pickupItem;
 
 import console.ConsoleGlyph;
 import engine.Gamestate;
@@ -49,5 +52,45 @@ public class Hacker extends AbstractNonPlayerCharacter {
             return actions[1]; //VIRUS costs 50 energy
         }
         else return ATTACK;
+    }
+
+    @Override
+    public void die() {
+        Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
+
+        pickupItem(createItem(-1));
+
+        int dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+            case 8:
+            case 7:
+            case 6:
+            case 5:
+            case 4:
+                pickupItem(createItem(101));
+                break;
+            case 3:
+            case 2:
+                pickupItem(createItem(100));
+            case 1:
+                pickupItem(createItem(102));
+        }
+
+        dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+                pickupItem(createItem(20));
+                break;
+            case 8:
+                pickupItem(createItem(13));
+                break;
+            case 7:
+                pickupItem(createItem(9));
+                break;
+            case 6:
+                pickupItem(createItem(2));
+        }
+        return;
     }
 }

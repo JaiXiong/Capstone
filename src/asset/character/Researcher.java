@@ -2,7 +2,10 @@ package asset.character;
 
 import asset.character.AbstractNonPlayerCharacter;
 import java.awt.*;
+
+import static asset.items.Item.createItem;
 import static engine.ActionDefinitions.*;
+import static engine.Actions.pickupItem;
 
 import console.ConsoleGlyph;
 import engine.Gamestate;
@@ -50,5 +53,47 @@ public class Researcher extends AbstractNonPlayerCharacter {
             return actions[2]; //PRESENTATION costs 15 energy
         }
         else return ATTACK;
+    }
+
+    @Override
+    public void die() {
+        Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
+
+        pickupItem(createItem(-1));
+
+        int dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+                pickupItem(createItem(101)); //intentional fallthrough for double drop
+            case 8:
+            case 7:
+            case 6:
+                pickupItem(createItem(101));
+                break;
+            case 5:
+                pickupItem(createItem(104)); //intentional fallthrough for double drop
+            case 4:
+            case 3:
+            case 2:
+                pickupItem(createItem(104));
+            case 1:
+                pickupItem(createItem(102));
+        }
+
+        dropRand = (int)(Math.random() * 10);
+        switch (dropRand) {
+            case 9:
+                pickupItem(createItem(21));
+                break;
+            case 8:
+                pickupItem(createItem(15));
+                break;
+            case 7:
+                pickupItem(createItem(10));
+                break;
+            case 6:
+                pickupItem(createItem(4));
+        }
+        return;
     }
 }
