@@ -33,17 +33,9 @@ public class ActionDefinitions {
     // for example, to use the third inventory item, we should send the action "useAt02"
     public static final String USE_AT = "useAt";
 
-    /**
-     * These are all currently unused, and may not support the actual implementation.
-     */
-
-    /*
-    public static final String OPEN_DOOR = "openDoor";
-    public static final String EQUIP = "equip";
-    public static final String DROP = "dropItem";
-    public static final String PICKUP = "pickupItem";
-    public static final String USE_ITEM = "useItem";
-    */
+    //discard an inventory item. This action must also include an index of the form NN -
+    // for example, to discard the third inventory item, we should send the action "discardAt02"
+    public static final String DISCARD_AT = "discardAt";
 
     /*
      * Freshman (id 1) actions

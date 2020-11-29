@@ -130,6 +130,11 @@ public class Engine extends Thread {
                         ? Actions.equip(item)
                         : Actions.useItem(item));
                 return;
+            case DISCARD_AT:
+                if (index < 0 || !(actor instanceof  PlayerCharacter))
+                    throw new IllegalArgumentException("Tried to handle an invalid DISCARD_ITEM action.");
+                Messages.addMessage(Actions.discardItem(((PlayerCharacter)actor).getInventory().get(index)));
+                return;
             default:
                 throw new IllegalArgumentException("Unknown action: " + action);
         }
@@ -169,7 +174,7 @@ public class Engine extends Thread {
                 return validateMovement(actorAt, -1, -1);
             case WAIT:
                 return true; //this is always fine
-            case USE_AT:
+            case USE_AT: case DISCARD_AT:
                 if (index < 0) return false; //invalid index
                 if (!(actor instanceof  PlayerCharacter)) return false; //npcs do not have inventories
                 return (index < ((PlayerCharacter)actor).getInventory().size()); //return whether the player's inventory contains the passed index.

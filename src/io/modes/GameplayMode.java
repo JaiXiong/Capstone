@@ -84,6 +84,9 @@ public class GameplayMode extends IOMode {
             case VK_U: //use an item from inventory
                 GUIManager.getInstance().transitionTo(new UseItemSelectMenuMode());
                 return; //don't break - next action info and engine notification will be handled by the selection menu
+            case VK_D: //discard an item from inventory
+                GUIManager.getInstance().transitionTo(new DiscardItemSelectMenuMode());
+                return; //don't break - next action info and engine notification will be handled by the selection menu
             case VK_PERIOD: // ">"
                 if (mod == SHIFT_DOWN_MASK) {
                     pc = Gamestate.getInstance().getPlayerCharacter();

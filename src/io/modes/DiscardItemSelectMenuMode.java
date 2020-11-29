@@ -10,9 +10,9 @@ import io.gui.GUIManager;
 import java.awt.*;
 import java.util.ArrayList;
 
-public class UseItemSelectMenuMode extends AbstractInventorySelectMenuMode {
-    public UseItemSelectMenuMode() {
-        super("Select an item to equip or use:",
+public class DiscardItemSelectMenuMode extends AbstractInventorySelectMenuMode {
+    public DiscardItemSelectMenuMode() {
+        super("Select an item to discard:",
                 Color.BLACK,
                 Color.WHITE,
                 Color.GREEN,
@@ -28,7 +28,7 @@ public class UseItemSelectMenuMode extends AbstractInventorySelectMenuMode {
         ArrayList<Item> inv = pc.getInventory();
         if (selectedOption < inv.size()) {//if selectedOption is not CANCEL
             //queue a use action for the selected item
-            pc.setNextAction(ActionDefinitions.USE_AT + (selectedOption > 9 ? selectedOption : "0" + selectedOption));
+            pc.setNextAction(ActionDefinitions.DISCARD_AT + (selectedOption > 9 ? selectedOption : "0" + selectedOption));
             Engine.getInstance().setPlayerHasActionQueued();
         }
         GUIManager.getInstance().revert(); //close the menu

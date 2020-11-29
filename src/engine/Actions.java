@@ -64,10 +64,10 @@ public class Actions {
      * @param item to be removed
      * @return message for output to user
      */
-    public static String dropItem(Item item) {
+    public static String discardItem(Item item) {
         if (item != null) {
             if (Gamestate.getInstance().getPlayerCharacter().removeFromInventory(item)) {
-                return ("Dropped " + item.getName() + ".");
+                return ("Discarded " + item.getName() + ".");
             }
         }
         return ("You don't have one of those to drop.");
@@ -121,19 +121,20 @@ public class Actions {
      * This action should be triggered by walking over an item or by
      * defeating an NPC, it should not be callable directly by the player.
      * Has no target parameter.
+     * Since this method will only be called by the player, and is called in a large number of places,
+     * we generate the message here directly.
      * @param item item to add to the player's inventory
-     * @return message for output to user
      */
-    public static String pickupItem(Item item) {
-        if (item != null) {
-            if (Gamestate.getInstance().getPlayerCharacter().addToInventory(item)) {
-                return ("Picked up a " + item.getName() + ".");
-            }
-            else {
-                return ("You try to pick up an item, but you can't carry any more stuff.");
-            }
+    public static void pickupItem(Item item) {
+        if (item == null) {
+            throw new IllegalArgumentException("Called pickupItem with null argument.");
+        } else {
+            Messages.addMessage(
+                    (Gamestate.getInstance().getPlayerCharacter().addToInventory(item)) ?
+                            "Picked up a " + item.getName() + "." :
+                            "Your backpack is full - discard or use an item to make room."
+            );
         }
-        return ("You try to pick up an item, but nothing's there...");
     }
 
     //Freshman (id 1) actions
