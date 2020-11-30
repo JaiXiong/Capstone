@@ -78,4 +78,60 @@ public class Test_EquipableItem {
         assertEquals(e3.getToHitModifier(), 1.0, 0);
         assertEquals(e4.getToHitModifier(), 1.0, 0);
     }
+
+    @Test
+    public void test_CreateEquipment(){
+        EquipableItem q;
+        q = EquipableItem.createEquipment(0);
+        assertEquals(0, q.getItemID());
+        q = EquipableItem.createEquipment(1);
+        assertEquals(1, q.getItemID());
+        q = EquipableItem.createEquipment(2);
+        assertEquals(2, q.getItemID());
+        q = EquipableItem.createEquipment(3);
+        assertEquals(3, q.getItemID());
+        q = EquipableItem.createEquipment(4);
+        assertEquals(4, q.getItemID());
+        q = EquipableItem.createEquipment(5);
+        assertEquals(5, q.getItemID());
+        q = EquipableItem.createEquipment(6);
+        assertEquals(6, q.getItemID());
+        q = EquipableItem.createEquipment(7);
+        assertEquals(7, q.getItemID());
+        q = EquipableItem.createEquipment(8);
+        assertEquals(8, q.getItemID());
+        q = EquipableItem.createEquipment(9);
+        assertEquals(9, q.getItemID());
+        q = EquipableItem.createEquipment(10);
+        assertEquals(10, q.getItemID());
+        q = EquipableItem.createEquipment(11);
+        assertEquals(11, q.getItemID());
+        q = EquipableItem.createEquipment(12);
+        assertEquals(12, q.getItemID());
+        q = EquipableItem.createEquipment(13);
+        assertEquals(13, q.getItemID());
+        q = EquipableItem.createEquipment(14);
+        assertEquals(14, q.getItemID());
+        q = EquipableItem.createEquipment(15);
+        assertEquals(15, q.getItemID());
+        q = EquipableItem.createEquipment(16);
+        assertEquals(16, q.getItemID());
+        q = EquipableItem.createEquipment(17);
+        assertEquals(17, q.getItemID());
+        q = EquipableItem.createEquipment(18);
+        assertEquals(18, q.getItemID());
+        q = EquipableItem.createEquipment(19);
+        assertEquals(19, q.getItemID());
+        q = EquipableItem.createEquipment(20);
+        assertEquals(20, q.getItemID());
+        q = EquipableItem.createEquipment(21);
+        assertEquals(21, q.getItemID());
+        q = EquipableItem.createEquipment(22);
+        assertEquals(22, q.getItemID());
+        q = EquipableItem.createEquipment(23);
+        assertNull(q);
+
+    }
+
+
 }

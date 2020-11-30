@@ -11,44 +11,90 @@ public class Test_NPCFactory {
         }
         assertTrue(check);
     }
-    /*
-    //Fill in tests as NPCFactory is finished
     @Test
-    public void test_ID2(){}
+    public void test_ID2(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(2) instanceof Sophomore){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID3(){}
+    public void test_ID3(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(3) instanceof Junior){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID4(){}
+    public void test_ID4(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(4) instanceof Senior){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID5(){}
+    public void test_ID5(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(5) instanceof Hacker){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID6(){}
+    public void test_ID6(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(6) instanceof TA){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID7(){}
+    public void test_ID7(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(7) instanceof Researcher){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID8(){}
+    public void test_ID8(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(11) instanceof Professor){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID9(){}
+    public void test_ID9(){
+        boolean check = false;
+        if(NPCFactory.npcLookup(12) instanceof Dean){
+            check = true;
+        }
+        assertTrue(check);
+    }
 
     @Test
-    public void test_ID11(){}
+    public void test_IDInvalid(){
 
-    @Test
-    public void test_ID12(){}
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            NPCFactory.npcLookup(10);
+        });
 
-    @Test
-    public void test_ID13(){}
+        String expectedMessage = "Unhandled ID: 10";
+        String actualMessage = exception.getMessage();
 
-    @Test
-    public void test_ID14(){}
+        assertTrue(actualMessage.contains(expectedMessage));
 
-     */
+    }
 
 }
