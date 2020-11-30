@@ -58,8 +58,7 @@ public class Dean extends AbstractNonPlayerCharacter {
     @Override
     public void die() {
         Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
-
-        pickupItem(createItem(201));
+        Gamestate.getInstance().getPlayerCharacter().getKey(201);
 
         pickupItem(createItem(101));
         pickupItem(createItem(101));

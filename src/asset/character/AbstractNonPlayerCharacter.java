@@ -177,7 +177,4 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
             return attackPC();
         }
     }
-
-    //reward XP, a key, and potentially an item and/or a piece of gear
-    public abstract void die();
 }

@@ -139,6 +139,9 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
                 health = 0;
                 die();
             }
+            else if (health > maxHealth) {
+                health = maxHealth;
+            }
         }
     }
 

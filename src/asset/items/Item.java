@@ -34,14 +34,12 @@ public class Item extends AbstractGameAsset {
     }
 
     /* @param itemID of item to create
-     * for IDs 0-99, calls GearTable to create an equipable item
-     * for IDs 100-199, creates a non-equippable item
-     * for IDs 200-299 and -1, creates a key with that itemID, keys use itemID as unlockCode
+     * for IDs 0-99, calls GearTable to create an equipable item (currently 0-22 in use)
+     * for IDs 100-199, creates a non-equippable item (currently 100-104 in use)
      * for invalid IDs, creates null
      */
     public static Item createItem(int itemID){
         if (itemID >= 0 && itemID < 100) return EquipableItem.createEquipment(itemID);
-        if (itemID == -1 || (itemID >= 200 && itemID < 300)) return new Item(itemID, "Key", 1);
         switch (itemID) {
             case 100:
                 return new Item(100, "Energy Drink", 4); //restore energy

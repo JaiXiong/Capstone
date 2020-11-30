@@ -55,8 +55,7 @@ public class Junior extends AbstractNonPlayerCharacter {
     @Override
     public void die() {
         Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
-
-        pickupItem(createItem(-1));
+        Gamestate.getInstance().getPlayerCharacter().getKey(-1);
 
         int dropRand = (int)(Math.random() * 10);
         switch (dropRand) {
