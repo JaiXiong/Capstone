@@ -144,9 +144,10 @@ public class GameplayMode extends IOMode {
             consoleInterface.writeSingleLine(
                     line,
                     1,
-                    "> " + messages.get(messages.size() - (1 + (firstLine - line))),
+                    "> " + messages.get(messages.size() - (1 + (firstLine - line)))
+                            + "                                                                                  ",
                     Color.BLACK,
-                    line == firstLine ? Color.WHITE : Color.DARK_GRAY);
+                    line == firstLine ? Color.CYAN : Color.BLUE);
         }
         PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
         Dimension consoleSize = consoleInterface.getConsoleSize();
@@ -159,48 +160,65 @@ public class GameplayMode extends IOMode {
         int playerHealthCurrent = playerCharacter.getHealth();
         int playerHealthMax = playerCharacter.getMaxHealth();
         double healthPercent = (double)playerHealthCurrent / (double)playerHealthMax;
-        int writeColumn = consoleInterface.writeSingleLine(statLine, 0, "HP: ");
+        int writeColumn = consoleInterface.writeSingleLine(statLine, 0, "HP: ", Color.LIGHT_GRAY, Color.BLACK);
         writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
-                FormatUtility.percentage(healthPercent), Color.BLACK, FormatUtility.colorizeByPercentage(healthPercent));
+                FormatUtility.percentage(healthPercent), Color.LIGHT_GRAY, FormatUtility.colorizeByPercentage(healthPercent));
         int playerEnergyCurrent = playerCharacter.getEnergy();
         int playerEnergyMax = playerCharacter.getMaxEnergy();
         double energyPercent = (double)playerEnergyCurrent / (double)playerEnergyMax;
-        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1, "   Energy: ");
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1, "   Energy: ", Color.LIGHT_GRAY, Color.BLACK);
         writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
-                FormatUtility.percentage(energyPercent), Color.BLACK, FormatUtility.colorizeByPercentage(energyPercent));
+                FormatUtility.percentage(energyPercent), Color.LIGHT_GRAY, FormatUtility.colorizeByPercentage(energyPercent));
         writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
-                "   Level: " + playerCharacter.getLevel() + "(" + playerCharacter.getXP() + " XP)");
+                "   Level: " + playerCharacter.getLevel() + "(" + playerCharacter.getXP() + " XP)", Color.LIGHT_GRAY, Color.BLACK);
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1, "   Keys: " + playerCharacter.getKeys(), Color.LIGHT_GRAY, Color.BLACK);
         consoleInterface.writeSingleLine(statLine, writeColumn + 1,
-                "                                                                    "); //fill line with blanks
+                "                                                                    ", Color.LIGHT_GRAY, Color.BLACK); //fill line with blanks
         //gear:
         EquipableItem weapon1 = playerCharacter.getEquipOffA();
         writeColumn = consoleInterface.writeSingleLine(gearLine1, 0,
-                "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()));
+                "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()), Color.LIGHT_GRAY, Color.BLACK);
         EquipableItem weapon2 = playerCharacter.getEquipOffB();
         writeColumn = consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
-                "  Tool: " + (weapon2 == null ? "(none)" : weapon2.getName()));
+                "  Tool: " + (weapon2 == null ? "(none)" : weapon2.getName()), Color.LIGHT_GRAY, Color.BLACK);
         consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
-                "                                                                    "); //fill line with blanks
+                "                                                                    ", Color.LIGHT_GRAY, Color.BLACK); //fill line with blanks
         EquipableItem armor1 = playerCharacter.getEquipDefA();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, 0,
-                "Clothes: " + (armor1 == null ? "(none)" : armor1.getName()));
+                "Clothes: " + (armor1 == null ? "(none)" : armor1.getName()), Color.LIGHT_GRAY, Color.BLACK);
         EquipableItem armor2 = playerCharacter.getEquipDefB();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
-                "  Hat: " + (armor2 == null ? "(none)" : armor2.getName()));
+                "  Hat: " + (armor2 == null ? "(none)" : armor2.getName()), Color.LIGHT_GRAY, Color.BLACK);
         consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
-                "                                                                    "); //fill line with blanks
+                "                                                                    ", Color.LIGHT_GRAY, Color.BLACK); //fill line with blanks
+        //stats:
+        writeColumn = consoleWidth - 13;
+        int writeRow = 3;
+        double playerAccuracy = playerCharacter.getAccuracy();
+        double playerOffenseA = playerCharacter.getOffenseA();
+        double playerOffenseB = playerCharacter.getOffenseB();
+        double playerEvade = playerCharacter.getEvade();
+        double playerResistA = playerCharacter.getResistA();
+        double playerResistB = playerCharacter.getResistB();
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Stats:                   ", Color.DARK_GRAY);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "ACC: " + FormatUtility.truncateDouble(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "OF1: " + FormatUtility.truncateDouble(playerOffenseA) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "OF2: " + FormatUtility.truncateDouble(playerOffenseB) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "EVD: " + FormatUtility.truncateDouble(playerEvade) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "RS1: " + FormatUtility.truncateDouble(playerResistA) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "RS2: " + FormatUtility.truncateDouble(playerResistB) + "             ", Color.DARK_GRAY, Color.YELLOW);
         //target:
-        writeColumn = consoleWidth - 16;
-        int writeRow = 0;
-        consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ");
+        writeRow++;
+        consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ", Color.RED, Color.LIGHT_GRAY);
         AbstractCharacter playerTarget = playerCharacter.getTarget();
         if (playerTarget == null) {
-            consoleInterface.writeSingleLine(writeRow, writeColumn, "<no target>     ");
+            consoleInterface.writeSingleLine(writeRow, writeColumn, "<no target>     ", Color.RED, Color.LIGHT_GRAY);
         } else {
-            consoleInterface.writeSingleLine(writeRow++, writeColumn, playerTarget.getLeadName());
+            consoleInterface.writeSingleLine(writeRow++, writeColumn, playerTarget.getLeadName() + "              ",
+                    Color.RED, Color.LIGHT_GRAY);
             double targetHPPct = (double)playerTarget.getHealth() / (double)playerTarget.getMaxHealth();
             consoleInterface.writeSingleLine(writeRow, writeColumn, "HP: " + FormatUtility.percentage(targetHPPct)
-                    + "            ");
+                    + "            ", Color.RED, Color.LIGHT_GRAY);
         }
         consoleInterface.updateScreen();
     }

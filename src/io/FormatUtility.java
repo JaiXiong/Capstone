@@ -12,6 +12,10 @@ public class FormatUtility {
         return Color.RED;
     }
 
+    public static double truncateDouble(double d) {
+        return (double)(((int)(d * 100) / 100));
+    }
+
     public static String percentage(double pct) {
         return (int)(100 * pct) + "%";
     }

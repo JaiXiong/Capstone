@@ -201,6 +201,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         resistB = resistB * .98;
 
         //TODO additional actions as we level go here. Stretch goal.
+        Messages.addMessage("You have reached experience level " + level + ".");
     }
 
     /* @param item to equip (object, not name or ID)
