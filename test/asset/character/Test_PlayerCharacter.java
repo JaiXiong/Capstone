@@ -19,28 +19,22 @@ public class Test_PlayerCharacter {
         assertEquals(p.getMaxHealth(), 100);
         assertEquals(p.getEnergy(), 100);
         assertEquals(p.getMaxEnergy(), 100);
-        assertEquals(p.getOffenseA(), 1.0, 0);
+        assertEquals(p.getOffenseA(), 10.0, 0);
         assertEquals(p.getOffenseB(), 1.0, 0);
         assertEquals(p.getAccuracy(), 0.5, 0);
-        assertEquals(p.getEvade(), 0.9, 0);  //presuming equip "Jacket" lowers .05
-        assertEquals(p.getResistA(), 0.9, 0);
+        assertEquals(p.getEvade(), 0.45, 0);  //presuming equip "Jacket" lowers .05
+        assertEquals(p.getResistA(), 0.95, 0);
         assertEquals(p.getResistB(), 0.95, 0);
         assertEquals(p.getXP(), 0);
         assertEquals(p.getLevel(), 1);
-        assertEquals(i.size(), 0);
-        assertEquals(a.length, 0); //TODO no actual actions defined yet
+        assertEquals(i.size(), 2);
+        assertEquals(a.length, 1); //TODO no actual actions defined yet
         assertEquals(p.getEquipOffA().getName(), "Stick");
         assertNull(p.getEquipOffB());
         assertEquals(p.getEquipDefA().getName(), "Jacket");
         assertNull(p.getEquipDefB());
     }
 
-    @Test
-    public void test_getters(){
-        PlayerCharacter p = new PlayerCharacter();
-
-        //TODO change equipment from initial and test getters values are correct
-    }
 
     @Test
     public void test_xp(){
@@ -69,23 +63,23 @@ public class Test_PlayerCharacter {
         //need for the next level
         p.gainXP(500);
         assertEquals(p.getXP(), 200);
-        assertEquals(p.getLevel(), 3);
+        assertEquals(p.getLevel(), 4);
 
         //make sure we can level multiple times on a
         //large XP gain
         p.gainXP(1000);
         assertEquals(p.getXP(), 300);
-        assertEquals(p.getLevel(), 5);
+        assertEquals(p.getLevel(), 6);
 
         //make sure we can hit level cap
         p.gainXP(19200);
-        assertEquals(p.getXP(), 0);
+        assertEquals(p.getXP(), 2000);
         assertEquals(p.getLevel(), 20);
 
         //normal progression would expect xp==100, level==21
         //but we hit cap so we stop levelling
         p.gainXP(2200);
-        assertEquals(p.getXP(), 2200);
+        assertEquals(p.getXP(), 4200);
         assertEquals(p.getLevel(), 20);
     }
 
@@ -139,6 +133,32 @@ public class Test_PlayerCharacter {
         // 200*resistD(.95) = 190 damage, 90 damage overkill
         p.takeDamage(200, "typeD", 1.0);
         assertEquals(p.getHealth(), 0);
+    }
+
+    @Test
+    public void test_remove(){
+        PlayerCharacter p = new PlayerCharacter();
+        Item i = Item.createItem(101);
+        p.addToInventory(i);
+        assertTrue(p.removeFromInventory(i));
+        i = Item.createItem(102);
+        assertFalse(p.removeFromInventory(i));
+    }
+
+    @Test
+    public void test_keyRing(){
+        PlayerCharacter p = new PlayerCharacter();
+        Item i = Item.createItem(-1);
+        p.addToInventory(i);
+        assertTrue(p.keyRing(-1));
+        p.removeFromInventory(i);
+        assertFalse(p.keyRing(10000));
+    }
+
+    @Test
+    public void test_consoleGlyph(){
+        PlayerCharacter p = new PlayerCharacter();
+        assertNotNull(p.getConsoleGlyph());
     }
 }
 

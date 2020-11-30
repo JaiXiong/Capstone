@@ -24,7 +24,7 @@ public class Test_Item {
 
     @Test
     public void test_CreateItem(){
-        Item I = new Item(100, "Energy Drink", 15);
+        Item I = new Item(100, "Energy Drink", 4);
         Item j = Item.createItem(100);
         boolean check = true;
         if(I.getItemID()!=j.getItemID()){
@@ -41,8 +41,59 @@ public class Test_Item {
 
     @Test
     public void test_CreateItem2(){
-        Item I = new Item(101, "Shoddy Notes", 4);
+        Item I = new Item(101, "Big Energy Drink", 6);
         Item j = Item.createItem(101);
+        boolean check = true;
+        if(I.getItemID()!=j.getItemID()){
+            check = false;
+        }
+        if(!I.getName().equals(j.getName())){
+            check = false;
+        }
+        if(I.getPricetag() != j.getPricetag()){
+            check = false;
+        }
+        assertTrue(check);
+    }
+
+    @Test
+    public void test_CreateItem3(){
+        Item I = new Item(102, "'Juice' (21+)", 6);
+        Item j = Item.createItem(102);
+        boolean check = true;
+        if(I.getItemID()!=j.getItemID()){
+            check = false;
+        }
+        if(!I.getName().equals(j.getName())){
+            check = false;
+        }
+        if(I.getPricetag() != j.getPricetag()){
+            check = false;
+        }
+        assertTrue(check);
+    }
+
+    @Test
+    public void test_CreateItem4(){
+        Item I = new Item(103, "Craft Dinner", 6);
+        Item j = Item.createItem(103);
+        boolean check = true;
+        if(I.getItemID()!=j.getItemID()){
+            check = false;
+        }
+        if(!I.getName().equals(j.getName())){
+            check = false;
+        }
+        if(I.getPricetag() != j.getPricetag()){
+            check = false;
+        }
+        assertTrue(check);
+    }
+
+    @Test
+    public void test_CreateItem5(){
+        Item I = new Item(104, "Some Kinda Tex-Mex?", 10);
+        Item j = Item.createItem(104);
         boolean check = true;
         if(I.getItemID()!=j.getItemID()){
             check = false;

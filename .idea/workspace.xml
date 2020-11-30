@@ -6,10 +6,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="1. Added new player hub/lobby.&#10;2. Added some idea of a new room / level order.&#10;3. Added new window object to object enum.&#10;4. Added new tiletype for the new objects.&#10;5. Added passable for cementwalkway.">
+      <change afterPath="$PROJECT_DIR$/test/asset/character/Test_Researcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/world/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/world/TileObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/TileObjects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/engine/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Gamestate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/io/modes/AbstractInventorySelectMenuMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/io/modes/AbstractInventorySelectMenuMode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/Engine/test_Actions.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/Engine/test_Actions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/Engine/test_Engine.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/Engine/test_Engine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/character/Test_NPCFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/character/Test_NPCFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/character/Test_PlayerCharacter.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/character/Test_PlayerCharacter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/items/TestKey.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/items/Test_EquipableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/items/Test_GearTable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/items/Test_Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/items/Test_Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/asset/world/TestFloor.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/asset/world/TestFloor.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,6 +102,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -106,23 +115,105 @@
       <recent name="asset" />
     </key>
   </component>
-  <component name="RunManager">
-    <configuration name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main.Driver" />
+  <component name="RunManager" selected="JUnit.Test_FileManager.test_DoesSavedGameExist">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_FileManager.test_DeleteSave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Capstone" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="main.*" />
+          <option name="PATTERN" value="asset.IO.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="asset.IO" />
+      <option name="MAIN_CLASS_NAME" value="asset.IO.Test_FileManager" />
+      <option name="METHOD_NAME" value="test_DeleteSave" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_FileManager.test_DoesSavedGameExist" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.IO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.IO" />
+      <option name="MAIN_CLASS_NAME" value="asset.IO.Test_FileManager" />
+      <option name="METHOD_NAME" value="test_DoesSavedGameExist" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_FileManager.test_Loadsave" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.IO.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.IO" />
+      <option name="MAIN_CLASS_NAME" value="asset.IO.Test_FileManager" />
+      <option name="METHOD_NAME" value="test_Loadsave" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_Messages.test_getMessages" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.Engine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.Engine" />
+      <option name="MAIN_CLASS_NAME" value="asset.Engine.Test_Messages" />
+      <option name="METHOD_NAME" value="test_getMessages" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test_RNG.test_RNG" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Capstone" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="asset.Engine.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="asset.Engine" />
+      <option name="MAIN_CLASS_NAME" value="asset.Engine.Test_RNG" />
+      <option name="METHOD_NAME" value="test_RNG" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Driver" />
+        <item itemvalue="JUnit.Test_FileManager.test_DoesSavedGameExist" />
+        <item itemvalue="JUnit.Test_FileManager.test_Loadsave" />
+        <item itemvalue="JUnit.Test_FileManager.test_DeleteSave" />
+        <item itemvalue="JUnit.Test_Messages.test_getMessages" />
+        <item itemvalue="JUnit.Test_RNG.test_RNG" />
       </list>
     </recent_temporary>
   </component>
@@ -161,6 +252,7 @@
       <workItem from="1602273717568" duration="1450000" />
       <workItem from="1602850793752" duration="922000" />
       <workItem from="1602952466259" duration="9884000" />
+      <workItem from="1606686424863" duration="18384000" />
     </task>
     <task id="LOCAL-00004" summary="Basic support for handling keyboard input has been added to Console and implemented in IOModes.">
       <created>1602953825421</created>
@@ -228,11 +320,8 @@
     <option name="localTasksCounter" value="13" />
     <servers />
   </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38787000" />
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -277,30 +366,70 @@
     <option name="LAST_COMMIT_MESSAGE" value="1. Added new player hub/lobby.&#10;2. Added some idea of a new room / level order.&#10;3. Added new window object to object enum.&#10;4. Added new tiletype for the new objects.&#10;5. Added passable for cementwalkway." />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1258" height="48" key="GridCell.Tab.0.bottom" timestamp="1606517863167">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="85" y="213" width="452" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1606697113286">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state x="85" y="213" width="452" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1606697113286" />
+    <state width="713" height="162" key="GridCell.Tab.0.bottom" timestamp="1606705200764">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="713" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606705200764" />
     <state width="1258" height="48" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863167" />
-    <state width="1258" height="48" key="GridCell.Tab.0.center" timestamp="1606517863166">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="713" height="162" key="GridCell.Tab.0.center" timestamp="1606705200763">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="713" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606705200763" />
     <state width="1258" height="48" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
-    <state width="1258" height="48" key="GridCell.Tab.0.left" timestamp="1606517863166">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="713" height="162" key="GridCell.Tab.0.left" timestamp="1606705200763">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="713" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606705200763" />
     <state width="1258" height="48" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
-    <state width="1258" height="48" key="GridCell.Tab.0.right" timestamp="1606517863166">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="713" height="162" key="GridCell.Tab.0.right" timestamp="1606705200764">
+      <screen x="0" y="0" width="1280" height="680" />
     </state>
+    <state width="713" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606705200764" />
     <state width="1258" height="48" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606517863166" />
+    <state width="713" height="204" key="GridCell.Tab.1.bottom" timestamp="1606703521267">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="713" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606703521267" />
+    <state width="713" height="204" key="GridCell.Tab.1.center" timestamp="1606703521267">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="713" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1606703521267" />
+    <state width="713" height="204" key="GridCell.Tab.1.left" timestamp="1606703521266">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="713" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1606703521266" />
+    <state width="713" height="204" key="GridCell.Tab.1.right" timestamp="1606703521267">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="713" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1606703521267" />
     <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1606518514582">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1606518514582" />
+    <state x="633" y="0" width="653" height="687" key="dock-window-1" timestamp="1606690422376">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="633" y="0" width="653" height="687" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1606690422376" />
+    <state x="751" y="0" width="536" height="687" key="dock-window-2" timestamp="1606697288693">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="751" y="0" width="536" height="687" key="dock-window-2/0.0.1280.680@0.0.1280.680" timestamp="1606697288693" />
     <state x="1546" y="324" key="refactoring.ChangeSignatureDialog" timestamp="1605846547809">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1546" y="324" key="refactoring.ChangeSignatureDialog/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1605846547809" />
+    <state x="609" y="154" key="run.anything.popup" timestamp="1606696322094">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="609" y="154" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1606696322094" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1606703822645">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1606703822645" />
   </component>
   <component name="masterDetails">
     <states>
