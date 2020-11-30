@@ -20,6 +20,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     int level;
 
     ArrayList<Item> inventory;
+    ArrayList<Integer> keys;
     EquipableItem equipOffA;
     EquipableItem equipOffB;
     EquipableItem equipDefA;
@@ -42,12 +43,13 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         xp = 0;
         level = 1;
         inventory = new ArrayList<>();
+        keys = new ArrayList<>();
         equip(EquipableItem.createEquipment(0)); //Stick
         equip(EquipableItem.createEquipment(11)); //Jacket
         actions = buildActions();
 
         //TODO PLAYTEST remove this key before release version
-        inventory.add(Item.createItem(-1));
+        keys.add(-1);
 
         //TEST - add a consumable to player inventory
         inventory.add(Item.createItem(100));
@@ -257,18 +259,40 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return inventory.remove(item);
     }
 
+    /**
+     * Finds key matching given unlock code, uses it if its found
+     * @param unlockCode value for unlocking a door
+     * @return true if key is found & used, false otherwise
+     */
     public boolean keyRing(int unlockCode) {
-        for (Item item : inventory) {
-            if (item != null && item.getItemID() == unlockCode) {
-                return removeFromInventory(item);
+        for (Integer key : keys) {
+            if (key == unlockCode) {
+                return keys.remove(key);
             }
         }
-        for (Item item : inventory) {
-            if (item != null && item.getItemID() == -1) {
-                return removeFromInventory(item);
+        for (Integer key : keys) {
+            if (key == -1) {
+                return keys.remove(key);
             }
         }
         return false;
+    }
+
+    /**
+     *
+     * @return how many keys the player has
+     */
+    public int getKeys() {
+        return keys.size();
+    }
+
+    /**
+     *
+     * @param unlockCode value of the key to add
+     * @return true if key added successfully, false otherwise
+     */
+    public boolean getKey(int unlockCode) {
+        return keys.add(unlockCode);
     }
 
     @Override

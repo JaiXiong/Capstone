@@ -58,8 +58,7 @@ public class Professor extends AbstractNonPlayerCharacter {
     @Override
     public void die() {
         Gamestate.getInstance().getPlayerCharacter().gainXP(xp);
-
-        pickupItem(createItem(200));
+        Gamestate.getInstance().getPlayerCharacter().getKey(200);
 
         pickupItem(createItem(101));
         pickupItem(createItem(104));
