@@ -6,6 +6,7 @@ package asset.character;
 import asset.items.EquipableItem;
 import asset.items.Item;
 import console.ConsoleGlyph;
+import engine.Engine;
 import engine.Messages;
 import io.file.FileManager;
 import io.gui.GUIManager;
@@ -151,6 +152,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     @Override
     public void die() {
         FileManager.deleteSavedGame(); //permadeath
+        Engine.getInstance().endGame(); //terminate the engine
         GUIManager.getInstance().revert(); //back out of the game screen
         GUIManager.getInstance().transitionTo(new TextDisplayMode("Game over! You have been defeated - better luck next time!"));
     }
