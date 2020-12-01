@@ -202,7 +202,7 @@ public class GameplayMode extends IOMode {
         double playerResistB = playerCharacter.getResistB();
         System.out.println(playerAccuracy);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Stats:                   ", Color.DARK_GRAY);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Precision: " + FormatUtility.percentage(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Precision:" + FormatUtility.percentage(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Strength: " + (int)playerOffenseA + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Knowledge:" + (int)playerOffenseB + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Evasion:  " + FormatUtility.percentage(playerEvade) + "             ", Color.DARK_GRAY, Color.YELLOW);
