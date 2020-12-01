@@ -7,6 +7,9 @@ import asset.items.EquipableItem;
 import asset.items.Item;
 import console.ConsoleGlyph;
 import engine.Messages;
+import io.file.FileManager;
+import io.gui.GUIManager;
+import io.modes.TextDisplayMode;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -147,8 +150,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     @Override
     public void die() {
-        Messages.addMessage("You have died!");
-        //todo - actually kill the player.
+        FileManager.deleteSavedGame(); //permadeath
+        GUIManager.getInstance().revert(); //back out of the game screen
+        GUIManager.getInstance().transitionTo(new TextDisplayMode("Game over! You have been defeated - better luck next time!"));
     }
 
     @Override
