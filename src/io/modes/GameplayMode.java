@@ -37,8 +37,8 @@ public class GameplayMode extends IOMode {
         switch (code) {
             case VK_S:
                 if (mod == CTRL_DOWN_MASK) {
-                    Engine.getInstance().endGame();
                     FileManager.saveGame();
+                    Engine.getInstance().endGame();
                     Gamestate.clearInstance();
                     GUIManager.getInstance().revert(); //pop off the GamePlayMode
                     GUIManager.getInstance().revert(); //pop off the current MainMenuMode
@@ -200,7 +200,6 @@ public class GameplayMode extends IOMode {
         double playerEvade = playerCharacter.getEvade();
         double playerResistA = playerCharacter.getResistA();
         double playerResistB = playerCharacter.getResistB();
-        System.out.println(playerAccuracy);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Stats:                   ", Color.DARK_GRAY);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Precision:" + FormatUtility.percentage(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Strength: " + (int)playerOffenseA + "             ", Color.DARK_GRAY, Color.YELLOW);

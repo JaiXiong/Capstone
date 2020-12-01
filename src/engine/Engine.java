@@ -218,8 +218,11 @@ public class Engine extends Thread {
 
     /**
      * Motify the engine that the game has ended, so it can stop iterating for character actions and terminate.
+     * This will also clear the game state and message history.
      */
     public void endGame() {
         gameInProgress = false;
+        Gamestate.clearInstance();
+        Messages.clearMessages();
     }
 }
