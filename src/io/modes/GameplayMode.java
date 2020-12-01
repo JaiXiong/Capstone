@@ -200,13 +200,14 @@ public class GameplayMode extends IOMode {
         double playerEvade = playerCharacter.getEvade();
         double playerResistA = playerCharacter.getResistA();
         double playerResistB = playerCharacter.getResistB();
+        System.out.println(playerAccuracy);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Stats:                   ", Color.DARK_GRAY);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "ACC: " + (int)(playerAccuracy * 100) + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "OF1: " + (int)playerOffenseA + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "OF2: " + (int)playerOffenseB + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "EVD: " + (100 - (int)(playerEvade * 100)) + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "RS1: " + (100 - (int)(playerResistA * 100)) + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "RS2: " + (100 - (int)(playerResistB * 100)) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Precision: " + FormatUtility.percentage(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Strength: " + (int)playerOffenseA + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Knowledge:" + (int)playerOffenseB + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Evasion:  " + FormatUtility.percentage(playerEvade) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Toughness:" + FormatUtility.percentage(playerResistA) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Recall:   " + FormatUtility.percentage(playerResistB) + "             ", Color.DARK_GRAY, Color.YELLOW);
         //target:
         writeRow++;
         consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ", Color.RED, Color.LIGHT_GRAY);
