@@ -117,13 +117,13 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
      */
     public void takeDamage(double amount, String type, double chanceToHit){
         double resist;
-        double modifiedEvade = evade;
+        double modifiedEvade = getEvade();
         switch (type) {
             case "typeA":
-                resist = resistA;
+                resist = getResistA();
                 break;
             case "typeB":
-                resist = resistB;
+                resist = getResistB();
                 break;
             case "heal":
                 resist = -1.0;

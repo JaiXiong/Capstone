@@ -114,7 +114,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     //applies accuracy adjustments from gear, cap at 40%
     @Override
     public double getEvade() {
-        double totalEvade = accuracy;
+        double totalEvade = evade;
         if (equipDefA != null) totalEvade -= equipDefA.getToHitModifier();
         if (equipDefB != null) totalEvade -= equipDefB.getToHitModifier();
 
