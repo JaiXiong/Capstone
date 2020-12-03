@@ -43,6 +43,11 @@ public class TileObjects extends AbstractGameAsset {
         WINDOWLEFTTOPCORNERBAR("windowleftopcornercross"),
         WINDOWRIGHTTOPCORNERBAR("windowrighttopcornercross"),
         CHALKBOARD("chalkboard"),
+        LONGTABLE("longtable"),
+        LONGRAIL("longrail"),
+        CASHREGISTER("cashregister"),
+        STOVE("stove"),
+        TRASHCAN("trashcan"),
         STAIRCASE("staircase"), // transition to the next level
         EMERGENCY_EXIT("emergency exit"); // transition to the hub
 

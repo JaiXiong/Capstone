@@ -81,6 +81,16 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), null, color, '╗', row, col);
         } else if (type.equals(TileObjects.TileType.CHALKBOARD.toString())) {
             return new Terrain(TileObjects.TileType.CHALKBOARD.toString(), null, color, '_', row, col);
+        } else if (type.equals(TileObjects.TileType.LONGTABLE.toString())) {
+            return new Terrain(TileObjects.TileType.LONGTABLE.toString(), null, color, '█', row, col);
+        } else if (type.equals(TileObjects.TileType.LONGRAIL.toString())) {
+            return new Terrain(TileObjects.TileType.LONGRAIL.toString(), null, color, '┬', row, col);
+        } else if (type.equals(TileObjects.TileType.CASHREGISTER.toString())) {
+            return new Terrain(TileObjects.TileType.CASHREGISTER.toString(), null, color, '$', row, col);
+        } else if (type.equals(TileObjects.TileType.STOVE.toString())) {
+            return new Terrain(TileObjects.TileType.STOVE.toString(), null, color, '©', row, col);
+        } else if (type.equals(TileObjects.TileType.TRASHCAN.toString())) {
+            return new Terrain(TileObjects.TileType.TRASHCAN.toString(), null, color, 'Ü', row, col);
         } else {
             throw new IllegalArgumentException("Unrecognized type: " + type);
         }
