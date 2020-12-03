@@ -29,8 +29,6 @@ public class Floor implements Serializable {
         } else if (type.equals(TileObjects.TileType.DOOR.toString())) {
             //return new Terrain(TileObjects.TileType.DOOR.toString(), null, color, '+', row, col);
             return new Terrain(TileObjects.TileType.DOOR.toString(), color, '+', row, col, true, 200);
-
-            //TODO need to replace all Color. with color or do we want hard coded colors for specific objects???
         } else if (type.equals(TileObjects.TileType.TREE.toString())) {
             return new Terrain(TileObjects.TileType.TREE.toString(), null, color, 'Ÿ', row, col);
         } else if (type.equals(TileObjects.TileType.TABLE.toString())) {
@@ -81,6 +79,8 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), null, color, '╔', row, col);
         } else if (type.equals(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString())) {
             return new Terrain(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), null, color, '╗', row, col);
+        } else if (type.equals(TileObjects.TileType.CHALKBOARD.toString())) {
+            return new Terrain(TileObjects.TileType.CHALKBOARD.toString(), null, color, '_', row, col);
         } else {
             throw new IllegalArgumentException("Unrecognized type: " + type);
         }
