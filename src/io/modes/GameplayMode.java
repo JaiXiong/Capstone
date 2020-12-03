@@ -204,9 +204,9 @@ public class GameplayMode extends IOMode {
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Precision:" + FormatUtility.percentage(playerAccuracy) + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Strength: " + (int)playerOffenseA + "             ", Color.DARK_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Knowledge:" + (int)playerOffenseB + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Evasion:  " + FormatUtility.percentage(playerEvade) + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Toughness:" + FormatUtility.percentage(playerResistA) + "             ", Color.DARK_GRAY, Color.YELLOW);
-        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Recall:   " + FormatUtility.percentage(playerResistB) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Evasion:  " + FormatUtility.percentage(1.0 - playerEvade) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Toughness:" + FormatUtility.percentage(1.0 - playerResistA) + "             ", Color.DARK_GRAY, Color.YELLOW);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn, "Recall:   " + FormatUtility.percentage(1.0 - playerResistB) + "             ", Color.DARK_GRAY, Color.YELLOW);
         //target:
         writeRow++;
         consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ", Color.RED, Color.LIGHT_GRAY);

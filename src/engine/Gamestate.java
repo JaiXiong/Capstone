@@ -13,7 +13,7 @@ public class Gamestate implements Serializable {
     private static Gamestate instance = null;
 
     private Floor floor;
-    private ArrayList<AbstractCharacter> characters;
+    private ArrayList<AbstractCharacter> characters = null;
     /**
      * The difficulty level of the current floor.
      * This is NOT the game's difficulty setting - instead it corresponds to the floor's "depth" in the game.
@@ -33,24 +33,26 @@ public class Gamestate implements Serializable {
     }
 
     public void returnToBase() {
-        generateAndPopulateFloor(floorDifficulty = 0);
+        floorDifficulty = 0;
+        generateAndPopulateFloor();
     }
 
     public void nextFloor() {
-        generateAndPopulateFloor(++floorDifficulty);
+        ++floorDifficulty;
+        generateAndPopulateFloor();
     }
 
 
     /**
      * Call this method to change the floor the player is on.
      */
-    private void generateAndPopulateFloor(int depth) {
-        if (depth < 0)
+    private void generateAndPopulateFloor() {
+        if (floorDifficulty < 0)
             throw new IllegalArgumentException("Depth may not be less than zero.");
-        PlayerCharacter playerCharacter = depth == 0 ? new PlayerCharacter() : getPlayerCharacter();
+        PlayerCharacter playerCharacter = characters == null ? new PlayerCharacter() : getPlayerCharacter();
         Point pcLocation;
         Point bossLocation = null;
-        switch (depth) {
+        switch (floorDifficulty) {
             case 0:
                 EMSCourtYard();
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2); //todo - edit pcLocations if we want specific spawn points
@@ -86,7 +88,7 @@ public class Gamestate implements Serializable {
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
                 break;
             default:
-                throw new IllegalArgumentException("Depth " + depth + " has no associated floor pattern.");
+                throw new IllegalArgumentException("Depth " + floorDifficulty+ " has no associated floor pattern.");
         }
         playerCharacter.setLocation(pcLocation);
         characters = new ArrayList<>();
