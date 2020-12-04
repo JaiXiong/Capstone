@@ -20,11 +20,66 @@ public class Actions {
     public static String attack(AbstractCharacter actor, AbstractCharacter target) {
         //customize our message for the player if appropriate:
         boolean isPc0 = actor == Gamestate.getInstance().getPlayerCharacter();
-        target.takeDamage(actor.getOffenseA(), "typeA", actor.getAccuracy());
-        return (
-                actor.getLeadName() +
-                        " attack" + (isPc0 ? " " : "s ") +
-                        target.getName() + ".");
+        if(isPc0){
+            target.takeDamage(actor.getOffenseA(), "typeA", actor.getAccuracy());
+            return (
+                    actor.getLeadName() +
+                            " attack" + (isPc0 ? " " : "s ") +
+                            target.getName() + ".");
+        }
+        else{
+            //attack pc returns a string, which should then be used to call the correct action
+            String attackType = ((AbstractNonPlayerCharacter) actor).attackPC();
+            switch(attackType){
+                case ActionDefinitions.HOMESICK:
+                    return homesick(actor);
+                case ActionDefinitions.TOO_MANY_MEMES:
+                    return tooManyMemes(actor, target);
+                case ActionDefinitions.BUCKLE_DOWN:
+                    return buckleDown(actor, target);
+                case ActionDefinitions.STACK_OVERFLOW:
+                    return stackOverflow(actor, target);
+                case ActionDefinitions.ALGORITHMS:
+                    return algorithms(actor, target);
+                case ActionDefinitions.DEBUG:
+                    return debug(actor, target);
+                case ActionDefinitions.FINAL_PROJECT:
+                    return finalProject(actor, target);
+                case ActionDefinitions.CODE_REVIEW:
+                    return codeReview(actor, target);
+                case ActionDefinitions.GRADE_HOMEWORK:
+                    return gradeHomework(actor, target);
+                case ActionDefinitions.DISCUSSION:
+                    return discussion(actor, target);
+                case ActionDefinitions.LECTURE:
+                    return lecture(actor, target);
+                case ActionDefinitions.ASSIGN_HOMEWORK:
+                    return assignHomework(actor, target);
+                case ActionDefinitions.LIVE_CODE:
+                    return liveCode(actor, target);
+                case ActionDefinitions.ACCREDITATION:
+                    return accreditation(actor, target);
+                case ActionDefinitions.COURSE_EVAL:
+                    return courseEval(actor, target);
+                case ActionDefinitions.TECH_UPGRADE:
+                    return techUpgrade(actor, target);
+                case ActionDefinitions.SOFTWARE_DEV:
+                    return softwareDev(actor, target);
+                case ActionDefinitions.MISS_SEMICOLON:
+                    return missSemicolon(actor, target);
+                case ActionDefinitions.PRESENTATION:
+                    return presentation(actor, target);
+                case ActionDefinitions.HACK:
+                    return hack(actor, target);
+                case ActionDefinitions.VIRUS:
+                    return virus(actor, target);
+                default:
+                    return(
+                            actor.getLeadName() +
+                                    " attack" + (isPc0 ? " " : "s ") +
+                                    target.getName() + ".");
+            }
+        }
     }
 
     /* Player (id 0) actions. Player actions generally don't have an 'actor' parameter

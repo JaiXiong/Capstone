@@ -21,7 +21,7 @@ public class Gamestate implements Serializable {
      * -1 - ERROR(no current floor)
      * 0 - the dorm or hub area
      * 1 - freshman year, first semester
-     * 2 - fresgman year, second semester
+     * 2 - freshman year, second semester
      * 3 - sophomore year, first semester
      * ...
      * 8 - senior year, second semester
@@ -122,7 +122,7 @@ public class Gamestate implements Serializable {
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.LIGHT_GRAY);
         for (int i = 0; i < 16; ++i) {
             for (int j = 0; j < 16; ++j) {
-                //orginal work
+                //original work
                 if (i == 0 || j == 0 || i == 15 || j == 15) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.DARK_GRAY, i, j));
                 }
@@ -285,12 +285,12 @@ public class Gamestate implements Serializable {
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), customColorMaker(customColor.MARBLEBLUE));
         for (int i = 0; i < 16; ++i) {
             for (int j = 0; j < 16; ++j) {
-                //orginal work
+                //original work
                 if (i == 0 || j == 0 || i == 15 || j == 15) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
                 }
 
-                //Make vertial walls
+                //Make vertical walls
                 if (j == 6 || j == 9) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
                 }
@@ -740,7 +740,7 @@ public class Gamestate implements Serializable {
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), customColorMaker(customColor.MARBLEBLUE));
         for (int i = 0; i < 24; ++i) {
             for (int j = 0; j < 48; ++j) {
-                //orginal work
+                //original work
                 if (i == 0 || j == 0 || i == 23 || j == 47) {
                     floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
                 }
