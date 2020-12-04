@@ -14,7 +14,7 @@ public class NPCFactory {
      */
     public static AbstractNonPlayerCharacter npcLookup(int id){
         switch (id) {
-            case 1:
+            case 1: case 8: case 9:
                 return new Freshman();
             case 2:
                 return new Sophomore();
@@ -29,6 +29,7 @@ public class NPCFactory {
             case 7:
                 return new Researcher();
                 //todo - more regular NPCs
+                //as a temp fix, i'm making 8 and 9 return more freshmen
             case 11:
                 return new Professor();
             case 12:

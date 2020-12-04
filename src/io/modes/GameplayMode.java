@@ -115,7 +115,7 @@ public class GameplayMode extends IOMode {
                     }
                 }
                 break;
-            //todo - lots here! movement commands, info commands, combat commands, etc.
+            //todo - lots here! info commands, combat commands, etc.
             default:
                 //nothing to do - unhandled input is ignored
         }
@@ -129,7 +129,7 @@ public class GameplayMode extends IOMode {
                 // let the engine know the player is ready to act
                 Engine.getInstance().setPlayerHasActionQueued();
             } else {
-                //todo - inform the player via message that his action could not be handled
+                Messages.addMessage("Action could not be performed.");
             }
         }
     }

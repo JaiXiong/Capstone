@@ -31,7 +31,6 @@ public class MainMenuMode extends MenuMode {
                 new MenuOption("Load Existing Game", FileManager.doesSavedGameExist()),
                 new MenuOption("Delete Existing Game", FileManager.doesSavedGameExist()),
                 new MenuOption("Exit", true)
-                //todo - enable or disable based on existence of save file
         );
     }
 
