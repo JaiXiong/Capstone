@@ -1,5 +1,7 @@
 package asset.items;
 
+import java.awt.*;
+
 /**
  * Define items which can be equipped as gear.
  */
@@ -11,17 +13,12 @@ public class EquipableItem extends Item {
         DEFENSE_B
     }
     private final Slot SLOT;
-    
-    //the following values are how much the equipment adjust the player's stats by
-    double baseStat, toHitModifier;
 
     public EquipableItem(int id, Slot slot, String name, int price, double baseStat,
         double toHitModifier) {
 
-        super(id, name, price);
+        super(id, name, price, baseStat, toHitModifier);
         SLOT = slot;
-        this.baseStat = baseStat;
-        this.toHitModifier = toHitModifier;
     }
 
     public Slot getSlot() {
@@ -29,10 +26,10 @@ public class EquipableItem extends Item {
     }
 
     public double getToHitModifier() {
-        return toHitModifier;
+        return getSecondaryValue();
     }
 
-    public double getBaseStat() { return baseStat; }
+    public double getBaseStat() { return getPrimaryValue(); }
 
     public static EquipableItem createEquipment(int itemID){
         switch (itemID) {
@@ -86,4 +83,15 @@ public class EquipableItem extends Item {
                 return null;
         }
     }
+
+    public Color getDisplayColor() {
+        switch (getSlot()) {
+            case OFFENSE_A: return Color.RED;
+            case DEFENSE_A: return Color.BLUE;
+            case OFFENSE_B: return Color.YELLOW;
+            case DEFENSE_B: return Color.GREEN;
+            default: throw new IllegalArgumentException("Invalid slot " + getSlot());
+        }
+    }
+
 }

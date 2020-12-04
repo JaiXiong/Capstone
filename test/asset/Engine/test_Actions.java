@@ -24,7 +24,7 @@ public class test_Actions {
     @Test
     public void test_openDoor(){
         PlayerCharacter p = Gamestate.getInstance().getPlayerCharacter();
-        Item i = new Item(100, "key", 0);
+        Item i = new Item(100, "key", 0, 0, 0);
         p.addToInventory(i);
         Terrain d = new Terrain("test", null, 'd', 10, 10, true, 100 );
         assertEquals(Actions.openDoor(d), "You unlocked a door.");

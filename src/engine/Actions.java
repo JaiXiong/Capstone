@@ -138,39 +138,25 @@ public class Actions {
      */
     public static String useItem(Item item) {
         PlayerCharacter you = Gamestate.getInstance().getPlayerCharacter();
-        if (item != null) {
-            switch (item.getItemID()) {
-                case 100:
-                    if (you.removeFromInventory(item)) {
-                        you.useEnergy(-20);
-                        return "You chug an Energy Drink.";
-                    }
-                case 101:
-                    if (you.removeFromInventory(item)) {
-                        you.useEnergy(-50);
-                        return "You chug a Big Energy Drink, your heart races!";
-                    }
-                case 102:
-                    if (you.removeFromInventory(item)) {
-                        int cost = 20;
-                        if (cost < you.getEnergy()) cost = you.getEnergy();
-                        you.takeDamage(60.0,"heal", 1.0);
-                        you.useEnergy(cost);
-                        return "You drink some 'Juice' (21+).";
-                    }
-                case 103:
-                    if (you.removeFromInventory(item)) {
-                        you.takeDamage(30.0, "heal", 1.0);
-                        return "You eat some Craft Dinner.";
-                    }
-                case 104:
-                    if (you.removeFromInventory(item)) {
-                        you.takeDamage(70.0,"heal",1.0);
-                        return "You eat Some Kinda Tex-Mex? Delish.";
-                    }
-            }
+        you.removeFromInventory(item);
+        int dHealth = (int)item.getPrimaryValue();
+        int dEnergy = 0 - (int)item.getSecondaryValue();
+        if (dHealth != 0)
+            you.takeDamage(dHealth, "heal", 1.0);
+        if (dEnergy < 0)
+            you.useEnergy(dEnergy);
+        else if (dEnergy > 0 && dEnergy >= you.getEnergy())
+            you.useEnergy(you.getEnergy());
+        else if (dEnergy > 0)
+            you.useEnergy(dEnergy);
+        switch (item.getItemID()) {
+            case 100: return "You chug an Energy Drink.";
+            case 101: return "You chug a Big Energy Drink, your heart races!";
+            case 102: return "You drink some 'Juice' (21+).";
+            case 103: return "You eat some Craft Dinner.";
+            case 104: return "You eat Some Kinda Tex-Mex? Delish.";
+            default: throw new IllegalArgumentException("Unrecognized Item ID " + item.getItemID() + ".");
         }
-        return "That's not an item you can use.";
     }
 
     /**

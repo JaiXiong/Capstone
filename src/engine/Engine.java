@@ -55,6 +55,7 @@ public class Engine extends Thread {
                     i.remove();
                     continue;
                 }
+                if (!gameInProgress) break;
                 String action = character.getNextAction();
                 if (!validateAction(character, action))
                     action = WAIT;

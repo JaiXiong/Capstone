@@ -2,6 +2,7 @@ package io.modes;
 
 import asset.items.Item;
 import engine.Gamestate;
+import io.gui.ConsoleInterface;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 public abstract class AbstractInventorySelectMenuMode extends MenuMode {
 
     private static final MenuOption CANCEL = new MenuOption("<Cancel>", true);
+
+    private Color[] ITEM_FOREGROUND_COLORS;
 
     /**
      * @param menuName the title or prompt for the menu
@@ -28,6 +31,12 @@ public abstract class AbstractInventorySelectMenuMode extends MenuMode {
      */
     public AbstractInventorySelectMenuMode(String menuName, Color... colors) {
         super(menuName, colors, buildOptions());
+        ArrayList<Item> playerInventory = Gamestate.getInstance().getPlayerCharacter().getInventory();
+        ITEM_FOREGROUND_COLORS = new Color[playerInventory.size()];
+        int index = 0;
+        for (Item item : playerInventory) {
+            ITEM_FOREGROUND_COLORS[index++] = item.getDisplayColor();
+        }
     }
 
     private static MenuOption[] buildOptions() {
@@ -39,10 +48,36 @@ public abstract class AbstractInventorySelectMenuMode extends MenuMode {
         } else {
             opts = new MenuOption[inv.size() + 1];
             for (int i = 0; i < inv.size(); ++i) {
-                opts[i] = new MenuOption(inv.get(i).getName(), true);
+                opts[i] = new MenuOption(inv.get(i).getDisplayText(), true);
             }
         }
         opts[opts.length - 1] = CANCEL;
         return opts;
+    }
+
+    @Override
+    public void update(ConsoleInterface consoleInterface) {
+        int row = consoleInterface.getVerticalCenter(OPTS.length + 2);
+        consoleInterface.writeCenteredLine(row, MENU_NAME, new Color[]{COLORS[BG_TTL], COLORS[FG_TTL]});
+        row += 2;
+        for (int i = 0; i < OPTS.length; ++i) {
+            MenuOption mo = OPTS[i];
+            consoleInterface.writeCenteredLine(
+                    row++,
+                    mo.text,
+                    mo.enabled ?
+                            i == selectedOption ?
+                                    new Color[]{COLORS[BG_SEL],
+                                            i < ITEM_FOREGROUND_COLORS.length ?
+                                                    ITEM_FOREGROUND_COLORS[i] :
+                                                    COLORS[FG_SEL]} :
+                                    new Color[]{COLORS[BG_EN],
+                                            i < ITEM_FOREGROUND_COLORS.length ?
+                                                    ITEM_FOREGROUND_COLORS[i] :
+                                                    COLORS[FG_EN]} :
+                            new Color[]{COLORS[BG_DIS], COLORS[FG_DIS]}
+            );
+        }
+        consoleInterface.updateScreen();
     }
 }

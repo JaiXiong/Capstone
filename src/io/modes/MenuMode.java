@@ -23,22 +23,22 @@ public abstract class MenuMode extends IOMode {
         }
     }
 
-    private static final int BG_TTL = 0;
-    private static final int FG_TTL = 1;
-    private static final int BG_SEL = 2;
-    private static final int FG_SEL = 3;
-    private static final int BG_EN = 4;
-    private static final int FG_EN = 5;
-    private static final int BG_DIS = 6;
-    private static final int FG_DIS = 7;
+    protected static final int BG_TTL = 0;
+    protected static final int FG_TTL = 1;
+    protected static final int BG_SEL = 2;
+    protected static final int FG_SEL = 3;
+    protected static final int BG_EN = 4;
+    protected static final int FG_EN = 5;
+    protected static final int BG_DIS = 6;
+    protected static final int FG_DIS = 7;
 
 
-    private final String MENU_NAME;
-    private final Color[] COLORS;
-    private final MenuOption[] OPTS;
+    protected final String MENU_NAME;
+    protected final Color[] COLORS;
+    protected final MenuOption[] OPTS;
 
     protected int selectedOption = -1;
-    private final int ENABLED_OPTION_COUNT;
+    protected final int ENABLED_OPTION_COUNT;
 
     /**
      * @param menuName the title or prompt for the menu
