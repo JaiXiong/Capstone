@@ -175,18 +175,18 @@ public class GameplayMode extends IOMode {
         //gear:
         EquipableItem weapon1 = playerCharacter.getEquipOffA();
         writeColumn = consoleInterface.writeSingleLine(gearLine1, 0,
-                "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()), Color.LIGHT_GRAY, Color.BLACK);
+                "Weapon: " + (weapon1 == null ? "(none)" : weapon1.getName()), Color.LIGHT_GRAY, Color.RED);
         EquipableItem weapon2 = playerCharacter.getEquipOffB();
         writeColumn = consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
-                "  Tool: " + (weapon2 == null ? "(none)" : weapon2.getName()), Color.LIGHT_GRAY, Color.BLACK);
+                "  Tool: " + (weapon2 == null ? "(none)" : weapon2.getName()), Color.LIGHT_GRAY, Color.YELLOW);
         consoleInterface.writeSingleLine(gearLine1, writeColumn + 1,
                 "                                                                    ", Color.LIGHT_GRAY, Color.BLACK); //fill line with blanks
         EquipableItem armor1 = playerCharacter.getEquipDefA();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, 0,
-                "Clothes: " + (armor1 == null ? "(none)" : armor1.getName()), Color.LIGHT_GRAY, Color.BLACK);
+                "Clothes: " + (armor1 == null ? "(none)" : armor1.getName()), Color.LIGHT_GRAY, Color.BLUE);
         EquipableItem armor2 = playerCharacter.getEquipDefB();
         writeColumn = consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
-                "  Hat: " + (armor2 == null ? "(none)" : armor2.getName()), Color.LIGHT_GRAY, Color.BLACK);
+                "  Hat: " + (armor2 == null ? "(none)" : armor2.getName()), Color.LIGHT_GRAY, Color.GREEN);
         consoleInterface.writeSingleLine(gearLine2, writeColumn + 1,
                 "                                                                    ", Color.LIGHT_GRAY, Color.BLACK); //fill line with blanks
         //stats:
