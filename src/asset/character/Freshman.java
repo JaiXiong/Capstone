@@ -1,6 +1,5 @@
 package asset.character;
 
-import asset.character.AbstractNonPlayerCharacter;
 import java.awt.*;
 import static engine.ActionDefinitions.*;
 import static engine.Actions.pickupItem;

@@ -3,10 +3,8 @@ package asset.character;
 import engine.Gamestate;
 
 import java.awt.*;
-import java.util.Iterator;
 
 import static engine.ActionDefinitions.*;
-import static engine.ActionDefinitions.ATTACK;
 
 public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 

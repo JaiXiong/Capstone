@@ -4,6 +4,8 @@ import asset.character.*;
 import asset.world.Terrain;
 import asset.items.*;
 
+import static engine.ActionDefinitions.*;
+
 public class Actions {
     /* Actions should typically take actor and (if applicable) target parameters.
      * Actions always return a string for output to the player.
@@ -31,47 +33,47 @@ public class Actions {
             //attack pc returns a string, which should then be used to call the correct action
             String attackType = ((AbstractNonPlayerCharacter) actor).attackPC();
             switch(attackType){
-                case ActionDefinitions.HOMESICK:
+                case HOMESICK:
                     return homesick(actor);
-                case ActionDefinitions.TOO_MANY_MEMES:
+                case TOO_MANY_MEMES:
                     return tooManyMemes(actor, target);
-                case ActionDefinitions.BUCKLE_DOWN:
+                case BUCKLE_DOWN:
                     return buckleDown(actor, target);
-                case ActionDefinitions.STACK_OVERFLOW:
+                case STACK_OVERFLOW:
                     return stackOverflow(actor, target);
-                case ActionDefinitions.ALGORITHMS:
+                case ALGORITHMS:
                     return algorithms(actor, target);
-                case ActionDefinitions.DEBUG:
+                case DEBUG:
                     return debug(actor, target);
-                case ActionDefinitions.FINAL_PROJECT:
+                case FINAL_PROJECT:
                     return finalProject(actor, target);
-                case ActionDefinitions.CODE_REVIEW:
+                case CODE_REVIEW:
                     return codeReview(actor, target);
-                case ActionDefinitions.GRADE_HOMEWORK:
+                case GRADE_HOMEWORK:
                     return gradeHomework(actor, target);
-                case ActionDefinitions.DISCUSSION:
+                case DISCUSSION:
                     return discussion(actor, target);
-                case ActionDefinitions.LECTURE:
+                case LECTURE:
                     return lecture(actor, target);
-                case ActionDefinitions.ASSIGN_HOMEWORK:
+                case ASSIGN_HOMEWORK:
                     return assignHomework(actor, target);
-                case ActionDefinitions.LIVE_CODE:
+                case LIVE_CODE:
                     return liveCode(actor, target);
-                case ActionDefinitions.ACCREDITATION:
+                case ACCREDITATION:
                     return accreditation(actor, target);
-                case ActionDefinitions.COURSE_EVAL:
+                case COURSE_EVAL:
                     return courseEval(actor, target);
-                case ActionDefinitions.TECH_UPGRADE:
+                case TECH_UPGRADE:
                     return techUpgrade(actor, target);
-                case ActionDefinitions.SOFTWARE_DEV:
+                case SOFTWARE_DEV:
                     return softwareDev(actor, target);
-                case ActionDefinitions.MISS_SEMICOLON:
+                case MISS_SEMICOLON:
                     return missSemicolon(actor, target);
-                case ActionDefinitions.PRESENTATION:
+                case PRESENTATION:
                     return presentation(actor, target);
-                case ActionDefinitions.HACK:
+                case HACK:
                     return hack(actor, target);
-                case ActionDefinitions.VIRUS:
+                case VIRUS:
                     return virus(actor, target);
                 default:
                     return(

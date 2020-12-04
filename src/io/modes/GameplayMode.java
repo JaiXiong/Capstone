@@ -1,11 +1,9 @@
 package io.modes;
 
-import asset.ColorDefinitions;
 import asset.character.AbstractCharacter;
 import asset.character.PlayerCharacter;
 import asset.items.EquipableItem;
 import asset.world.Terrain;
-import asset.world.TileObjects;
 import engine.Engine;
 import engine.Gamestate;
 import engine.Messages;

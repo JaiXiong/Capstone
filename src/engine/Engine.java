@@ -136,7 +136,9 @@ public class Engine extends Thread {
                 Messages.addMessage(Actions.discardItem(((PlayerCharacter)actor).getInventory().get(index)));
                 return;
             default:
-                throw new IllegalArgumentException("Unknown action: " + action);
+                //assume this is an NPC special attack action:
+                //todo - if we implement player special attacks, change this, or add them as separate cases!
+                destination = Gamestate.getInstance().getPlayerCharacter().getLocation();
         }
         AbstractCharacter target = Gamestate.getInstance().getCharacterAt(destination.y, destination.x);
         if (target != null) {
@@ -178,8 +180,10 @@ public class Engine extends Thread {
                 if (index < 0) return false; //invalid index
                 if (!(actor instanceof  PlayerCharacter)) return false; //npcs do not have inventories
                 return (index < ((PlayerCharacter)actor).getInventory().size()); //return whether the player's inventory contains the passed index.
-                default:
-                    return false;
+            default:
+                //assume this is an NPC special attack action:
+                //todo - if we implement player special attacks, change this, or add them as separate cases!
+                return !(actor instanceof PlayerCharacter);
         }
     }
 
