@@ -80,7 +80,7 @@ public class Gamestate implements Serializable {
                 break;
             case 6:
                 Bigroom5();
-                pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
+                pcLocation = new Point(46, 22);
                 break;
             case 7:
                 Bigroom6();
@@ -630,37 +630,34 @@ public class Gamestate implements Serializable {
             for (int j = 0; j < 48; ++j) {
                 //Make the perimeter.
                 if (i == 0 || j == 0 || i == 23 || j == 47) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.BLUE, i, j));
                 }
                 //Make the center room.
                 if (((i == 5 || i == 18) && j > 6 && j < 41) || ((j == 7 || j == 40) && i > 4 && i < 19)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
                 //Make top left closet.
                 if (i > 5 && i < 11 && j == 15) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
                 if (i == 11 && j > 6 && j < 16) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
                 //Make bottom right closet.
                 if (i > 12  && i < 19 && j == 32) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
                 if (i == 12 && j > 31 && j < 40) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
                 //Make center room dividers.
                 if (i > 5 && i < 18 && (j == 19 || j == 28)) {
-                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), customColorMaker(customColor.LIGHTBROWN), i, j));
+                    floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, j));
                 }
             }
         }
-        //Doors in center room.
-        floor.setTerrainAt(5, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 5, 24));
+        //Door in center room.
         floor.setTerrainAt(18, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 18, 24));
-        floor.setTerrainAt(14, 7, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 14, 7));
-        floor.setTerrainAt(8, 40, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 8, 40));
         //Door for top left closet.
         floor.setTerrainAt(11, 11, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 11, 11));
         //Door for bottom right closet.
@@ -668,6 +665,46 @@ public class Gamestate implements Serializable {
         //Doors for divider.
         floor.setTerrainAt(14, 19, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 18, 19));
         floor.setTerrainAt(8, 28, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 8, 28));
+        //Create stairs.
+        floor.setTerrainAt(6, 14, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.LIGHTBROWN), 2, 2));
+        floor.setTerrainAt(22, 46, floor.makeFloor(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.WHITE, 22, 46));
+        //Create wall in hallway
+        for(int i = 19; i < 23; ++i) floor.setTerrainAt(i, 40, floor.makeFloor(TileObjects.TileType.WALL.toString(), Color.GRAY, i, 40));
+        //Create tables and chairs in center room.
+        for(int i = 7; i < 16; ++i) {
+            floor.setTerrainAt(i, 24, floor.makeFloor(TileObjects.TileType.TABLE.toString(), customColorMaker(customColor.LIGHTBROWN), i, 24));
+            if(i % 2 == 1) {
+                floor.setTerrainAt(i, 22, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), Color.LIGHT_GRAY, i, 22));
+                floor.setTerrainAt(i, 26, floor.makeFloor(TileObjects.TileType.CHAIRRIGHT.toString(), Color.LIGHT_GRAY, i, 26));
+            }
+        }
+        //Create classroom in top right room.
+        for(int j = 29; j < 40; ++j) {
+            floor.setTerrainAt(6, j, floor.makeFloor(TileObjects.TileType.CHALKBOARD.toString(), customColorMaker(customColor.DARKGREEN), 6, j));
+            if(j % 2 == 0) {
+                floor.setTerrainAt(8, j, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.GOLD), 8, j));
+                floor.setTerrainAt(10, j, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.GOLD), 10, j));
+            }
+        }
+        //Create shelves in bottom right closet.
+        for(int i = 13; i < 18; ++i) {
+            floor.setTerrainAt(i, 33, floor.makeFloor(TileObjects.TileType.SHELF.toString(), customColorMaker(customColor.PURPLE), i, 33));
+            floor.setTerrainAt(i, 39, floor.makeFloor(TileObjects.TileType.SHELF.toString(), customColorMaker(customColor.PURPLE), i, 39));
+        }
+        //Create lounge in bottom left room.
+        for(int j = 12; j < 15; ++j) {
+            floor.setTerrainAt(14, j, floor.makeFloor(TileObjects.TileType.TABLE.toString(), customColorMaker(customColor.DARKBROWN), 14, j));
+            floor.setTerrainAt(16, j, floor.makeFloor(TileObjects.TileType.TABLE.toString(), customColorMaker(customColor.DARKBROWN), 16, j));
+            if(j % 2 == 0) floor.setTerrainAt(15, j, floor.makeFloor(TileObjects.TileType.TABLE.toString(), customColorMaker(customColor.DARKBROWN), 15, j));
+            else floor.setTerrainAt(15, j, floor.makeFloor(TileObjects.TileType.CLOVERPLANT.toString(), Color.GREEN, 15, j));
+        }
+        floor.setTerrainAt(15, 10, floor.makeFloor(TileObjects.TileType.CHAIRLEFT.toString(), customColorMaker(customColor.LIGHTBROWN), 15, 10));
+        floor.setTerrainAt(15, 16, floor.makeFloor(TileObjects.TileType.CHAIRRIGHT.toString(), customColorMaker(customColor.LIGHTBROWN), 15, 16));
+        //Create shelves in top left room.
+        for(int i = 6; i < 11; ++i) {
+            floor.setTerrainAt(i, 8, floor.makeFloor(TileObjects.TileType.SHELF.toString(), customColorMaker(customColor.PURPLE), i, 8));
+            if(i < 9) floor.setTerrainAt(i, 13, floor.makeFloor(TileObjects.TileType.SHELF.toString(), customColorMaker(customColor.PURPLE), i, 13));
+        }
     }
 
     private void Bigroom6() {
