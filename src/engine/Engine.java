@@ -198,7 +198,9 @@ public class Engine extends Thread {
             //Players can attempt to open doors by moving into a closed door
             if (Gamestate.getInstance().getCharacterAt(origin.y,origin.x).getInitiativeID() == 0 &&
                     thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
-                Messages.addMessage(Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x)));
+                String doorMessage = Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x));
+                Messages.addMessage(doorMessage);
+                return (doorMessage.equals("You unlocked a door."));
             }
 
             return false; //impassable terrain at destination
