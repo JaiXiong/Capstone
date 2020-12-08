@@ -51,15 +51,14 @@ public class Engine extends Thread {
             for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
                 character = i.next();
                 if (character.getHealth() <= 0) { //check that this character is alive - if not, remove it.
-                    character.die();
                     i.remove();
                     continue;
                 }
-                if (!gameInProgress) break;
                 String action = character.getNextAction();
                 if (!validateAction(character, action))
                     action = WAIT;
                 handleAction(character, action);
+                if (!checkDeath()) break;
             }
             GUIManager.getInstance().updateScreen(); //once all actions for this turn have been processed, redraw the screen
         } while (gameInProgress);
@@ -203,6 +202,17 @@ public class Engine extends Thread {
             }
 
             return false; //impassable terrain at destination
+        }
+        return true;
+    }
+
+    private boolean checkDeath() {
+        ArrayList<AbstractCharacter> characters = Gamestate.getInstance().getCharacters();
+        AbstractCharacter character;
+        for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
+            character = i.next();
+            if (character.getHealth() <= 0) character.die();
+            if (!gameInProgress) return false;
         }
         return true;
     }
