@@ -130,6 +130,51 @@ public class Gamestate implements Serializable {
         }
     }
 
+    private void SplashScreen() {
+        floor = new Floor(24, 64);
+        floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.BLACK);
+        for(int i = 0; i < 24; ++i) {
+            for(int j = 0; j < 64; ++j) {
+                //Add red border.
+                if (j == 0 || j == 63) {
+                    if(j == 0 && i == 0) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                    else if(j == 0 && i == 23) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                    else if(j == 63 && i == 0) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                    else if(j == 63 && i == 23) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                    else floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                }
+                if((i == 0 || i == 23) && j > 0 && j < 63) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), customColorMaker(customColor.VERYDARKRED), i, j));
+                //Add purple border.
+                if(j == 3 || j == 60) {
+                    if(j == 3 && i == 3) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                    else if(j == 3 && i == 20) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                    else if(j == 60 && i == 3) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                    else if(j == 60 && i == 20) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                    else if(i > 3 && i < 20) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                }
+                if((i == 3 || i == 20) && j > 3 && j < 60) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
+                //Add gray border.
+                if(j == 14 || j == 50) {
+                    if(j == 14 && i == 10) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 14 && i == 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 50 && i == 10) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 50 && i == 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(i > 10 && i < 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), Color.LIGHT_GRAY, i, j));
+                }
+                if((i == 10 || i == 14) && j > 14 && j < 50) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), Color.LIGHT_GRAY, i, j));
+            }
+        }
+        //Add diagonals in corners.
+        floor.setTerrainAt(1, 1, floor.makeFloor(TileObjects.TileType.BACKSLASH.toString(), Color.GRAY, 1, 1));
+        floor.setTerrainAt(2, 2, floor.makeFloor(TileObjects.TileType.BACKSLASH.toString(), Color.GRAY, 2, 2));
+        floor.setTerrainAt(21, 61, floor.makeFloor(TileObjects.TileType.BACKSLASH.toString(), Color.GRAY, 21, 61));
+        floor.setTerrainAt(22, 62, floor.makeFloor(TileObjects.TileType.BACKSLASH.toString(), Color.GRAY, 22, 62));
+        floor.setTerrainAt(22, 1, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 22, 1));
+        floor.setTerrainAt(21, 2, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 21, 2));
+        floor.setTerrainAt(2, 61, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 2, 61));
+        floor.setTerrainAt(1, 62, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 1, 62));
+    }
+
     //player main lobby
     private void EMSCourtYard() {
         floor = new Floor(35, 38);

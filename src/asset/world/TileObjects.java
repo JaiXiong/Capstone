@@ -48,6 +48,8 @@ public class TileObjects extends AbstractGameAsset {
         CASHREGISTER("cashregister"),
         STOVE("stove"),
         TRASHCAN("trashcan"),
+        BACKSLASH("backslash"),
+        FORWARDSLASH("forwardslash"),
         STAIRCASE("staircase"), // transition to the next level
         EMERGENCY_EXIT("emergency exit"); // transition to the hub
 

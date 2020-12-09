@@ -91,6 +91,10 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.STOVE.toString(), null, color, '©', row, col);
         } else if (type.equals(TileObjects.TileType.TRASHCAN.toString())) {
             return new Terrain(TileObjects.TileType.TRASHCAN.toString(), null, color, 'Ü', row, col);
+        } else if (type.equals(TileObjects.TileType.BACKSLASH.toString())) {
+            return new Terrain(TileObjects.TileType.BACKSLASH.toString(), null, color, '\\', row, col);
+        } else if (type.equals(TileObjects.TileType.FORWARDSLASH.toString())) {
+            return new Terrain(TileObjects.TileType.FORWARDSLASH.toString(), null, color, '/', row, col);
         } else {
             throw new IllegalArgumentException("Unrecognized type: " + type);
         }
