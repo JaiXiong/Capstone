@@ -76,6 +76,7 @@ public class Actions {
                 case VIRUS:
                     return virus(actor, target);
                 default:
+                    target.takeDamage(actor.getOffenseA(), "typeA", actor.getAccuracy());
                     return(
                             actor.getLeadName() +
                                     " attack" + (isPc0 ? " " : "s ") +

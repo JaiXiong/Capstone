@@ -51,15 +51,14 @@ public class Engine extends Thread {
             for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
                 character = i.next();
                 if (character.getHealth() <= 0) { //check that this character is alive - if not, remove it.
-                    character.die();
                     i.remove();
                     continue;
                 }
-                if (!gameInProgress) break;
                 String action = character.getNextAction();
                 if (!validateAction(character, action))
                     action = WAIT;
                 handleAction(character, action);
+                if (!checkDeath()) break;
             }
             GUIManager.getInstance().updateScreen(); //once all actions for this turn have been processed, redraw the screen
         } while (gameInProgress);
@@ -208,10 +207,23 @@ public class Engine extends Thread {
             //Players can attempt to open doors by moving into a closed door
             if (Gamestate.getInstance().getCharacterAt(origin.y,origin.x).getInitiativeID() == 0 &&
                     thisFloor.getTerrainType(destination.y, destination.x).equals("door")) {
-                Messages.addMessage(Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x)));
+                String doorMessage = Actions.openDoor(thisFloor.getTerrainAt(destination.y,destination.x));
+                Messages.addMessage(doorMessage);
+                return (doorMessage.equals("You unlocked a door."));
             }
 
             return false; //impassable terrain at destination
+        }
+        return true;
+    }
+
+    private boolean checkDeath() {
+        ArrayList<AbstractCharacter> characters = Gamestate.getInstance().getCharacters();
+        AbstractCharacter character;
+        for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
+            character = i.next();
+            if (character.getHealth() <= 0) character.die();
+            if (!gameInProgress) return false;
         }
         return true;
     }
