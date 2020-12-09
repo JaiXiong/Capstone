@@ -4,9 +4,7 @@ import asset.character.AbstractCharacter;
 import asset.character.PlayerCharacter;
 import asset.items.EquipableItem;
 import asset.world.Terrain;
-import engine.Engine;
-import engine.Gamestate;
-import engine.Messages;
+import engine.*;
 import io.FormatUtility;
 import io.file.FileManager;
 import io.gui.ConsoleInterface;
@@ -113,6 +111,14 @@ public class GameplayMode extends IOMode {
                     }
                 }
                 break;
+            case VK_F1: // "F1"
+                if (Actions.playerCanUseSpecial(0)) {
+                    nextAction = SPECIAL + "00";
+                } else {
+                    Messages.addMessage("You don't have the energy to Cram right now.");
+                }
+                break;
+                //todo - more specials?
             //todo - lots here! info commands, combat commands, etc.
             default:
                 //nothing to do - unhandled input is ignored
@@ -151,14 +157,35 @@ public class GameplayMode extends IOMode {
         Dimension consoleSize = consoleInterface.getConsoleSize();
         int consoleHeight = consoleSize.height;
         int consoleWidth = consoleSize.width;
+        int specialLine = consoleHeight - 4;
         int statLine = consoleHeight - 3;
         int gearLine1 = consoleHeight - 2;
         int gearLine2 = consoleHeight - 1;
+        int writeColumn = consoleInterface.writeSingleLine(specialLine, 0, "Special Abilities: ", Color.LIGHT_GRAY, Color.BLACK);
+        //special abilities:
+        for (int i = 0; i < playerCharacter.getActions().length; ++i) {
+            String ability = playerCharacter.getActions()[i];
+            writeColumn =
+                    consoleInterface.writeSingleLine(
+                            specialLine,
+                            writeColumn + 1,
+                            "[F" + (i + 1) + "]",
+                            Color.LIGHT_GRAY,
+                            ability == null
+                                    ? Color.LIGHT_GRAY //invisible
+                                    : Actions.playerCanUseSpecial(i)
+                                    ? Color.CYAN
+                                    : Color.DARK_GRAY
+                    );
+        }
+        consoleInterface.writeSingleLine(specialLine, writeColumn + 1,
+                "                                                           ", Color.LIGHT_GRAY, Color.LIGHT_GRAY);
+        writeColumn = 0;
         //stats:
         int playerHealthCurrent = playerCharacter.getHealth();
         int playerHealthMax = playerCharacter.getMaxHealth();
         double healthPercent = (double)playerHealthCurrent / (double)playerHealthMax;
-        int writeColumn = consoleInterface.writeSingleLine(statLine, 0, "HP: ", Color.LIGHT_GRAY, Color.BLACK);
+        writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn, "HP: ", Color.LIGHT_GRAY, Color.BLACK);
         writeColumn = consoleInterface.writeSingleLine(statLine, writeColumn + 1,
                 FormatUtility.percentage(healthPercent), Color.LIGHT_GRAY, FormatUtility.colorizeByPercentage(healthPercent));
         int playerEnergyCurrent = playerCharacter.getEnergy();

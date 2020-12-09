@@ -136,6 +136,11 @@ public class Engine extends Thread {
                     throw new IllegalArgumentException("Tried to handle an invalid DISCARD_ITEM action.");
                 Messages.addMessage(Actions.discardItem(((PlayerCharacter)actor).getInventory().get(index)));
                 return;
+            case SPECIAL:
+                if (!(actor instanceof PlayerCharacter))
+                    throw new IllegalArgumentException("Non-player character tried to use player special attack.");
+                Messages.addMessage(Actions.playerSpecial(index, actor.getTarget()));
+                return;
             default:
                 //assume this is an NPC special attack action:
                 //todo - if we implement player special attacks, change this, or add them as separate cases!
@@ -181,6 +186,10 @@ public class Engine extends Thread {
                 if (index < 0) return false; //invalid index
                 if (!(actor instanceof  PlayerCharacter)) return false; //npcs do not have inventories
                 return (index < ((PlayerCharacter)actor).getInventory().size()); //return whether the player's inventory contains the passed index.
+            case SPECIAL:
+                if (index < 0) return false; //invalid index
+                if (!(actor instanceof  PlayerCharacter)) return false; //npcs do not have inventories
+                return Actions.playerCanUseSpecial(index);
             default:
                 //assume this is an NPC special attack action:
                 //todo - if we implement player special attacks, change this, or add them as separate cases!

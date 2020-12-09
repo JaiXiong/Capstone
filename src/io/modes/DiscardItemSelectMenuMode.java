@@ -19,7 +19,8 @@ public class DiscardItemSelectMenuMode extends AbstractInventorySelectMenuMode {
                 Color.BLACK,
                 Color.BLACK,
                 Color.GREEN,
-                Color.BLACK);
+                Color.BLACK,
+                Color.DARK_GRAY);
     }
 
     @Override

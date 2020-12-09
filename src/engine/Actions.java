@@ -180,6 +180,37 @@ public class Actions {
         }
     }
 
+    /**
+     * Return whether the player can use the special ability at index.
+     */
+    public static boolean playerCanUseSpecial(int index) {
+        PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
+        switch (index) {
+            case 0:
+                return pc.getEnergy() > 50;
+            default:
+                throw new IllegalArgumentException("Tried to resolve unknown special attack " + index);
+        }
+    }
+
+    public static String playerSpecial(int index, AbstractCharacter target) {
+        if (Gamestate.getInstance().getPlayerCharacter().getActions()[index] == null)
+            throw new IllegalArgumentException("Tried to resolve locked special attack " + index);
+        PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
+        int pcEnergy = pc.getEnergy();
+        switch (index) {
+            case 0: //CRAM - consume all available energy to damage the target and heal the player, with boosted power for energy > 50
+                if (target != null)
+                    target.takeDamage(pc.getOffenseB() + (pcEnergy > 50 ? pcEnergy - 50 : 0), "typeB", 1.0);
+                pc.takeDamage(25 + (pcEnergy > 50 ? (pcEnergy - 50) / 5 : 0), "heal", 1.0);
+                pc.useEnergy(pc.getEnergy());
+                return ("You study furiously. You feel better" + (target == null ? "." : ", and " + target.getLeadName() + " reels."));
+            //todo - more cases
+            default:
+                throw new IllegalArgumentException("Tried to resolve unknown special attack " + index);
+        }
+    }
+
     //Freshman (id 1) actions
 
     /**

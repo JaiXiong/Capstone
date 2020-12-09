@@ -6,6 +6,7 @@ package asset.character;
 import asset.items.EquipableItem;
 import asset.items.Item;
 import console.ConsoleGlyph;
+import engine.ActionDefinitions;
 import engine.Engine;
 import engine.Messages;
 import io.file.FileManager;
@@ -61,8 +62,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     @Override
     public String[] buildActions() {
-        //TODO fill in special actions
-        return new String[1];
+        return new String[]{ActionDefinitions.SPECIAL + "00", null, null, null};
     }
 
     //this first block of getters right now is just for testing and probably

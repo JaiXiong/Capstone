@@ -37,6 +37,10 @@ public class ActionDefinitions {
     // for example, to discard the third inventory item, we should send the action "discardAt02"
     public static final String DISCARD_AT = "discardAt";
 
+    //use a special ability. This action must also include an index of the form NN -
+    // for example, to use the third listed special, we should send the action "special02"
+    public static final String SPECIAL = "special";
+
     /*
      * Freshman (id 1) actions
      */
