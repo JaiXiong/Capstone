@@ -1,6 +1,7 @@
 package io.modes;
 
 import engine.Engine;
+import engine.Gamestate;
 import io.gui.ConsoleInterface;
 import io.gui.GUIManager;
 
@@ -23,6 +24,7 @@ public class BaseMode extends IOMode {
         if (startup) {
             GUIManager.getInstance().transitionTo(new MainMenuMode());
             startup = false;
+            Gamestate.clearInstance(); //clear the instance we used to draw the splash screen floor
         } else {
             System.exit(0);
         }
@@ -31,7 +33,8 @@ public class BaseMode extends IOMode {
     @Override
     public void update(ConsoleInterface consoleInterface) {
         if (startup) {
-            consoleInterface.writeSingleLine(1, 1, "(Startup Splash Screen)", Color.BLUE);
+            Gamestate.getInstance().SplashScreen();
+            consoleInterface.drawFloor();
         } else {
             consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
         }

@@ -130,7 +130,10 @@ public class Gamestate implements Serializable {
         }
     }
 
-    private void SplashScreen() {
+    /*
+     * public so we can call from BaseMode
+     */
+    public void SplashScreen() {
         floor = new Floor(24, 64);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.BLACK);
         for(int i = 0; i < 24; ++i) {
