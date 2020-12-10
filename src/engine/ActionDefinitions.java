@@ -15,6 +15,30 @@ public class ActionDefinitions {
     public static final String MOVE_NORTH_WEST = "moveNorthWest";
 
     /*
+     * Ctrl-masked movement
+     */
+    public static final String CTRL_NORTH = "ctrlNorth";
+    public static final String CTRL_NORTH_EAST = "ctrlNorthEast";
+    public static final String CTRL_EAST = "ctrlEast";
+    public static final String CTRL_SOUTH_EAST = "ctrlSouthEast";
+    public static final String CTRL_SOUTH = "ctrlSouth";
+    public static final String CTRL_SOUTH_WEST = "ctrlSouthWest";
+    public static final String CTRL_WEST = "ctrlWest";
+    public static final String CTRL_NORTH_WEST = "ctrlNorthWest";
+
+    /*
+     * Shift-masked movement
+     */
+    public static final String SHIFT_NORTH = "shiftNorth";
+    public static final String SHIFT_NORTH_EAST = "shiftNorthEast";
+    public static final String SHIFT_EAST = "shiftEast";
+    public static final String SHIFT_SOUTH_EAST = "shiftSouthEast";
+    public static final String SHIFT_SOUTH = "shiftSouth";
+    public static final String SHIFT_SOUTH_WEST = "shiftSouthWest";
+    public static final String SHIFT_WEST = "shiftWest";
+    public static final String SHIFT_NORTH_WEST = "shiftNorthWest";
+
+    /*
      * Wait in place one turn
      */
     public static final String WAIT = "wait";
@@ -40,6 +64,10 @@ public class ActionDefinitions {
     //use a special ability. This action must also include an index of the form NN -
     // for example, to use the third listed special, we should send the action "special02"
     public static final String SPECIAL = "special";
+
+    //player special attacks
+    public static final String HASKELL = "haskell";
+    public static final String NULL_POINTER = "nullPointer";
 
     /*
      * Freshman (id 1) actions

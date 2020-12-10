@@ -41,7 +41,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         maxEnergy = 100;
         offenseA = 1.0;
         offenseB = 1.0;
-        accuracy = 0.5;
+        accuracy = 0.65;
         evade = 0.9;
         resistA = 0.95;
         resistB = 0.95;
@@ -53,7 +53,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         equip(EquipableItem.createEquipment(11)); //Jacket
         actions = buildActions();
 
-        //TODO PLAYTEST remove this key before release version
         keys.add(-1);
 
         //TEST - add a consumable to player inventory
@@ -62,7 +61,10 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     @Override
     public String[] buildActions() {
-        return new String[]{ActionDefinitions.SPECIAL + "00", null, null, null};
+        return new String[]{ActionDefinitions.SPECIAL + "00",
+                ActionDefinitions.NULL_POINTER + "01",
+                ActionDefinitions.HASKELL + "02",
+                null};
     }
 
     //this first block of getters right now is just for testing and probably
