@@ -49,28 +49,100 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_UP: case VK_NUMPAD8:
-                nextAction = MOVE_NORTH;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_NORTH;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_NORTH;
+                        break;
+                    default:
+                        nextAction = MOVE_NORTH;
+                }
                 break;
             case VK_NUMPAD9:
-                nextAction = MOVE_NORTH_EAST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_NORTH_EAST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_NORTH_EAST;
+                        break;
+                    default:
+                        nextAction = MOVE_NORTH_EAST;
+                }
                 break;
             case VK_RIGHT: case VK_NUMPAD6:
-                nextAction = MOVE_EAST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_EAST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_EAST;
+                        break;
+                    default:
+                        nextAction = MOVE_EAST;
+                }
                 break;
             case VK_NUMPAD3:
-                nextAction = MOVE_SOUTH_EAST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_SOUTH_EAST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_SOUTH_EAST;
+                        break;
+                    default:
+                        nextAction = MOVE_SOUTH_EAST;
+                }
                 break;
             case VK_DOWN: case VK_NUMPAD2:
-                nextAction = MOVE_SOUTH;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_SOUTH;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_SOUTH;
+                        break;
+                    default:
+                        nextAction = MOVE_SOUTH;
+                }
                 break;
             case VK_NUMPAD1:
-                nextAction = MOVE_SOUTH_WEST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_SOUTH_WEST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_SOUTH_WEST;
+                        break;
+                    default:
+                        nextAction = MOVE_SOUTH_WEST;
+                }
                 break;
             case VK_LEFT: case VK_NUMPAD4:
-                nextAction = MOVE_WEST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_WEST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_WEST;
+                        break;
+                    default:
+                        nextAction = MOVE_WEST;
+                }
                 break;
             case VK_NUMPAD7:
-                nextAction = MOVE_NORTH_WEST;
+                switch (mod) {
+                    case CTRL_DOWN_MASK:
+                        nextAction = CTRL_NORTH_WEST;
+                        break;
+                    case SHIFT_DOWN_MASK:
+                        nextAction = SHIFT_NORTH_WEST;
+                        break;
+                    default:
+                        nextAction = MOVE_NORTH_WEST;
+                }
                 break;
             case VK_SLASH:
                 if (mod == SHIFT_DOWN_MASK) {

@@ -201,15 +201,42 @@ public class Actions {
         int pcEnergy = pc.getEnergy();
         switch (index) {
             case 0: //CRAM - consume all available energy to damage the target and heal the player, with boosted power for energy > 50
-                if (target != null)
-                    target.takeDamage(pc.getOffenseB() + (pcEnergy > 50 ? pcEnergy - 50 : 0), "typeB", 1.0);
                 pc.takeDamage(25 + (pcEnergy > 50 ? (pcEnergy - 50) / 5 : 0), "heal", 1.0);
                 pc.useEnergy(pc.getEnergy());
-                return ("You study furiously. You feel better" + (target == null ? "." : ", and " + target.getLeadName() + " reels."));
+                return ("You study furiously. You feel better.");
             //todo - more cases
             default:
                 throw new IllegalArgumentException("Tried to resolve unknown special attack " + index);
         }
+    }
+
+    /**
+     * NULL_POINTER
+     * @param actor character performing the action(player)
+     * @param target character targeted by the action(adjacent NPC)
+     * @return message for output to user
+     */
+    public static String nullPointer(AbstractCharacter actor, AbstractCharacter target){
+        if (actor.useEnergy(10)) {
+            target.takeDamage((actor.getOffenseB() + 10), "typeB", actor.getAccuracy());
+            return ("You point out " + target.getLeadName() + "'s null pointer errors.");
+        }
+        return ("Not enough energy to do that!");
+    }
+
+    /**
+     * HASKELL
+     * @param actor character performing the action(player)
+     * @param target character targeted by the action(adjacent NPC)
+     * @return message for output to user
+     */
+    public static String haskell(AbstractCharacter actor, AbstractCharacter target){
+        if (actor.getEnergy() >= 50) {
+            target.takeDamage((actor.getOffenseB() + actor.getEnergy() - 50), "typeB", actor.getAccuracy());
+            actor.useEnergy(actor.getEnergy());
+            return ("You make a joke about Haskell. " + target.getLeadName() + " groans.");
+        }
+        return ("Not enough energy to do that!");
     }
 
     //Freshman (id 1) actions
