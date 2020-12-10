@@ -61,10 +61,12 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     @Override
     public String[] buildActions() {
-        return new String[]{ActionDefinitions.SPECIAL + "00",
-                ActionDefinitions.NULL_POINTER + "01",
-                ActionDefinitions.HASKELL + "02",
-                null};
+        return new String[]{
+                ActionDefinitions.SPECIAL + "00",
+                null,
+                null,
+                null
+        };
     }
 
     //this first block of getters right now is just for testing and probably
@@ -210,6 +212,23 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
         //TODO additional actions as we level go here. Stretch goal.
         Messages.addMessage("You have reached experience level " + level + ".");
+        switch (level) {
+            case 2:
+                actions[1] = ActionDefinitions.SPECIAL + "01";
+                Messages.addMessage("You gain the power of Rivalry!");
+                Messages.addMessage("You and your rival take damage, stealing all its energy.");
+                break;
+            case 4:
+                actions[2] = ActionDefinitions.SPECIAL + "02";
+                Messages.addMessage("You gain the power of Top of the Class!");
+                Messages.addMessage("You deal damage to everyone else on the floor.");
+                break;
+            case 8:
+                actions[3] = ActionDefinitions.SPECIAL + "03";
+                Messages.addMessage("You gain the power of Invigorating Focus!");
+                Messages.addMessage("Drain your rival's energy, damaging them and healing yourself");
+                break;
+        }
     }
 
     /* @param item to equip (object, not name or ID)

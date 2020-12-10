@@ -93,64 +93,64 @@ public class Engine extends Thread {
         Point actorAt = actor.getLocation();
         Point destination;
         Object[] indexedParse = parseIndexedAction(action);
-        boolean specialFlag = false;
-        boolean whichSpecial = false;
+        boolean alterAttackFlag = false;
+        boolean whichAlterAttack = false;
         action = (String)indexedParse[0];
         int index = (Integer)indexedParse[1];
         switch (action) {
             case CTRL_NORTH:
-                whichSpecial = true;
-            case SHIFT_NORTH:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_NORTH:
+                alterAttackFlag = true;
             case MOVE_NORTH:
                 destination = getDestinationOrTarget(actorAt, 0, -1);
                 break;
             case CTRL_NORTH_EAST:
-                whichSpecial = true;
-            case SHIFT_NORTH_EAST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_NORTH_EAST:
+                alterAttackFlag = true;
             case MOVE_NORTH_EAST:
                 destination = getDestinationOrTarget(actorAt, 1, -1);
                 break;
             case CTRL_EAST:
-                whichSpecial = true;
-            case SHIFT_EAST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_EAST:
+                alterAttackFlag = true;
             case MOVE_EAST:
                 destination = getDestinationOrTarget(actorAt, 1, 0);
                 break;
             case CTRL_SOUTH_EAST:
-                whichSpecial = true;
-            case SHIFT_SOUTH_EAST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_SOUTH_EAST:
+                alterAttackFlag = true;
             case MOVE_SOUTH_EAST:
                 destination = getDestinationOrTarget(actorAt, 1, 1);
                 break;
             case CTRL_SOUTH:
-                whichSpecial = true;
-            case SHIFT_SOUTH:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_SOUTH:
+                alterAttackFlag = true;
             case MOVE_SOUTH:
                 destination = getDestinationOrTarget(actorAt, 0, 1);
                 break;
             case CTRL_SOUTH_WEST:
-                whichSpecial = true;
-            case SHIFT_SOUTH_WEST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_SOUTH_WEST:
+                alterAttackFlag = true;
             case MOVE_SOUTH_WEST:
                 destination = getDestinationOrTarget(actorAt, -1, 1);
                 break;
             case CTRL_WEST:
-                whichSpecial = true;
-            case SHIFT_WEST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_WEST:
+                alterAttackFlag = true;
             case MOVE_WEST:
                 destination = getDestinationOrTarget(actorAt, -1, 0);
                 break;
             case CTRL_NORTH_WEST:
-                whichSpecial = true;
-            case SHIFT_NORTH_WEST:
-                specialFlag = true;
+                whichAlterAttack = true;
+            case ALT_NORTH_WEST:
+                alterAttackFlag = true;
             case MOVE_NORTH_WEST:
                 destination = getDestinationOrTarget(actorAt, -1, -1);
                 break;
@@ -180,11 +180,12 @@ public class Engine extends Thread {
                 destination = Gamestate.getInstance().getPlayerCharacter().getLocation();
         }
         AbstractCharacter target = Gamestate.getInstance().getCharacterAt(destination.y, destination.x);
+        System.out.println("Altered attack? " + alterAttackFlag + "ctrl?" + whichAlterAttack + "action: " + action);
         if (target != null) {
             actor.setTarget(target);
             String attackMessage;
-            if (specialFlag) {
-                if (whichSpecial) {
+            if (alterAttackFlag) {
+                if (whichAlterAttack) {
                     attackMessage = Actions.nullPointer(actor, target);
                 }
                 else {
@@ -209,21 +210,21 @@ public class Engine extends Thread {
         action = (String)indexedParse[0];
         int index = (Integer)indexedParse[1];
         switch (action) {
-            case MOVE_NORTH: case CTRL_NORTH: case SHIFT_NORTH:
+            case MOVE_NORTH: case CTRL_NORTH: case ALT_NORTH:
                 return validateMovement(actorAt, 0, -1);
-            case MOVE_NORTH_EAST: case CTRL_NORTH_EAST: case SHIFT_NORTH_EAST:
+            case MOVE_NORTH_EAST: case CTRL_NORTH_EAST: case ALT_NORTH_EAST:
                 return validateMovement(actorAt, 1, -1);
-            case MOVE_EAST: case CTRL_EAST: case SHIFT_EAST:
+            case MOVE_EAST: case CTRL_EAST: case ALT_EAST:
                 return validateMovement(actorAt, 1, 0);
-            case MOVE_SOUTH_EAST: case CTRL_SOUTH_EAST: case SHIFT_SOUTH_EAST:
+            case MOVE_SOUTH_EAST: case CTRL_SOUTH_EAST: case ALT_SOUTH_EAST:
                 return validateMovement(actorAt, 1, 1);
-            case MOVE_SOUTH: case CTRL_SOUTH: case SHIFT_SOUTH:
+            case MOVE_SOUTH: case CTRL_SOUTH: case ALT_SOUTH:
                 return validateMovement(actorAt, 0, 1);
-            case MOVE_SOUTH_WEST: case CTRL_SOUTH_WEST: case SHIFT_SOUTH_WEST:
+            case MOVE_SOUTH_WEST: case CTRL_SOUTH_WEST: case ALT_SOUTH_WEST:
                 return validateMovement(actorAt, -1, 1);
-            case MOVE_WEST: case CTRL_WEST: case SHIFT_WEST:
+            case MOVE_WEST: case CTRL_WEST: case ALT_WEST:
                 return validateMovement(actorAt, -1, 0);
-            case MOVE_NORTH_WEST: case CTRL_NORTH_WEST: case SHIFT_NORTH_WEST:
+            case MOVE_NORTH_WEST: case CTRL_NORTH_WEST: case ALT_NORTH_WEST:
                 return validateMovement(actorAt, -1, -1);
             case WAIT:
                 return true; //this is always fine

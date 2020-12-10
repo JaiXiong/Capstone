@@ -189,6 +189,12 @@ public class Actions {
         switch (index) {
             case 0:
                 return pc.getEnergy() > 50;
+            case 1:
+                return pc.getHealth() > pc.getMaxHealth() / 8;
+            case 2:
+                return pc.getEnergy() > 25;
+            case 3:
+                return pc.getEnergy() > pc.getMaxEnergy() / 4;
             default:
                 throw new IllegalArgumentException("Tried to resolve unknown special attack " + index);
         }
@@ -199,12 +205,36 @@ public class Actions {
             throw new IllegalArgumentException("Tried to resolve locked special attack " + index);
         PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
         int pcEnergy = pc.getEnergy();
+        int val;
         switch (index) {
             case 0: //CRAM - consume all available energy to damage the target and heal the player, with boosted power for energy > 50
-                pc.takeDamage(25 + (pcEnergy > 50 ? (pcEnergy - 50) / 5 : 0), "heal", 1.0);
+                pc.takeDamage(25 + (pcEnergy > 50 ? (pcEnergy - 50) / 2 : 0), "heal", 1.0);
                 pc.useEnergy(pc.getEnergy());
                 return ("You study furiously. You feel better.");
-            //todo - more cases
+            case 1: //RIVALRY - consume 1/8th your maximum health and deal four times that as damage to your current target, stealing all its energy and gaining 4 times that.
+                if (target == null) return "You currently have no rival - designate one by attacking!";
+                val = pc.getMaxHealth() / 8;
+                pc.takeDamage(0 - val, "heal", 1.0);
+                target.takeDamage(val * 4, "typeB", 1.0);
+                pc.useEnergy(0 - target.getEnergy() * 4);
+                target.useEnergy(target.getEnergy());
+                return "You and your rival are both weakened, but you gain all their energy.";
+            case 2: //TOP OF THE CLASS - consume 25 energy, dealing damage to all NPCs as a percentage of their maximum.
+                for (AbstractCharacter ac : Gamestate.getInstance().getCharacters()){
+                    if (ac == pc) continue; //do not harm yourself
+                    ac.takeDamage(ac.getMaxHealth() / 8.0, "typeB", 1.0);
+                }
+                pc.useEnergy(25);
+                return "As you strive for the top of the class, your competitors seem weaker.";
+            case 3: //INVIGORATING FOCUS - consume 25% of your total energy, dealing damage, draining energy, and restoring health
+                if (target == null) return "You have no rival to focus on!";
+                if (target.getEnergy() == 0) return "Your rival has run out of energy and is not worth your focus.";
+                pc.useEnergy(pc.getMaxEnergy() / 4);
+                val = Math.min(target.getEnergy(), 10);
+                target.useEnergy(val);
+                target.takeDamage(4 * val, "typeB", 1.0);
+                pc.takeDamage(2 * val, "heal", 1.0);
+                return target.getEnergy() > 0 ? "Your rival seems drained, while you are invigorated." : "Your rival has been drained of all its energy.";
             default:
                 throw new IllegalArgumentException("Tried to resolve unknown special attack " + index);
         }
@@ -217,7 +247,7 @@ public class Actions {
      * @return message for output to user
      */
     public static String nullPointer(AbstractCharacter actor, AbstractCharacter target){
-        if (actor.useEnergy(10)) {
+        if (actor.useEnergy(5)) {
             target.takeDamage((actor.getOffenseB() + 10), "typeB", actor.getAccuracy());
             return ("You point out " + target.getLeadName() + "'s null pointer errors.");
         }
@@ -231,9 +261,9 @@ public class Actions {
      * @return message for output to user
      */
     public static String haskell(AbstractCharacter actor, AbstractCharacter target){
-        if (actor.getEnergy() >= 50) {
-            target.takeDamage((actor.getOffenseB() + actor.getEnergy() - 50), "typeB", actor.getAccuracy());
-            actor.useEnergy(actor.getEnergy());
+        if (actor.getEnergy() >= 15) {
+            target.takeDamage((actor.getOffenseB() + actor.getOffenseA() + 5), "typeB", actor.getAccuracy());
+            actor.useEnergy(15);
             return ("You make a joke about Haskell. " + target.getLeadName() + " groans.");
         }
         return ("Not enough energy to do that!");

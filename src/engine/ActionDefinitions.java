@@ -29,14 +29,14 @@ public class ActionDefinitions {
     /*
      * Shift-masked movement
      */
-    public static final String SHIFT_NORTH = "shiftNorth";
-    public static final String SHIFT_NORTH_EAST = "shiftNorthEast";
-    public static final String SHIFT_EAST = "shiftEast";
-    public static final String SHIFT_SOUTH_EAST = "shiftSouthEast";
-    public static final String SHIFT_SOUTH = "shiftSouth";
-    public static final String SHIFT_SOUTH_WEST = "shiftSouthWest";
-    public static final String SHIFT_WEST = "shiftWest";
-    public static final String SHIFT_NORTH_WEST = "shiftNorthWest";
+    public static final String ALT_NORTH = "altNorth";
+    public static final String ALT_NORTH_EAST = "altNorthEast";
+    public static final String ALT_EAST = "altEast";
+    public static final String ALT_SOUTH_EAST = "altSouthEast";
+    public static final String ALT_SOUTH = "altSouth";
+    public static final String ALT_SOUTH_WEST = "altSouthWest";
+    public static final String ALT_WEST = "altWest";
+    public static final String ALT_NORTH_WEST = "altNorthWest";
 
     /*
      * Wait in place one turn

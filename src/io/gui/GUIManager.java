@@ -2,6 +2,7 @@ package io.gui;
 
 import io.modes.BaseMode;
 import io.modes.IOMode;
+import io.modes.MainMenuMode;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -45,6 +46,11 @@ public class GUIManager implements KeyListener {
     public void revert() {
         CONSOLE_INTERFACE.clearScreen();
         MODE_STACK.pop();
+        //ensure saved game information is accurate
+        if (MODE_STACK.peek() instanceof MainMenuMode) {
+            MODE_STACK.pop();
+            MODE_STACK.push(new MainMenuMode());
+        }
         updateScreen();
     }
 

@@ -28,11 +28,13 @@ public class GameplayMode extends IOMode {
         PlayerCharacter pc;
         Point at;
         int code = ke.getKeyCode();
-        int mod = ke.getModifiersEx();
+        boolean alt = ke.isAltDown();
+        boolean ctrl = ke.isControlDown();
+        boolean shift = ke.isShiftDown();
         String nextAction = null;
         switch (code) {
             case VK_S:
-                if (mod == CTRL_DOWN_MASK) {
+                if (ctrl) {
                     FileManager.saveGame();
                     Engine.getInstance().endGame();
                     Gamestate.clearInstance();
@@ -42,110 +44,38 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_Q:
-                if (mod == CTRL_DOWN_MASK) {
+                if (ctrl) {
                     Engine.getInstance().endGame();
                     Gamestate.clearInstance();
                     GUIManager.getInstance().revert();
                 }
                 break;
             case VK_UP: case VK_NUMPAD8:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_NORTH;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_NORTH;
-                        break;
-                    default:
-                        nextAction = MOVE_NORTH;
-                }
+                nextAction = alt ? ALT_NORTH : ctrl ? CTRL_NORTH : MOVE_NORTH;
                 break;
             case VK_NUMPAD9:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_NORTH_EAST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_NORTH_EAST;
-                        break;
-                    default:
-                        nextAction = MOVE_NORTH_EAST;
-                }
+                nextAction = alt ? ALT_NORTH_EAST : ctrl ? CTRL_NORTH_EAST : MOVE_NORTH_EAST;
                 break;
             case VK_RIGHT: case VK_NUMPAD6:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_EAST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_EAST;
-                        break;
-                    default:
-                        nextAction = MOVE_EAST;
-                }
+                nextAction = alt ? ALT_EAST : ctrl ? CTRL_EAST : MOVE_EAST;
                 break;
             case VK_NUMPAD3:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_SOUTH_EAST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_SOUTH_EAST;
-                        break;
-                    default:
-                        nextAction = MOVE_SOUTH_EAST;
-                }
+                nextAction = alt ? ALT_SOUTH_EAST : ctrl ? CTRL_SOUTH_EAST : MOVE_SOUTH_EAST;
                 break;
             case VK_DOWN: case VK_NUMPAD2:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_SOUTH;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_SOUTH;
-                        break;
-                    default:
-                        nextAction = MOVE_SOUTH;
-                }
+                nextAction = alt ? ALT_SOUTH : ctrl ? CTRL_SOUTH : MOVE_SOUTH;
                 break;
             case VK_NUMPAD1:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_SOUTH_WEST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_SOUTH_WEST;
-                        break;
-                    default:
-                        nextAction = MOVE_SOUTH_WEST;
-                }
+                nextAction = alt ? ALT_SOUTH_WEST : ctrl ? CTRL_SOUTH_WEST : MOVE_SOUTH_WEST;
                 break;
             case VK_LEFT: case VK_NUMPAD4:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_WEST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_WEST;
-                        break;
-                    default:
-                        nextAction = MOVE_WEST;
-                }
+                nextAction = alt ? ALT_WEST : ctrl ? CTRL_WEST : MOVE_WEST;
                 break;
             case VK_NUMPAD7:
-                switch (mod) {
-                    case CTRL_DOWN_MASK:
-                        nextAction = CTRL_NORTH_WEST;
-                        break;
-                    case SHIFT_DOWN_MASK:
-                        nextAction = SHIFT_NORTH_WEST;
-                        break;
-                    default:
-                        nextAction = MOVE_NORTH_WEST;
-                }
+                nextAction = alt ? ALT_NORTH_WEST : ctrl ? CTRL_NORTH_WEST : MOVE_NORTH_WEST;
                 break;
             case VK_SLASH:
-                if (mod == SHIFT_DOWN_MASK) {
+                if (shift) {
                     GUIManager.getInstance().transitionTo(new HelpScreenMode());
                 }
                 break;
@@ -156,7 +86,7 @@ public class GameplayMode extends IOMode {
                 GUIManager.getInstance().transitionTo(new DiscardItemSelectMenuMode());
                 return; //don't break - next action info and engine notification will be handled by the selection menu
             case VK_PERIOD: // ">"
-                if (mod == SHIFT_DOWN_MASK) {
+                if (shift) {
                     pc = Gamestate.getInstance().getPlayerCharacter();
                     at = pc.getLocation();
                     if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.STAIRCASE.getName())) {
@@ -170,7 +100,7 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_COMMA: // "<"
-                if (mod == SHIFT_DOWN_MASK) {
+                if (shift) {
                     pc = Gamestate.getInstance().getPlayerCharacter();
                     at = pc.getLocation();
                     if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.EMERGENCY_EXIT.getName())) {
@@ -190,13 +120,33 @@ public class GameplayMode extends IOMode {
                     Messages.addMessage("You don't have the energy to Cram right now.");
                 }
                 break;
-                //todo - more specials?
-            //todo - lots here! info commands, combat commands, etc.
+            case VK_F2: // "F2"
+                if (Actions.playerCanUseSpecial(1)) {
+                    nextAction = SPECIAL + "01";
+                } else {
+                    Messages.addMessage("Your health is too low to use Rivalry.");
+                }
+                break;
+            case VK_F3: // "F3"
+                if (Actions.playerCanUseSpecial(2)) {
+                    nextAction = SPECIAL + "02";
+                } else {
+                    Messages.addMessage("You don't have the energy to rise to the Top of the Class.");
+                }
+                break;
+            case VK_F4: // "F4"
+                if (Actions.playerCanUseSpecial(3)) {
+                    nextAction = SPECIAL + "03";
+                } else {
+                    Messages.addMessage("You don't have the energy to Focus right now.");
+                }
+                break;
             default:
                 //nothing to do - unhandled input is ignored
         }
         // check if input set an action:
         if (nextAction != null) {
+            System.out.println(nextAction);
             PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
             // check if action is valid:
             if (Engine.getInstance().validateAction(playerCharacter, nextAction)) {
@@ -306,10 +256,10 @@ public class GameplayMode extends IOMode {
         consoleInterface.writeSingleLine(writeRow++, writeColumn, "Recall:   " + FormatUtility.percentage(1.0 - playerResistB) + "             ", Color.DARK_GRAY, Color.YELLOW);
         //target:
         writeRow++;
-        consoleInterface.writeSingleLine(writeRow++, writeColumn,"Target:         ", Color.RED, Color.LIGHT_GRAY);
+        consoleInterface.writeSingleLine(writeRow++, writeColumn,"Rival:         ", Color.RED, Color.LIGHT_GRAY);
         AbstractCharacter playerTarget = playerCharacter.getTarget();
         if (playerTarget == null) {
-            consoleInterface.writeSingleLine(writeRow, writeColumn, "<no target>     ", Color.RED, Color.LIGHT_GRAY);
+            consoleInterface.writeSingleLine(writeRow, writeColumn, "<no rival>     ", Color.RED, Color.LIGHT_GRAY);
         } else {
             consoleInterface.writeSingleLine(writeRow++, writeColumn, playerTarget.getLeadName() + "              ",
                     Color.RED, Color.LIGHT_GRAY);
