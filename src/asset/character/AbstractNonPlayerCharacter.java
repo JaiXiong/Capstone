@@ -94,7 +94,7 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
         double distance = location.distance(pcWhere);
 
         //if player is far, wander
-        if (distance > 5) {
+        if (distance > 1) {
             int direction = (int)(Math.random()*16);
             switch (direction){
                 case 0:
@@ -123,50 +123,6 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
                         return MOVE_NORTH_WEST;
                 default:
                     return WAIT;
-            }
-        }
-
-        //TODO approaching can be smarter. Stretch goal.
-        //if player is near, approach.
-        else if (distance <= 5 && distance > 1) {
-            if (location.x > pcWhere.x) {
-                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_WEST)) {
-                    return MOVE_SOUTH_WEST;
-                }
-                else if (location.y < pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_NORTH_WEST)) {
-                    return MOVE_NORTH_WEST;
-                }
-                else if (engine.Engine.getInstance().validateAction(this, MOVE_WEST)){
-                    return MOVE_WEST;
-                }
-                else {
-                    return WAIT;
-                }
-            }
-            else if (location.x < pcWhere.x) {
-                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH_EAST)) {
-                    return MOVE_SOUTH_EAST;
-                }
-                else if (location.y < pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_NORTH_EAST)) {
-                    return MOVE_NORTH_EAST;
-                }
-                else if (engine.Engine.getInstance().validateAction(this, MOVE_EAST)) {
-                    return MOVE_EAST;
-                }
-                else{
-                    return WAIT;
-                }
-            }
-            else {
-                if (location.y > pcWhere.y && engine.Engine.getInstance().validateAction(this, MOVE_SOUTH)) {
-                    return MOVE_SOUTH;
-                }
-                else if (engine.Engine.getInstance().validateAction(this, MOVE_NORTH)) {
-                    return MOVE_NORTH;
-                }
-                else {
-                    return WAIT;
-                }
             }
         }
 
