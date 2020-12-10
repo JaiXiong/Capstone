@@ -55,4 +55,11 @@ public class Test_Hacker {
         assertEquals(x, p.compareTo(f));
     }
 
+    @Test
+    public void test_UseEnergy(){
+        Hacker p = new Hacker();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
+
 }

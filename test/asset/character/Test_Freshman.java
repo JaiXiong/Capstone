@@ -61,4 +61,11 @@ public class Test_Freshman {
         int x = p.getInitiativeID()-f.getInitiativeID();
         assertEquals(x, p.compareTo(f));
     }
+
+    @Test
+    public void test_UseEnergy(){
+        Freshman p = new Freshman();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
 }

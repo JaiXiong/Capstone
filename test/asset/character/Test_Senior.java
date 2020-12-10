@@ -54,4 +54,11 @@ public class Test_Senior {
         assertEquals(x, p.compareTo(f));
     }
 
+    @Test
+    public void test_UseEnergy(){
+        Senior p = new Senior();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
+
 }

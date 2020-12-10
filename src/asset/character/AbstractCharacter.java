@@ -86,7 +86,7 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
      * returns true if valid change, false if invalid
      */
     public boolean useEnergy(int amount) {
-        if ((amount >= energy && amount >= 0) || (amount < 0 && (energy - maxEnergy < amount))) {
+        if ((amount <= energy && amount >= 0) || (amount < 0 && (energy - maxEnergy < amount))) {
             energy -= amount;
             return true;
         }

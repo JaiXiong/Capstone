@@ -55,4 +55,11 @@ public class Test_Professor {
         int x = p.getInitiativeID()-f.getInitiativeID();
         assertEquals(x, p.compareTo(f));
     }
+
+    @Test
+    public void test_UseEnergy(){
+        Professor p = new Professor();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
 }
