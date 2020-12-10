@@ -47,4 +47,12 @@ public class Test_Hacker {
         assertTrue(check);
     }
 
+    @Test
+    public void test_Compare(){
+        Hacker p = new Hacker();
+        Freshman f  = new Freshman();
+        int x = p.getInitiativeID()-f.getInitiativeID();
+        assertEquals(x, p.compareTo(f));
+    }
+
 }

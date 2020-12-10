@@ -48,4 +48,11 @@ public class Test_TA {
         assertTrue(check);
     }
 
+    @Test
+    public void test_Compare(){
+        TA p = new TA();
+        Freshman f  = new Freshman();
+        int x = p.getInitiativeID()-f.getInitiativeID();
+        assertEquals(x, p.compareTo(f));
+    }
 }

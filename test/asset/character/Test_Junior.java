@@ -47,4 +47,11 @@ public class Test_Junior {
         assertTrue(check);
     }
 
+    @Test
+    public void test_Compare(){
+        Junior p = new Junior();
+        Freshman f  = new Freshman();
+        int x = p.getInitiativeID()-f.getInitiativeID();
+        assertEquals(x, p.compareTo(f));
+    }
 }
