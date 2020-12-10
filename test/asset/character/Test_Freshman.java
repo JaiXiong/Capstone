@@ -53,4 +53,19 @@ public class Test_Freshman {
         }
         assertTrue(contains);
     }
+
+    @Test
+    public void test_Compare(){
+        Dean f = new Dean();
+        Freshman p  = new Freshman();
+        int x = p.getInitiativeID()-f.getInitiativeID();
+        assertEquals(x, p.compareTo(f));
+    }
+
+    @Test
+    public void test_UseEnergy(){
+        Freshman p = new Freshman();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
 }

@@ -48,4 +48,18 @@ public class Test_TA {
         assertTrue(check);
     }
 
+    @Test
+    public void test_Compare(){
+        TA p = new TA();
+        Freshman f  = new Freshman();
+        int x = p.getInitiativeID()-f.getInitiativeID();
+        assertEquals(x, p.compareTo(f));
+    }
+
+    @Test
+    public void test_UseEnergy(){
+        TA p = new TA();
+        assertTrue(p.useEnergy(1));
+        assertFalse(p.useEnergy(10000));
+    }
 }
