@@ -186,6 +186,7 @@ public class Actions {
      */
     public static boolean playerCanUseSpecial(int index) {
         PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
+        if (pc.getActions()[index] == null) return false;
         switch (index) {
             case 0:
                 return pc.getEnergy() > 50;

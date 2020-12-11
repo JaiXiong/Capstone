@@ -25,7 +25,7 @@ import static engine.ActionDefinitions.*;
 public class GameplayMode extends IOMode {
     @Override
     public void handle(KeyEvent ke) {
-        PlayerCharacter pc;
+        PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
         Point at;
         int code = ke.getKeyCode();
         boolean alt = ke.isAltDown();
@@ -87,7 +87,6 @@ public class GameplayMode extends IOMode {
                 return; //don't break - next action info and engine notification will be handled by the selection menu
             case VK_PERIOD: // ">"
                 if (shift) {
-                    pc = Gamestate.getInstance().getPlayerCharacter();
                     at = pc.getLocation();
                     if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.STAIRCASE.getName())) {
                         Messages.addMessage("You advance to the next floor.");
@@ -101,7 +100,6 @@ public class GameplayMode extends IOMode {
                 break;
             case VK_COMMA: // "<"
                 if (shift) {
-                    pc = Gamestate.getInstance().getPlayerCharacter();
                     at = pc.getLocation();
                     if (Gamestate.getInstance().getFloor().getTerrainType(at.y, at.x).equals(Terrain.TileType.EMERGENCY_EXIT.getName())) {
                         Messages.addMessage("You escape through the emergency exit.");
@@ -121,6 +119,7 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_F2: // "F2"
+                if (pc.getActions()[1] == null) break;
                 if (Actions.playerCanUseSpecial(1)) {
                     nextAction = SPECIAL + "01";
                 } else {
@@ -128,6 +127,7 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_F3: // "F3"
+                if (pc.getActions()[2] == null) break;
                 if (Actions.playerCanUseSpecial(2)) {
                     nextAction = SPECIAL + "02";
                 } else {
@@ -135,6 +135,7 @@ public class GameplayMode extends IOMode {
                 }
                 break;
             case VK_F4: // "F4"
+                if (pc.getActions()[3] == null) break;
                 if (Actions.playerCanUseSpecial(3)) {
                     nextAction = SPECIAL + "03";
                 } else {
