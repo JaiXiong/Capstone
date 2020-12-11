@@ -54,7 +54,7 @@ public class Gamestate implements Serializable {
         Point bossLocation = null;
         switch (floorDifficulty) {
             case 0:
-                Rooftop();
+                EMSCourtYard();
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2); //todo - edit pcLocations if we want specific spawn points
                 break;
             case 1:
