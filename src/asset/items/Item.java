@@ -80,7 +80,7 @@ public class Item extends AbstractGameAsset {
      * @return a the display text for this item.
      */
     public String getDisplayText() {
-        return NAME + "[" + P_VAL + "](" + S_VAL + ")";
+        return NAME + "[HP " + (int)P_VAL + "](NRG " + (int)S_VAL + ")";
     }
 
     @Override
