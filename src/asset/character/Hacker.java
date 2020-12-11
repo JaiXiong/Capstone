@@ -20,8 +20,8 @@ public class Hacker extends AbstractNonPlayerCharacter {
         maxHealth = 50;
         energy = 500;
         maxEnergy = 500;
-        offenseA = 22.0;
-        offenseB = 22.0;
+        offenseA = 17.0;
+        offenseB = 17.0;
         accuracy = 0.99;
         evade = 0.3;
         resistA = 0.2;

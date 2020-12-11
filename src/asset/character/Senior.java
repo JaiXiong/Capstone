@@ -20,8 +20,8 @@ public class Senior extends AbstractNonPlayerCharacter {
         maxHealth = 150;
         energy = 150;
         maxEnergy = 150;
-        offenseA = 20.0;
-        offenseB = 20.0;
+        offenseA = 15.0;
+        offenseB = 15.0;
         accuracy = 0.9;
         evade = 0.7;
         resistA = 0.7;

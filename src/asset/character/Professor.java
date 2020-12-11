@@ -20,8 +20,8 @@ public class Professor extends AbstractNonPlayerCharacter {
         maxHealth = 300;
         energy = 225;
         maxEnergy = 225;
-        offenseA = 25.0;
-        offenseB = 25.0;
+        offenseA = 20.0;
+        offenseB = 20.0;
         accuracy = 0.97;
         evade = 0.6;
         resistA = 0.6;

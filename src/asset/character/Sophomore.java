@@ -20,8 +20,8 @@ public class Sophomore extends AbstractNonPlayerCharacter {
         maxHealth = 100;
         energy = 100;
         maxEnergy = 100;
-        offenseA = 12.0;
-        offenseB = 17.0;
+        offenseA = 7.0;
+        offenseB = 12.0;
         accuracy = 0.7;
         evade = 0.85;
         resistA = 0.8;

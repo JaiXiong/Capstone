@@ -20,8 +20,8 @@ public class Dean extends AbstractNonPlayerCharacter {
         maxHealth = 350;
         energy = 250;
         maxEnergy = 250;
-        offenseA = 30.0;
-        offenseB = 30.0;
+        offenseA = 25.0;
+        offenseB = 25.0;
         accuracy = 0.98;
         evade = 0.65;
         resistA = 0.55;
