@@ -20,8 +20,8 @@ public class TA extends AbstractNonPlayerCharacter {
         maxHealth = 200;
         energy = 175;
         maxEnergy = 175;
-        offenseA = 22.0;
-        offenseB = 22.0;
+        offenseA = 17.0;
+        offenseB = 17.0;
         accuracy = 0.95;
         evade = 0.7;
         resistA = 0.65;

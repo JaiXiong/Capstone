@@ -20,8 +20,8 @@ public class Researcher extends AbstractNonPlayerCharacter {
         maxHealth = 100;
         energy = 250;
         maxEnergy = 250;
-        offenseA = 15.0;
-        offenseB = 23.0;
+        offenseA = 10.0;
+        offenseB = 18.0;
         accuracy = 0.98;
         evade = 0.5;
         resistA = 0.5;

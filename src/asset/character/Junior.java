@@ -20,8 +20,8 @@ public class Junior extends AbstractNonPlayerCharacter {
         maxHealth = 120;
         energy = 120;
         maxEnergy = 120;
-        offenseA = 16.0;
-        offenseB = 18.0;
+        offenseA = 11.0;
+        offenseB = 13.0;
         accuracy = 0.85;
         evade = 0.8;
         resistA = 0.8;

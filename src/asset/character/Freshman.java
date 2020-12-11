@@ -19,8 +19,8 @@ public class Freshman extends AbstractNonPlayerCharacter {
         maxHealth = 70;
         energy = 70;
         maxEnergy = 70;
-        offenseA = 10.0;
-        offenseB = 12.0;
+        offenseA = 5.0;
+        offenseB = 7.0;
         accuracy = 0.5;
         evade = 0.95;
         resistA = 0.95;
