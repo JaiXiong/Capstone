@@ -7,15 +7,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2c93ec1a-660c-433e-9fa3-b050a3945153" name="Default Changelist" comment="Implemented NPC combat in Actions&#10;Cleaned up TODOs">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Dean.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Dean.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Freshman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Freshman.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Hacker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Hacker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Junior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Junior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Professor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Professor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Researcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Researcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Senior.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Senior.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/Sophomore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/Sophomore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/asset/character/TA.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/character/TA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset/world/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/Floor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/asset/world/TileObjects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/asset/world/TileObjects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/engine/Gamestate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/engine/Gamestate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,11 +182,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Driver" />
         <item itemvalue="JUnit.Test_Messages.test_getMessages" />
         <item itemvalue="JUnit.Test_FileManager.test_Loadsave" />
         <item itemvalue="JUnit.Test_FileManager.test_DoesSavedGameExist" />
         <item itemvalue="JUnit.Test_FileManager.test_DeleteSave" />
-        <item itemvalue="Application.Driver" />
       </list>
     </recent_temporary>
   </component>
@@ -382,26 +376,26 @@
     </state>
     <state x="85" y="213" width="452" height="267" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1280.680@0.0.1280.680" timestamp="1606697113286" />
     <state x="91" y="228" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1366.728@0.0.1366.728" timestamp="1607048364705" />
-    <state width="1192" height="260" key="GridCell.Tab.0.bottom" timestamp="1607033921165">
+    <state width="1570" height="301" key="GridCell.Tab.0.bottom" timestamp="1607670008408">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="713" height="162" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1606705200764" />
-    <state width="1192" height="260" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607033921165" />
-    <state width="1192" height="260" key="GridCell.Tab.0.center" timestamp="1607033921164">
+    <state width="1570" height="301" key="GridCell.Tab.0.bottom/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607670008408" />
+    <state width="1570" height="301" key="GridCell.Tab.0.center" timestamp="1607670008408">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="713" height="162" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1606705200763" />
-    <state width="1192" height="260" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607033921164" />
-    <state width="1192" height="260" key="GridCell.Tab.0.left" timestamp="1607033921164">
+    <state width="1570" height="301" key="GridCell.Tab.0.center/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607670008408" />
+    <state width="1570" height="301" key="GridCell.Tab.0.left" timestamp="1607670008408">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="713" height="162" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1606705200763" />
-    <state width="1192" height="260" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607033921164" />
-    <state width="1192" height="260" key="GridCell.Tab.0.right" timestamp="1607033921165">
+    <state width="1570" height="301" key="GridCell.Tab.0.left/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607670008408" />
+    <state width="1570" height="301" key="GridCell.Tab.0.right" timestamp="1607670008408">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="713" height="162" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1606705200764" />
-    <state width="1192" height="260" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607033921165" />
+    <state width="1570" height="301" key="GridCell.Tab.0.right/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607670008408" />
     <state width="713" height="204" key="GridCell.Tab.1.bottom" timestamp="1606703521267">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -418,19 +412,20 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="713" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1606703521267" />
-    <state x="518" y="168" key="Vcs.Push.Dialog.v2" timestamp="1607052094695">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2" timestamp="1607670410052">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="518" y="168" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1607052094695" />
-    <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607034302007" />
+    <state x="971" y="398" key="Vcs.Push.Dialog.v2/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607670410052" />
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1607651050509">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="500" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1607651050509" />
-    <state x="633" y="0" width="653" height="687" key="dock-window-1" timestamp="1606690422376">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="314" y="76" width="731" height="895" key="dock-window-1" timestamp="1607668885963">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="633" y="0" width="653" height="687" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1606690422376" />
+    <state x="314" y="76" width="731" height="895" key="dock-window-1/0.0.2560.1400/-1920.111.1920.1040/2560.95.1920.1040@0.0.2560.1400" timestamp="1607668885963" />
     <state x="751" y="0" width="536" height="687" key="dock-window-2" timestamp="1606697288693">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

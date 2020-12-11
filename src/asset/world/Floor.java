@@ -95,6 +95,26 @@ public class Floor implements Serializable {
             return new Terrain(TileObjects.TileType.BACKSLASH.toString(), null, color, '\\', row, col);
         } else if (type.equals(TileObjects.TileType.FORWARDSLASH.toString())) {
             return new Terrain(TileObjects.TileType.FORWARDSLASH.toString(), null, color, '/', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERQ.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERQ.toString(), null, color, 'Q', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERU.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERU.toString(), null, color, 'U', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERI.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERI.toString(), null, color, 'I', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERE.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERE.toString(), null, color, 'E', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERT.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERT.toString(), null, color, 'T', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERL.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERL.toString(), null, color, 'L', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERB.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERB.toString(), null, color, 'B', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERR.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERR.toString(), null, color, 'R', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERA.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERA.toString(), null, color, 'A', row, col);
+        } else if (type.equals(TileObjects.TileType.LETTERY.toString())) {
+            return new Terrain(TileObjects.TileType.LETTERY.toString(), null, color, 'Y', row, col);
         } else {
             throw new IllegalArgumentException("Unrecognized type: " + type);
         }
@@ -143,7 +163,8 @@ public class Floor implements Serializable {
         //to do, I need to change  these to the standardize enum string??
         String item = terrain[r][c].getType();
         switch (item) {
-            case "terrain": case "cementedwalkway": case "staircase": case "emergency exit":
+            case "terrain": case "cementedwalkway": case "staircase": case "emergency exit": case "letterq": case "letteru": case "letteri": case "lettere": case "lettert":
+            case "letterl": case "letterb": case "letterr": case "lettera": case "lettery":
                 return true;
             case "wall":
                 return false;
