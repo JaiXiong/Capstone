@@ -309,8 +309,9 @@ public class Actions {
      * @param target character receiving action
      */
     public static String stackOverflow(AbstractCharacter actor, AbstractCharacter target){
+        boolean isPc0 = actor == Gamestate.getInstance().getPlayerCharacter();
         actor.useEnergy(5);
-        return (actor.getLeadName() + " posts " + target.getName() + "'s code on StackOverflow.");
+        return (actor.getLeadName() + " posts " + target.getName() + (isPc0 ? " " : "'s ") + "code on StackOverflow.");
     }
 
     /**
@@ -363,9 +364,10 @@ public class Actions {
      * @param target character receiving action
      */
     public static String gradeHomework(AbstractCharacter actor, AbstractCharacter target){
+        boolean isPc0 = actor == Gamestate.getInstance().getPlayerCharacter();
         actor.useEnergy(30);
         target.takeDamage(actor.getOffenseB(),"typeB",actor.getAccuracy());
-        return (actor.getLeadName() + " grades " + target.getName() + "'s homework. Scary.");
+        return (actor.getLeadName() + " grades " + target.getName() + (isPc0 ? " " : "'s ") + "homework. Scary.");
     }
 
     /**
@@ -481,9 +483,10 @@ public class Actions {
      * @param target character receiving action
      */
     public static String hack(AbstractCharacter actor, AbstractCharacter target){
+        boolean isPc0 = actor == Gamestate.getInstance().getPlayerCharacter();
         actor.useEnergy(75);
         target.takeDamage(actor.getOffenseB(),"typeB",actor.getAccuracy());
-        return (actor.getLeadName() + " hacks " + target.getName() + "'s computer.");
+        return (actor.getLeadName() + " hacks " + target.getName() + (isPc0 ? " " : "'s ") + "computer.");
     }
 
     /**
