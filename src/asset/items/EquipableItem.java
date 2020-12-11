@@ -84,6 +84,7 @@ public class EquipableItem extends Item {
         }
     }
 
+    @Override
     public Color getDisplayColor() {
         switch (getSlot()) {
             case OFFENSE_A: return Color.RED;
@@ -92,6 +93,38 @@ public class EquipableItem extends Item {
             case DEFENSE_B: return Color.GREEN;
             default: throw new IllegalArgumentException("Invalid slot " + getSlot());
         }
+    }
+
+    @Override
+    public String getDisplayText() {
+        String offDefAB, evadeAcc;
+        int formatStat;
+
+        switch (getSlot()) {
+            case OFFENSE_A:
+                offDefAB = "Strength";
+                evadeAcc = "Precision";
+                formatStat = (int)getBaseStat();
+                break;
+            case OFFENSE_B:
+                offDefAB = "Knowledge";
+                evadeAcc = "Precision";
+                formatStat = (int)getBaseStat();
+                break;
+            case DEFENSE_A:
+                offDefAB = "Toughness";
+                evadeAcc = "Evasion";
+                formatStat = (int)(getBaseStat() * 100);
+                break;
+            case DEFENSE_B:
+                offDefAB = "Recall";
+                evadeAcc = "Evasion";
+                formatStat = (int)(getBaseStat() * 100);
+                break;
+            default: throw new IllegalArgumentException("Invalid slot " + getSlot());
+        }
+
+        return getName() + "[" + offDefAB + " +" + formatStat + "](" + evadeAcc + " +" + (int)(getToHitModifier() * 100) + ")";
     }
 
 }
