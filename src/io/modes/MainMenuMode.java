@@ -12,7 +12,8 @@ public class MainMenuMode extends MenuMode {
     private final int OPT_IDX_NEW_GAME = 0;
     private final int OPT_IDX_LOAD_GAME = 1;
     private final int OPT_IDX_DEL_GAME = 2;
-    private final int OPT_IDX_EXIT = 3;
+    private final int OPT_IDX_MAN_PAGE = 3;
+    private final int OPT_IDX_EXIT = 4;
 
     public MainMenuMode() {
         super(
@@ -30,6 +31,7 @@ public class MainMenuMode extends MenuMode {
                 new MenuOption("Begin New Game", !FileManager.doesSavedGameExist()),
                 new MenuOption("Load Existing Game", FileManager.doesSavedGameExist()),
                 new MenuOption("Delete Existing Game", FileManager.doesSavedGameExist()),
+                new MenuOption("View Commands and Info", true),
                 new MenuOption("Exit", true)
         );
     }
@@ -48,6 +50,9 @@ public class MainMenuMode extends MenuMode {
                 FileManager.deleteSavedGame();
                 GUIManager.getInstance().revert(); //pop off current MainMenuMode
                 GUIManager.getInstance().transitionTo(new MainMenuMode()); //transition to a new one reflecting current savegame state
+                break;
+            case OPT_IDX_MAN_PAGE:
+                GUIManager.getInstance().transitionTo(new HelpScreenMode());
                 break;
             case OPT_IDX_EXIT:
                 GUIManager.getInstance().revert();
