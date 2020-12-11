@@ -146,7 +146,6 @@ public class GameplayMode extends IOMode {
         }
         // check if input set an action:
         if (nextAction != null) {
-            System.out.println(nextAction);
             PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
             // check if action is valid:
             if (Engine.getInstance().validateAction(playerCharacter, nextAction)) {

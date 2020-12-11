@@ -15,7 +15,7 @@ public class UseItemSelectMenuMode extends AbstractInventorySelectMenuMode {
         super("Select an item to equip or use:",
                 Color.BLACK,
                 Color.WHITE,
-                Color.GREEN,
+                Color.DARK_GRAY,
                 Color.BLACK,
                 Color.BLACK,
                 Color.GREEN,

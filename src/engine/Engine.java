@@ -180,7 +180,6 @@ public class Engine extends Thread {
                 destination = Gamestate.getInstance().getPlayerCharacter().getLocation();
         }
         AbstractCharacter target = Gamestate.getInstance().getCharacterAt(destination.y, destination.x);
-        System.out.println("Altered attack? " + alterAttackFlag + "ctrl?" + whichAlterAttack + "action: " + action);
         if (target != null) {
             actor.setTarget(target);
             String attackMessage;

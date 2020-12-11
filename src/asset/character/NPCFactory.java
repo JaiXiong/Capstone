@@ -9,12 +9,12 @@ public class NPCFactory {
     private static final int BOSS_COUNT = 2;
 
     /* Bosses have ids 11-14
-     * regular baddies have ids 1-9
-     * id 10 isn't used
+     * regular baddies have ids 1-7
+     * 8-10 not used
      */
     public static AbstractNonPlayerCharacter npcLookup(int id){
         switch (id) {
-            case 1: case 8: case 9:
+            case 1:
                 return new Freshman();
             case 2:
                 return new Sophomore();
@@ -28,8 +28,6 @@ public class NPCFactory {
                 return new TA();
             case 7:
                 return new Researcher();
-                //todo - more regular NPCs
-                //as a temp fix, i'm making 8 and 9 return more freshmen
             case 11:
                 return new Professor();
             case 12:
@@ -40,17 +38,9 @@ public class NPCFactory {
     }
 
     private static int randomID(int floorDifficulty) {
-        int id = RNG.get().nextInt(NPC_COUNT) + 1;
-        int variance;
-        while (id > floorDifficulty) {
-            variance = id - floorDifficulty;
-            if (RNG.get().nextInt(variance * variance) + 1 == variance * variance) break; //small chance to generate an overpowered NPC
-            id -= (variance / 2); //otherwise reduce the id by an amount corresponding to the variance
-        }
-        while (id < floorDifficulty) {
-            variance = floorDifficulty - id;
-            if (RNG.get().nextInt(variance) + 1 == variance) break; //moderate chance to generate an underpowered NPC
-            id++; //otherwise increase the id by 1.
+        int id = (floorDifficulty / 3) + 1;
+        while (RNG.get().nextInt(100) + 1 > 90 - (floorDifficulty * floorDifficulty)) {
+            if (++id > floorDifficulty + Math.log(floorDifficulty) || id > 6) break;
         }
         return id;
     }

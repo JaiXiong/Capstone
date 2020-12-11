@@ -15,7 +15,7 @@ public class DiscardItemSelectMenuMode extends AbstractInventorySelectMenuMode {
         super("Select an item to discard:",
                 Color.BLACK,
                 Color.WHITE,
-                Color.GREEN,
+                Color.DARK_GRAY,
                 Color.BLACK,
                 Color.BLACK,
                 Color.GREEN,
