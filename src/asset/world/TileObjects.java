@@ -50,6 +50,16 @@ public class TileObjects extends AbstractGameAsset {
         TRASHCAN("trashcan"),
         BACKSLASH("backslash"),
         FORWARDSLASH("forwardslash"),
+        LETTERQ("letterq"),
+        LETTERU("letteru"),
+        LETTERI("letteri"),
+        LETTERE("lettere"),
+        LETTERT("lettert"),
+        LETTERL("letterl"),
+        LETTERB("letterb"),
+        LETTERR("letterr"),
+        LETTERA("lettera"),
+        LETTERY("lettery"),
         STAIRCASE("staircase"), // transition to the next level
         EMERGENCY_EXIT("emergency exit"); // transition to the hub
 
