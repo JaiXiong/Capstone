@@ -47,19 +47,24 @@ public class Engine extends Thread {
             //rather than saving a reference to this, we request it each iteration,
             // in case of major updates like a new floor being generated with a new list of characters
             characters = Gamestate.getInstance().getCharacters();
-            AbstractCharacter character;
-            for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
-                character = i.next();
-                if (character.getHealth() <= 0) { //check that this character is alive - if not, remove it.
-                    i.remove();
-                    continue;
-                }
+
+            for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();)  {
+                AbstractCharacter character = i.next();
                 String action = character.getNextAction();
                 if (!validateAction(character, action))
                     action = WAIT;
                 handleAction(character, action);
-                if (!checkDeath()) break;
             }
+
+            //after handling actions we go back through list to clean up
+            for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
+                AbstractCharacter character = i.next();
+                if (character.getHealth() <= 0) {
+                    character.die();
+                    i.remove();
+                }
+            }
+
             GUIManager.getInstance().updateScreen(); //once all actions for this turn have been processed, redraw the screen
         } while (gameInProgress);
         //discard the current instance - if we begin a new game during this process, we'll create a new thread for it
@@ -259,17 +264,6 @@ public class Engine extends Thread {
             }
 
             return false; //impassable terrain at destination
-        }
-        return true;
-    }
-
-    private boolean checkDeath() {
-        ArrayList<AbstractCharacter> characters = Gamestate.getInstance().getCharacters();
-        AbstractCharacter character;
-        for (Iterator<AbstractCharacter> i = characters.iterator(); i.hasNext();) {
-            character = i.next();
-            if (character.getHealth() <= 0) character.die();
-            if (!gameInProgress) return false;
         }
         return true;
     }
