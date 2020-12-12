@@ -164,6 +164,7 @@ public class GameplayMode extends IOMode {
     public void update(ConsoleInterface consoleInterface) {
         consoleInterface.clearScreen();
         consoleInterface.drawFloor();
+        consoleInterface.drawCharacters();
         ArrayList messages = Messages.getMessages();
         final int firstLine = messages.size() > 2 ? 2 : messages.size() - 1;
         for (int line = firstLine; line >= 0 && messages.size() > (firstLine - line); --line) {

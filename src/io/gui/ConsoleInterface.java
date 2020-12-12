@@ -53,6 +53,13 @@ public class ConsoleInterface {
                 CONSOLE.update(r, c, terrain.getConsoleGlyph());
             }
         }
+    }
+    public void drawCharacters() {
+        PlayerCharacter playerCharacter = Gamestate.getInstance().getPlayerCharacter();
+        Point playerAt = playerCharacter.getLocation();
+        Point center = getConsoleCenterpoint();
+        final int cOffset = center.x - playerAt.x;
+        final int rOffset = center.y - playerAt.y;
         for (AbstractCharacter character : Gamestate.getInstance().getCharacters()) {
             Point at = character.getLocation();
             int c = at.x + cOffset;
