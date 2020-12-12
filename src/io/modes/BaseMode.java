@@ -33,10 +33,11 @@ public class BaseMode extends IOMode {
     @Override
     public void update(ConsoleInterface consoleInterface) {
         if (startup) {
-            Gamestate.getInstance().SplashScreen();
+            Gamestate.getInstance().SplashScreen("Depth-First Search and Destroy");
             consoleInterface.drawFloor();
         } else {
-            consoleInterface.writeSingleLine(1, 1, "(Exit Splash Screen)");
+            Gamestate.getInstance().SplashScreen("Thanks for playing!");
+            consoleInterface.drawFloor();
         }
         consoleInterface.updateScreen();
     }

@@ -60,6 +60,7 @@ public class TileObjects extends AbstractGameAsset {
         LETTERR("letterr"),
         LETTERA("lettera"),
         LETTERY("lettery"),
+        TEXT("text"),
         STAIRCASE("staircase"), // transition to the next level
         EMERGENCY_EXIT("emergency exit"); // transition to the hub
 

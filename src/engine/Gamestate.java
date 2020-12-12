@@ -2,6 +2,7 @@ package engine;
 
 import asset.character.*;
 import asset.world.Floor;
+import asset.world.Terrain;
 import asset.world.TileObjects;
 
 import java.awt.*;
@@ -133,9 +134,11 @@ public class Gamestate implements Serializable {
     /*
      * public so we can call from BaseMode
      */
-    public void SplashScreen() {
+    public void SplashScreen(String text) {
         floor = new Floor(24, 64);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), Color.BLACK);
+        PlayerCharacter playerCharacter = characters == null ? new PlayerCharacter() : getPlayerCharacter();
+        playerCharacter.setLocation(new Point(floor.getColumns()/2, floor.getRows()/2));
         for(int i = 0; i < 24; ++i) {
             for(int j = 0; j < 64; ++j) {
                 //Add red border.
@@ -158,13 +161,13 @@ public class Gamestate implements Serializable {
                 if((i == 3 || i == 20) && j > 3 && j < 60) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), customColorMaker(customColor.DARKPURPLE), i, j));
                 //Add gray border.
                 if(j == 14 || j == 50) {
-                    if(j == 14 && i == 10) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
-                    else if(j == 14 && i == 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
-                    else if(j == 50 && i == 10) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
-                    else if(j == 50 && i == 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
-                    else if(i > 10 && i < 14) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    if(j == 14 && i == 9) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 14 && i == 13) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWLEFTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 50 && i == 9) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTTOPCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(j == 50 && i == 13) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWRIGHTBOTTOMCORNERBAR.toString(), Color.LIGHT_GRAY, i, j));
+                    else if(i > 9 && i < 13) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWVERTICALBAR.toString(), Color.LIGHT_GRAY, i, j));
                 }
-                if((i == 10 || i == 14) && j > 14 && j < 50) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), Color.LIGHT_GRAY, i, j));
+                if((i == 9 || i == 13) && j > 14 && j < 50) floor.setTerrainAt(i, j, floor.makeFloor(TileObjects.TileType.WINDOWHORIZONTALBAR.toString(), Color.LIGHT_GRAY, i, j));
             }
         }
         //Add diagonals in corners.
@@ -176,6 +179,13 @@ public class Gamestate implements Serializable {
         floor.setTerrainAt(21, 2, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 21, 2));
         floor.setTerrainAt(2, 61, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 2, 61));
         floor.setTerrainAt(1, 62, floor.makeFloor(TileObjects.TileType.FORWARDSLASH.toString(), Color.GRAY, 1, 62));
+        //Print text in center.
+        char[] msg = text.toCharArray();
+        int j = 32-(msg.length/2);
+        for (char c : msg) {
+            floor.setTerrainAt(11, j, new Terrain(TileObjects.TileType.TEXT.toString(), null, Color.WHITE, c, 11, j));
+            ++j;
+        }
     }
 
     //player main lobby
