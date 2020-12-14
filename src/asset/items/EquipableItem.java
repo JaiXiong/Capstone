@@ -74,7 +74,7 @@ public class EquipableItem extends Item {
             case 19:
                 return new EquipableItem(19, Slot.DEFENSE_B, "Beer Goggles", 10, 0.15, -0.05);
             case 20:
-                return new EquipableItem(20, Slot.DEFENSE_B, "Ill-Advised Haircut", 20, 0.15, 0.02);
+                return new EquipableItem(20, Slot.DEFENSE_B, "Awkward Haircut", 20, 0.15, 0.02);
             case 21:
                 return new EquipableItem(21, Slot.DEFENSE_B, "Sunglasses at Night", 22, 0.18, 0.05);
             case 22:

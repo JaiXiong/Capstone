@@ -13,7 +13,7 @@ public class TA extends AbstractNonPlayerCharacter {
 
     public TA() {
         initiativeID=5;
-        name = "ta";
+        name = "TA";
         leadName = "TA";
         xp=175;
         health = 200;
