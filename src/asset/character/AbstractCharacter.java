@@ -5,9 +5,7 @@ import java.awt.*;
 
 public abstract class AbstractCharacter extends AbstractGameAsset implements Comparable<AbstractCharacter>{
 
-    /* to avoid initiative collision, each initiativeID should be unique,
-     * which also lets us use it as a character hash
-     */
+    //each child class should have a unique initiativeID
     int initiativeID;
     String name,leadName;
 
@@ -44,8 +42,6 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
 
     //this character's current target
     private AbstractCharacter target = null;
-
-    //TODO buildActions may not be necessary anymore
 
     /* helper method for building the actions list so its
      * not all crammed in the constructor
@@ -93,7 +89,7 @@ public abstract class AbstractCharacter extends AbstractGameAsset implements Com
         else return false;
     }
 
-    /* the remaining stats can be modified by persistant
+    /* the remaining stats can be modified by persistent
      * effects, and have to calculate a total value based
      * off the fields
      */

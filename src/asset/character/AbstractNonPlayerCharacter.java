@@ -128,7 +128,7 @@ public abstract class AbstractNonPlayerCharacter extends AbstractCharacter{
 
         //if player is adjacent, do stuff
         else {
-            return attackPC();
+            return ATTACK;
         }
     }
 }
