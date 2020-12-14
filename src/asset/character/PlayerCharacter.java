@@ -52,11 +52,9 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         equip(EquipableItem.createEquipment(0)); //Stick
         equip(EquipableItem.createEquipment(11)); //Jacket
         actions = buildActions();
-
         keys.add(-1);
-
-        //TEST - add a consumable to player inventory
         inventory.add(Item.createItem(100));
+        inventory.add(Item.createItem(103));
     }
 
     @Override
@@ -89,7 +87,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
 
     private String nextAction = null;
 
-    //applies offenseA adjustments from gear, no cap
+    //applies Strength adjustments from gear, no cap
     @Override
     public double getOffenseA() {
         double totalOffA = offenseA;
@@ -98,7 +96,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return totalOffA;
     }
 
-    //applies offenseB adjustments from gear, no cap
+    //applies Knowledge adjustments from gear, no cap
     @Override
     public double getOffenseB() {
         double totalOffB = offenseB;
@@ -107,7 +105,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return totalOffB;
     }
 
-    //applies accuracy adjustments from gear, cap at 95%
+    //applies Precision adjustments from gear, cap at 95%
     @Override
     public double getAccuracy() {
         double totalAcc = accuracy;
@@ -119,7 +117,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return totalAcc;
     }
 
-    //applies accuracy adjustments from gear, cap at 40%
+    //applies Evade adjustments from gear, cap at 40%
     @Override
     public double getEvade() {
         double totalEvade = evade;
@@ -131,7 +129,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return totalEvade;
     }
 
-    //applies accuracy adjustments from gear, cap at 10%
+    //applies Toughness adjustments from gear, cap at 10%
     @Override
     public double getResistA() {
         double totalResA = resistA;
@@ -142,7 +140,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         return totalResA;
     }
 
-    //applies accuracy adjustments from gear, cap at 10%
+    //applies Recall adjustments from gear, cap at 10%
     @Override
     public double getResistB() {
         double totalResB = resistB;
@@ -170,7 +168,7 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         this.nextAction = nextAction;
     }
 
-    //these setters are also just for testing right now
+    //these setters are also just for testing
     public void setOffenseA(double val){ offenseA = val; }
 
     public void setOffenseB(double val){ offenseB = val; }
@@ -198,7 +196,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         xp = xp - (level * 100);
         level++;
 
-        //TODO possibly adjust stat increases
         health = (int) (health * 1.1);
         maxHealth = (int) (maxHealth * 1.1);
         energy = (int) (energy * 1.05);
@@ -210,7 +207,6 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
         resistA = resistA * .98;
         resistB = resistB * .98;
 
-        //TODO additional actions as we level go here. Stretch goal.
         Messages.addMessage("You have reached experience level " + level + ".");
         switch (level) {
             case 2:
@@ -327,6 +323,4 @@ public class PlayerCharacter extends AbstractCharacter implements Serializable {
     public ConsoleGlyph getConsoleGlyph() {
         return new ConsoleGlyph(null, Color.WHITE, '@');
     }
-
-    //TODO possibly include fields/methods for world state information
 }
