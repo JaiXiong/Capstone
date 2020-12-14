@@ -213,23 +213,24 @@ public class Actions {
                 pc.useEnergy(pc.getEnergy());
                 return ("You study furiously. You feel better.");
             case 1: //RIVALRY - consume 1/8th your maximum health and deal four times that as damage to your current target, stealing all its energy and gaining 4 times that.
-                if (target == null) return "You currently have no rival - designate one by attacking!";
+                if (target == null) return "You have no rival. Choose one by attacking!";
                 val = pc.getMaxHealth() / 8;
                 pc.takeDamage(0 - val, "heal", 1.0);
                 target.takeDamage(val * 4, "typeB", 1.0);
                 pc.useEnergy(0 - target.getEnergy() * 4);
-                target.useEnergy(target.getEnergy());
-                return "You and your rival are both weakened, but you gain all their energy.";
+                int temp = target.getEnergy();
+                target.useEnergy(temp);
+                return temp > 0 ? "Your rival's energy drives you." : "Your rivalry harms you both.";
             case 2: //TOP OF THE CLASS - consume 25 energy, dealing damage to all NPCs as a percentage of their maximum.
                 for (AbstractCharacter ac : Gamestate.getInstance().getCharacters()){
                     if (ac == pc) continue; //do not harm yourself
                     ac.takeDamage(ac.getMaxHealth() / 8.0, "typeB", 1.0);
                 }
                 pc.useEnergy(25);
-                return "As you strive for the top of the class, your competitors seem weaker.";
+                return "You strive to be the best. Your competitors falter.";
             case 3: //INVIGORATING FOCUS - consume 25% of your total energy, dealing damage, draining energy, and restoring health
                 if (target == null) return "You have no rival to focus on!";
-                if (target.getEnergy() == 0) return "Your rival has run out of energy and is not worth your focus.";
+                if (target.getEnergy() == 0) return "This rival is not worth your focus.";
                 pc.useEnergy(pc.getMaxEnergy() / 4);
                 val = Math.min(target.getEnergy(), 10);
                 target.useEnergy(val);

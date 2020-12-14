@@ -4,6 +4,7 @@ import asset.character.*;
 import asset.world.Floor;
 import asset.world.Terrain;
 import asset.world.TileObjects;
+import main.Driver;
 
 import java.awt.*;
 import java.io.Serializable;
@@ -11,6 +12,12 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Gamestate implements Serializable {
+    /**
+     *
+     * todo: fix final boss spawn
+     * stop the post-boss level from being populated
+     * create the endgame win dialog
+     */
     private static Gamestate instance = null;
 
     private Floor floor;
@@ -50,7 +57,13 @@ public class Gamestate implements Serializable {
     private void generateAndPopulateFloor() {
         if (floorDifficulty < 0)
             throw new IllegalArgumentException("Depth may not be less than zero.");
-        PlayerCharacter playerCharacter = characters == null ? new PlayerCharacter() : getPlayerCharacter();
+        PlayerCharacter playerCharacter;
+        if (characters == null) {
+            playerCharacter = new PlayerCharacter();
+            playerCharacter.gainXP(Driver.getDevBoost()); // CHEAT CODE: boost player's starting XP if in devmode.
+        } else {
+            playerCharacter = getPlayerCharacter();
+        }
         Point pcLocation;
         Point bossLocation = null;
         switch (floorDifficulty) {

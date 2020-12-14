@@ -1,7 +1,5 @@
 package engine;
 
-import io.gui.GUIManager;
-
 import java.util.*;
 
 public class Messages {
@@ -11,7 +9,6 @@ public class Messages {
     //Add new message to the end of the queue.
     public static void addMessage(String message) {
         messageList.add(message);
-        GUIManager.getInstance().updateScreen();
     }
 
     public static void clearMessages() {
