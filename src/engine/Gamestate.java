@@ -4,6 +4,9 @@ import asset.character.*;
 import asset.world.Floor;
 import asset.world.Terrain;
 import asset.world.TileObjects;
+import io.file.FileManager;
+import io.gui.GUIManager;
+import io.modes.TextDisplayMode;
 import main.Driver;
 
 import java.awt.*;
@@ -12,13 +15,9 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class Gamestate implements Serializable {
-    /**
-     *
-     * todo: fix final boss spawn
-     * stop the post-boss level from being populated
-     * create the endgame win dialog
-     */
     private static Gamestate instance = null;
+
+    private static final int HIGHEST_FLOOR = 8;
 
     private Floor floor;
     private ArrayList<AbstractCharacter> characters = null;
@@ -46,8 +45,14 @@ public class Gamestate implements Serializable {
     }
 
     public void nextFloor() {
-        ++floorDifficulty;
-        generateAndPopulateFloor();
+        if (++floorDifficulty > HIGHEST_FLOOR) { //WIN
+            FileManager.deleteSavedGame(); //delete the current saved game - it is no longer valid
+            Engine.getInstance().endGame(); //terminate the engine
+            GUIManager.getInstance().revert(); //back out of the game screen
+            GUIManager.getInstance().transitionTo(new TextDisplayMode("Congratulations! You have graduated as valedictorian!"));
+        } else {
+            generateAndPopulateFloor();
+        }
     }
 
 
@@ -99,7 +104,7 @@ public class Gamestate implements Serializable {
             case 7:
                 Bigroom6();
                 pcLocation = new Point(floor.getColumns()/2, floor.getRows()/2);
-                bossLocation = new Point(22, 24); //todo - where does this boss go?
+                bossLocation = new Point(24, 22);
                 break;
             case 8:
                 Rooftop();
@@ -781,7 +786,6 @@ public class Gamestate implements Serializable {
     private void Bigroom6() {
         floor = new Floor(24, 48);
         floor.fillAll(TileObjects.TileType.TERRAIN.toString(), customColorMaker(customColor.MARBLEBLUE));
-        int m,n;
         for (int i = 0; i < 24; ++i) {
             for (int j = 0; j < 48; ++j) {
                 if (i == 0 || j == 0 || i == 23 || j == 47) {
@@ -993,8 +997,8 @@ public class Gamestate implements Serializable {
                 floor.setTerrainAt(18, 6, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 18, 2));
                 //front door
                 floor.setTerrainAt(6, 24, floor.makeFloor(TileObjects.TileType.DOOR.toString(), customColorMaker(customColor.BROWN), 6, 24));
-                //entrance star well
-                floor.setTerrainAt(23, 24, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.BROWN), 23, 24));
+                //entrance stair well
+                floor.setTerrainAt(22, 24, floor.makeFloor(TileObjects.TileType.STAIRCASE.toString(), customColorMaker(customColor.BROWN), 23, 24));
                 //Emergency exit
                 floor.setTerrainAt(1, 1, floor.makeFloor(TileObjects.TileType.EMERGENCY_EXIT.toString(), Color.white, 23, 24));
             }
@@ -1310,6 +1314,7 @@ public class Gamestate implements Serializable {
             characters.add(boss);
             return;
         }
+        if (floorDifficulty == HIGHEST_FLOOR) return; //post final boss floor - no NPCs
         //otherwise generate non-boss NPCs:
         int npcCount = 2 * floorDifficulty + RNG.get().nextInt((int)Math.pow(floorDifficulty, 2.0) + 1);
         int attemptCount = 0;
