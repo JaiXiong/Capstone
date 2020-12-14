@@ -83,8 +83,9 @@ public class Item extends AbstractGameAsset {
         return NAME + "[HP " + (int)P_VAL + "](NRG " + (int)S_VAL + ")";
     }
 
+    // Items currently can only exist in player inventory
     @Override
     public ConsoleGlyph getConsoleGlyph() {
-        return new ConsoleGlyph(Color.BLACK, Color.WHITE, '?'); //todo - field set by constructor
+        return new ConsoleGlyph(Color.BLACK, Color.WHITE, '?');
     }
 }

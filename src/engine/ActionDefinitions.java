@@ -70,7 +70,7 @@ public class ActionDefinitions {
     public static final String NULL_POINTER = "nullPointer";
 
     /*
-     * Freshman (id 1) actions
+     * NPC actions
      */
     public static final String TOO_MANY_MEMES = "tooManyMemes";
     public static final String HOMESICK = "homesick";

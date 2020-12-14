@@ -270,7 +270,7 @@ public class Actions {
         return ("Not enough energy to do that!");
     }
 
-    //Freshman (id 1) actions
+    //NPC actions
 
     /**
      * HOMESICK
