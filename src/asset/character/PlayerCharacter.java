@@ -17,7 +17,7 @@ import java.awt.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class PlayerCharacter extends AbstractCharacter implements Serializable {
+public class PlayerCharacter extends AbstractCharacter {
 
     //maximum number of items the player's inventory may contain
     private static final int INVENTORY_CAPACITY = 16;
