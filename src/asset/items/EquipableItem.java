@@ -103,28 +103,29 @@ public class EquipableItem extends Item {
         switch (getSlot()) {
             case OFFENSE_A:
                 offDefAB = "Strength";
-                evadeAcc = "Precision";
+                evadeAcc = "Precision ";
                 formatStat = (int)getBaseStat();
                 break;
             case OFFENSE_B:
                 offDefAB = "Knowledge";
-                evadeAcc = "Precision";
+                evadeAcc = "Precision ";
                 formatStat = (int)getBaseStat();
                 break;
             case DEFENSE_A:
                 offDefAB = "Toughness";
-                evadeAcc = "Evasion";
+                evadeAcc = "Evasion ";
                 formatStat = (int)(getBaseStat() * 100);
                 break;
             case DEFENSE_B:
                 offDefAB = "Recall";
-                evadeAcc = "Evasion";
+                evadeAcc = "Evasion ";
                 formatStat = (int)(getBaseStat() * 100);
                 break;
             default: throw new IllegalArgumentException("Invalid slot " + getSlot());
         }
+        if (getToHitModifier() >= 0) evadeAcc = evadeAcc + "+";
 
-        return getName() + "[" + offDefAB + " +" + formatStat + "](" + evadeAcc + " +" + (int)(getToHitModifier() * 100) + ")";
+        return getName() + "[" + offDefAB + " +" + formatStat + "](" + evadeAcc + (int)(getToHitModifier() * 100) + ")";
     }
 
 }
