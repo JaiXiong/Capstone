@@ -14,7 +14,7 @@ public class Hacker extends AbstractNonPlayerCharacter {
     public Hacker() {
         initiativeID=9;
         name = "hacker";
-        leadName = "Undefined";
+        leadName = "[Redacted]";
         xp=175;
         health = 50;
         maxHealth = 50;
@@ -36,7 +36,7 @@ public class Hacker extends AbstractNonPlayerCharacter {
 
     @Override
     public ConsoleGlyph getConsoleGlyph() {
-        return new ConsoleGlyph(null, Color.BLACK, '?');
+        return new ConsoleGlyph(Color.BLACK, Color.GREEN, '?');
     }
 
     @Override
