@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="DFSD:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/DFSD_jar</output-path>
+    <root id="archive" name="Capstone.jar">
+      <element id="module-output" name="Capstone" />
+      <element id="module-output" name="Console595" />
+    </root>
+  </artifact>
+</component>

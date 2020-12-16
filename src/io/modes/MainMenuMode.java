@@ -17,7 +17,7 @@ public class MainMenuMode extends MenuMode {
 
     public MainMenuMode() {
         super(
-                "Welcome to <untitled roguelike>!",
+                "Welcome to Depth First Search and Destroy!",
                 new Color[] {
                      null,
                      Color.BLUE,
