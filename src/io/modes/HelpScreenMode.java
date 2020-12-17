@@ -21,16 +21,16 @@ public class HelpScreenMode extends TextDisplayMode {
         strings.add("Commands - ");
         strings.add("Arrow Keys: Move directionally. If a rival is present,");
         strings.add("\t\tAttack them for physical damage. (free)");
-        strings.add("Alt Move: Haskell - make a bad Haskell joke); doing ");
+        strings.add("Alt Move: Haskell - make a bad Haskell joke doing ");
         strings.add("\t\tcombined physical and intellectual damage. (15)");
-        strings.add("Ctrl Move: Null Pointer - Point out a rival's poor code);");
+        strings.add("Ctrl Move: Null Pointer - Point out a rival's poor code.");
         strings.add("\t\tdoing intellectual damage. (5)");
         strings.add("u/d: [u]se (or equip) or [d]iscard a carried item. (free)");
-        strings.add("Ctrl-s/Ctrl-q: Exit the game); (s)aving or (q)uitting.");
-        strings.add(">); <: take a staircase or emergency exit. (free)");
+        strings.add("Ctrl-s/Ctrl-q: Exit the game, (s)aving or (q)uitting.");
+        strings.add(">/<: take a staircase or emergency exit. (free)");
         strings.add("");
         strings.add("Special Attacks");
-        strings.add("F1 - Cram: Use up all your energy to study hard); ");
+        strings.add("F1 - Cram: Use up all your energy to study hard.");
         strings.add("\t\thealing yourself based on the energy used.(50+)");
         PlayerCharacter pc = Gamestate.getInstance().getPlayerCharacter();
         if (pc.getLevel() >= 2) {
